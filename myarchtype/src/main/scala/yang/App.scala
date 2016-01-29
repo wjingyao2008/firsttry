@@ -1,7 +1,7 @@
 package yang
 
 import akka.actor.{ActorSystem, Props}
-import chapter3.MyActor
+import chapter3.GreetingLogActor
 
 /**
  * @author ${user.name}
@@ -13,7 +13,7 @@ object App {
   def main(args : Array[String]) {
     println( "Hello World!" )
     println("concat arguments = " + foo(args))
-    val pro1=Props[MyActor]
+    val pro1=Props[GreetingLogActor]
     val system=ActorSystem("mySystem")
     //System.out.println(system.settings);
     val myActor=system.actorOf(pro1,"myActorInstance")

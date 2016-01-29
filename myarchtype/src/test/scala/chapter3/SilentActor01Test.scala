@@ -4,8 +4,8 @@ import akka.actor.{Props, ActorSystem}
 import akka.testkit.{TestActorRef, TestKit}
 import org.junit.Test
 import org.scalatest.{WordSpecLike, FunSpec, MustMatchers, WordSpec}
-import samples.StopSystemAfterAll
 import SilentActorProtocol._
+import tool.StopSystemAfterAll
 
 /**
   * Created by y28yang on 1/29/2016.

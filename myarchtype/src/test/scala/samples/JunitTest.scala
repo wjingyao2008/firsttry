@@ -1,7 +1,7 @@
 package samples
 
 import akka.actor.{ActorSystem, Props}
-import chapter3.MyActor
+import chapter3.GreetingLogActor
 import org.junit._
 import Assert._
 
@@ -13,7 +13,7 @@ class JunitTest {
 
      @Test
   def testKO() = {
-       val pro1=Props[MyActor]
+       val pro1=Props[GreetingLogActor]
        val system=ActorSystem("mySystem")
        val myActor=system.actorOf(pro1,"myActorInstance")
        myActor ! "test"

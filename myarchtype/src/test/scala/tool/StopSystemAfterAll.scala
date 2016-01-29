@@ -1,8 +1,7 @@
-package samples
+package tool
 
-import org.scalatest.BeforeAndAfterAll
-import org.scalatest.Suite
 import akka.testkit.TestKit
+import org.scalatest.{BeforeAndAfterAll, Suite}
 /**
   * Created by y28yang on 1/29/2016.
   */
