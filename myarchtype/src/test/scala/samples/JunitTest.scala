@@ -1,9 +1,9 @@
 package samples
 
 import akka.actor.{ActorSystem, Props}
+import chapter3.MyActor
 import org.junit._
 import Assert._
-import yang.MyActor
 
 @Test
 class JunitTest {

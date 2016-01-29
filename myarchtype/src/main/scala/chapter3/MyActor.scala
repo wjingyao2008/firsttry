@@ -1,7 +1,6 @@
-package yang
+package chapter3
 
 import akka.actor.Actor
-import akka.actor.Actor.Receive
 import akka.event.Logging
 
 /**

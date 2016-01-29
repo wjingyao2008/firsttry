@@ -1,6 +1,7 @@
 package yang
 
 import akka.actor.{ActorSystem, Props}
+import chapter3.MyActor
 
 /**
  * @author ${user.name}
@@ -18,6 +19,7 @@ object App {
     val myActor=system.actorOf(pro1,"myActorInstance")
     myActor ! "test"
     myActor ! "mainApp"
+
     //myActor ! "test111"
 
   }

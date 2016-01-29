@@ -1,8 +1,8 @@
-package yang
+package chapter3
 
-import akka.actor.{Props, Actor}
-import akka.actor.Actor.Receive
+import akka.actor.{Actor, Props}
 import MessageProtelcol._
+import chapter3.TicketSeller
 
 /**
   * Created by y28yang on 1/28/2016.

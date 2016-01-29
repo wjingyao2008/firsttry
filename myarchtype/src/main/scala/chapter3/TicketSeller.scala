@@ -1,8 +1,7 @@
-package yang
+package chapter3
 
-import akka.actor.{PoisonPill, Actor}
-import akka.actor.Actor.Receive
-import MessageProtelcol._
+import akka.actor.{Actor, PoisonPill}
+import chapter3.MessageProtelcol._
 /**
   * Created by y28yang on 1/28/2016.
   */
