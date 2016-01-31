@@ -6,7 +6,7 @@ import akka.actor.{ActorRef, Actor}
 import akka.actor.Actor.Receive
 import akka.pattern.ask
 import com.nsn.oss.nbi.common.Logger
-import yang.Protocol.AlarmOptPtl.get_alarm_IRP_versions_msg
+import yang.Protocol.AlarmOptPtl.{reply_get_alarm_count, request_get_alarm_count, get_alarm_IRP_versions_msg}
 import scala.concurrent.Await
 import scala.concurrent.duration._
 import akka.util.Timeout
@@ -40,7 +40,26 @@ class AlarmOperationImpl(alarmOperationActor:ActorRef) extends AlarmIRPPOA with 
   }
 
 
-  override def get_alarm_count(filter: StringTypeOpt, critical_count: IntHolder, major_count: IntHolder, minor_count: IntHolder, warning_count: IntHolder, indeterminate_count: IntHolder, cleared_count: IntHolder): Unit = ???
+  override def get_alarm_count(filter: StringTypeOpt, critical_count: IntHolder,
+                               major_count: IntHolder, minor_count: IntHolder,
+                               warning_count: IntHolder, indeterminate_count: IntHolder,
+                               cleared_count: IntHolder): Unit = {
+    val futureResult=alarmOperationActor ? request_get_alarm_count(filter)
+    try{
+      val result=Await.result(futureResult,timeout.duration).asInstanceOf[reply_get_alarm_count]
+      critical_count.value=result.critical_count
+      major_count.value=result.major_count
+      minor_count.value=result.minor_count
+      warning_count.value=result.warning_count
+      indeterminate_count.value=result.indeterminate_count
+      cleared_count.value=result.cleared_count
+    }catch{
+      case e:Exception=> {
+        LOGGER.error("Fail to get alarm irp versions", e.getMessage);
+        throw new GetAlarmIRPVersions(e.getMessage);
+      }
+    }
+  }
 
   override def acknowledge_alarms(alarm_information_id_and_sev_list: Array[AlarmInformationIdAndSev], ack_user_id: String, ack_system_id: StringTypeOpt, bad_ack_alarm_info_list: BadAcknowledgeAlarmInfoSeqHolder): Signal = ???
 

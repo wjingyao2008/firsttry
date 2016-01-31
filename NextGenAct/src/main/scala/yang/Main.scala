@@ -24,7 +24,7 @@ object Main {
     val system = ActorSystem("MyActors")
 
     val stubActor=system.actorOf(Props(new StubActor))
-    val alarmActorPros = Props(new AlarmOperationActor(stubActor))
+    val alarmActorPros = Props(new AlarmOperationActor(stubActor,null))
     val alarmOperationActor=system.actorOf(alarmActorPros)
     val alarmirpImpl = new AlarmOperationImpl(alarmOperationActor);
     val alarmirp = new AlarmIRPStarter(alarmirpImpl);
