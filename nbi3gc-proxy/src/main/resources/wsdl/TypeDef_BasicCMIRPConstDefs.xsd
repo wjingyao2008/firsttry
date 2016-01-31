@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://BasicCMIRPConstDefs/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://BasicCMIRPConstDefs/">
+    <xs:complexType name="searchControl">
+        <xs:sequence>
+            <xs:element name="type" type="tns:scopeType"/>
+            <xs:element name="level" type="xs:int"/>
+            <xs:element name="filter" type="xs:string"/>
+            <xs:element name="contents" type="tns:resultContents"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="moAttribute">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="value" type="xs:anyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="attributeError">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="error" type="tns:attributeErrorCategory"/>
+            <xs:element name="value" type="xs:anyType"/>
+            <xs:element name="reason" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="attributeModification">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="value" type="xs:anyType"/>
+            <xs:element name="_operator" type="tns:modifyOperator"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="modifyAttributeErrors">
+        <xs:sequence>
+            <xs:element name="objectName" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="errors" type="tns:attributeError"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="deleteError">
+        <xs:sequence>
+            <xs:element name="objectName" type="xs:string"/>
+            <xs:element name="error" type="tns:deleteErrorCategory"/>
+            <xs:element name="reason" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="result">
+        <xs:sequence>
+            <xs:element name="mo" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="attributes" type="tns:moAttribute"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="scopeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BASE_ONLY"/>
+            <xs:enumeration value="BASE_NTH_LEVEL"/>
+            <xs:enumeration value="BASE_SUBTREE"/>
+            <xs:enumeration value="BASE_ALL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="resultContents">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NAMES"/>
+            <xs:enumeration value="NAMES_AND_ATTRIBUTES"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="attributeErrorCategory">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NO_SUCH_ATTRIBUTE"/>
+            <xs:enumeration value="INVALID_ATTRIBUTE_VALUE"/>
+            <xs:enumeration value="MISSING_ATTRIBUTE_VALUE"/>
+            <xs:enumeration value="INVALID_MODIFY_OPERATOR"/>
+            <xs:enumeration value="MODIFY_NOT_ALLOWED"/>
+            <xs:enumeration value="MODIFY_FAILED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="modifyOperator">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="REPLACE"/>
+            <xs:enumeration value="ADD_VALUES"/>
+            <xs:enumeration value="REMOVE_VALUES"/>
+            <xs:enumeration value="SET_TO_DEFAULT"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="deleteErrorCategory">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SUBORDINATE_OBJECT"/>
+            <xs:enumeration value="DELETE_NOT_ALLOWED"/>
+            <xs:enumeration value="DELETE_FAILED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType final="#all" name="scopeTypeArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:scopeType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="attributeErrorCategoryArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:attributeErrorCategory"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="searchControlArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:searchControl"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="resultContentsArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:resultContents"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="modifyAttributeErrorsArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:modifyAttributeErrors"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="deleteErrorCategoryArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:deleteErrorCategory"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="modifyOperatorArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:modifyOperator"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="resultArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:result"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="attributeErrorArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:attributeError"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="deleteErrorArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:deleteError"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="moAttributeArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:moAttribute"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="attributeModificationArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:attributeModification"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

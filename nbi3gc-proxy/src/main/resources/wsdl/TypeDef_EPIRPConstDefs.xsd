@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://jaxb.dev.java.net/array" xmlns:tns="http://EPIRPConstDefs/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://EPIRPConstDefs/">
+    <xs:import namespace="http://jaxb.dev.java.net/array" schemaLocation="TypeDef_array.xsd"/>
+    <xs:complexType name="supportedIRPListTypeElement">
+        <xs:sequence>
+            <xs:element name="systemDN" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="irpList" type="tns:irpElement"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="irpElement">
+        <xs:sequence>
+            <xs:element name="irpId" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="irpVersions" type="xs:string"/>
+            <xs:element name="irpManagementScope" type="tns:IRPManagementScopeOpt"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="IRPManagementScopeOpt">
+        <xs:choice>
+            <xs:element name="value" type="ns1:stringArray"/>
+            <xs:element name="not_used" type="ns1:stringArray"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:simpleType name="resultType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OK"/>
+            <xs:enumeration value="FAILURE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="changeModeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="REGISTER"/>
+            <xs:enumeration value="DEREGISTER"/>
+            <xs:enumeration value="MODIFY"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType final="#all" name="supportedIRPListTypeElementArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:supportedIRPListTypeElement"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="IRPManagementScopeOptArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:IRPManagementScopeOpt"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="changeModeTypeArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:changeModeType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="irpElementArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:irpElement"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="resultTypeArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:resultType"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

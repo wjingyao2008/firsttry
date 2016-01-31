@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://CosNotification/" xmlns:tns="http://CosNotifyFilter/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://CosNotifyFilter/">
+    <xs:import namespace="http://CosNotification/" schemaLocation="TypeDef_CosNotification.xsd"/>
+    <xs:complexType name="mappingConstraintPair">
+        <xs:sequence>
+            <xs:element name="constraint_expression" type="tns:constraintExp"/>
+            <xs:element name="result_to_set" type="xs:anyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="constraintExp">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="event_types" type="ns1:eventType"/>
+            <xs:element name="constraint_expr" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="mappingConstraintInfo">
+        <xs:sequence>
+            <xs:element name="constraint_expression" type="tns:constraintExp"/>
+            <xs:element name="constraint_id" type="xs:int"/>
+            <xs:element name="value" type="xs:anyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="constraintInfo">
+        <xs:sequence>
+            <xs:element name="constraint_expression" type="tns:constraintExp"/>
+            <xs:element name="constraint_id" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="mappingConstraintInfoArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:mappingConstraintInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="constraintExpArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:constraintExp"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="constraintInfoArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:constraintInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="mappingConstraintPairArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:mappingConstraintPair"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

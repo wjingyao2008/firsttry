@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BasicCmIrpOperations" 
+		targetNamespace="http://BasicCmIRPSystem.BasicCmIrpOperations" 
+		xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" 
+		xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"  
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+		xmlns:tns="http://BasicCmIRPSystem.BasicCmIrpOperations" 
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" 
+    	elementFormDefault="qualified" 
+    	targetNamespace="http://BasicCmIRPSystem.BasicCmIrpOperations" 
+    	xmlns="http://BasicCmIRPSystem.BasicCmIrpOperations" 
+    	xmlns:ns1="http://ManagedGenericIRPConstDefs/" 
+    	xmlns:ns2="http://BasicCMIRPConstDefs/" 
+    	xmlns:ns3="http://www.w3.org/2005/08/addressing" 
+    	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://ManagedGenericIRPConstDefs/" schemaLocation="TypeDef_ManagedGenericIRPConstDefs.xsd"/>
+    <xs:import namespace="http://BasicCMIRPConstDefs/" schemaLocation="TypeDef_BasicCMIRPConstDefs.xsd"/>
+    <xs:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="ws-addr.xsd"/>
+    <xs:element name="create_managed_object">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="objectName" type="xs:string"/>
+                <xs:element name="referenceObject" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="attributes" type="ns2:moAttribute"/>
+                <xs:element maxOccurs="unbounded" name="attributeErrors" type="ns2:attributeError"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="create_managed_objectResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="attributes" type="ns2:moAttribute"/>
+                <xs:element maxOccurs="unbounded" name="attributeErrors" type="ns2:attributeError"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="delete_managed_objects">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="baseObject" type="xs:string"/>
+                <xs:element name="searchControl" type="ns2:searchControl"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="delete_managed_objectsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns3:EndpointReferenceType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="find_managed_objects">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="baseObject" type="xs:string"/>
+                <xs:element name="searchControl" type="ns2:searchControl"/>
+                <xs:element maxOccurs="unbounded" name="requestedAttributes" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="find_managed_objectsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns3:EndpointReferenceType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_basicCm_IRP_notification_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="basicCm_IRP_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_basicCm_IRP_notification_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns1:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_basicCm_IRP_operation_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="basicCm_IRP_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_basicCm_IRP_operation_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns1:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_basicCm_IRP_version">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_basicCm_IRP_versionResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="modify_managed_objects">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="baseObject" type="xs:string"/>
+                <xs:element name="searchControl" type="ns2:searchControl"/>
+                <xs:element maxOccurs="unbounded" name="modifications" type="ns2:attributeModification"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="modify_managed_objectsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns3:EndpointReferenceType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="OperationNotSupported" type="OperationNotSupported"/>
+    <xs:complexType name="OperationNotSupported">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="GetBasicCmIRPNotificationProfile" type="GetBasicCmIRPNotificationProfile"/>
+    <xs:complexType name="GetBasicCmIRPNotificationProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="InvalidParameter" type="InvalidParameter"/>
+    <xs:complexType name="InvalidParameter">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="IllegalFilterFormatException" type="IllegalFilterFormatException"/>
+    <xs:complexType name="IllegalFilterFormatException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ParameterNotSupported" type="ParameterNotSupported"/>
+    <xs:complexType name="ParameterNotSupported">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="UndefinedScopeException" type="UndefinedScopeException"/>
+    <xs:complexType name="UndefinedScopeException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="IllegalScopeLevelException" type="IllegalScopeLevelException"/>
+    <xs:complexType name="IllegalScopeLevelException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="FilterComplexityLimit" type="FilterComplexityLimit"/>
+    <xs:complexType name="FilterComplexityLimit">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="IllegalScopeTypeException" type="IllegalScopeTypeException"/>
+    <xs:complexType name="IllegalScopeTypeException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="IllegalDNFormatException" type="IllegalDNFormatException"/>
+    <xs:complexType name="IllegalDNFormatException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="FindManagedObjects" type="FindManagedObjects"/>
+    <xs:complexType name="FindManagedObjects">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ValueNotSupported" type="ValueNotSupported"/>
+    <xs:complexType name="ValueNotSupported">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="UndefinedMOException" type="UndefinedMOException"/>
+    <xs:complexType name="UndefinedMOException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetBasicCmIRPOperationProfile" type="GetBasicCmIRPOperationProfile"/>
+    <xs:complexType name="GetBasicCmIRPOperationProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="NoSuchObjectClass" type="NoSuchObjectClass"/>
+    <xs:complexType name="NoSuchObjectClass">
+        <xs:sequence>
+            <xs:element name="objectClass" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CreateNotAllowed" type="CreateNotAllowed"/>
+    <xs:complexType name="CreateNotAllowed">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="CreateManagedObject" type="CreateManagedObject"/>
+    <xs:complexType name="CreateManagedObject">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ParentObjectDoesNotExist" type="ParentObjectDoesNotExist"/>
+    <xs:complexType name="ParentObjectDoesNotExist">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="DuplicateMO" type="DuplicateMO"/>
+    <xs:complexType name="DuplicateMO">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="ObjectClassMismatch" type="ObjectClassMismatch"/>
+    <xs:complexType name="ObjectClassMismatch">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="ModifyManagedObjects" type="ModifyManagedObjects"/>
+    <xs:complexType name="ModifyManagedObjects">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetBasicCmIRPVersion" type="GetBasicCmIRPVersion"/>
+    <xs:complexType name="GetBasicCmIRPVersion">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DeleteManagedObjects" type="DeleteManagedObjects"/>
+    <xs:complexType name="DeleteManagedObjects">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="delete_managed_objectsResponse">
+    <wsdl:part name="parameters" element="tns:delete_managed_objectsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValueNotSupported">
+    <wsdl:part name="ValueNotSupported" element="tns:ValueNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_basicCm_IRP_versionResponse">
+    <wsdl:part name="parameters" element="tns:get_basicCm_IRP_versionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBasicCmIRPVersion">
+    <wsdl:part name="GetBasicCmIRPVersion" element="tns:GetBasicCmIRPVersion">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="delete_managed_objects">
+    <wsdl:part name="parameters" element="tns:delete_managed_objects">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_basicCm_IRP_operation_profile">
+    <wsdl:part name="parameters" element="tns:get_basicCm_IRP_operation_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modify_managed_objectsResponse">
+    <wsdl:part name="parameters" element="tns:modify_managed_objectsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IllegalDNFormatException">
+    <wsdl:part name="IllegalDNFormatException" element="tns:IllegalDNFormatException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBasicCmIRPNotificationProfile">
+    <wsdl:part name="GetBasicCmIRPNotificationProfile" element="tns:GetBasicCmIRPNotificationProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NoSuchObjectClass">
+    <wsdl:part name="NoSuchObjectClass" element="tns:NoSuchObjectClass">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modify_managed_objects">
+    <wsdl:part name="parameters" element="tns:modify_managed_objects">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="create_managed_object">
+    <wsdl:part name="parameters" element="tns:create_managed_object">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ParameterNotSupported">
+    <wsdl:part name="ParameterNotSupported" element="tns:ParameterNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="find_managed_objectsResponse">
+    <wsdl:part name="parameters" element="tns:find_managed_objectsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_basicCm_IRP_notification_profile">
+    <wsdl:part name="parameters" element="tns:get_basicCm_IRP_notification_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OperationNotSupported">
+    <wsdl:part name="OperationNotSupported" element="tns:OperationNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidParameter">
+    <wsdl:part name="InvalidParameter" element="tns:InvalidParameter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_basicCm_IRP_version">
+    <wsdl:part name="parameters" element="tns:get_basicCm_IRP_version">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteManagedObjects">
+    <wsdl:part name="DeleteManagedObjects" element="tns:DeleteManagedObjects">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ParentObjectDoesNotExist">
+    <wsdl:part name="ParentObjectDoesNotExist" element="tns:ParentObjectDoesNotExist">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FindManagedObjects">
+    <wsdl:part name="FindManagedObjects" element="tns:FindManagedObjects">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DuplicateMO">
+    <wsdl:part name="DuplicateMO" element="tns:DuplicateMO">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UndefinedScopeException">
+    <wsdl:part name="UndefinedScopeException" element="tns:UndefinedScopeException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateNotAllowed">
+    <wsdl:part name="CreateNotAllowed" element="tns:CreateNotAllowed">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_basicCm_IRP_operation_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_basicCm_IRP_operation_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UndefinedMOException">
+    <wsdl:part name="UndefinedMOException" element="tns:UndefinedMOException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IllegalScopeLevelException">
+    <wsdl:part name="IllegalScopeLevelException" element="tns:IllegalScopeLevelException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="find_managed_objects">
+    <wsdl:part name="parameters" element="tns:find_managed_objects">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ObjectClassMismatch">
+    <wsdl:part name="ObjectClassMismatch" element="tns:ObjectClassMismatch">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IllegalFilterFormatException">
+    <wsdl:part name="IllegalFilterFormatException" element="tns:IllegalFilterFormatException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ModifyManagedObjects">
+    <wsdl:part name="ModifyManagedObjects" element="tns:ModifyManagedObjects">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="create_managed_objectResponse">
+    <wsdl:part name="parameters" element="tns:create_managed_objectResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateManagedObject">
+    <wsdl:part name="CreateManagedObject" element="tns:CreateManagedObject">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBasicCmIRPOperationProfile">
+    <wsdl:part name="GetBasicCmIRPOperationProfile" element="tns:GetBasicCmIRPOperationProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FilterComplexityLimit">
+    <wsdl:part name="FilterComplexityLimit" element="tns:FilterComplexityLimit">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_basicCm_IRP_notification_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_basicCm_IRP_notification_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IllegalScopeTypeException">
+    <wsdl:part name="IllegalScopeTypeException" element="tns:IllegalScopeTypeException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BasicCmIrpOperations">
+    <wsdl:operation name="get_basicCm_IRP_notification_profile">
+      <wsdl:input name="get_basicCm_IRP_notification_profile" message="tns:get_basicCm_IRP_notification_profile">
+    </wsdl:input>
+      <wsdl:output name="get_basicCm_IRP_notification_profileResponse" message="tns:get_basicCm_IRP_notification_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="GetBasicCmIRPNotificationProfile" message="tns:GetBasicCmIRPNotificationProfile">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="find_managed_objects">
+      <wsdl:input name="find_managed_objects" message="tns:find_managed_objects">
+    </wsdl:input>
+      <wsdl:output name="find_managed_objectsResponse" message="tns:find_managed_objectsResponse">
+    </wsdl:output>
+      <wsdl:fault name="IllegalFilterFormatException" message="tns:IllegalFilterFormatException">
+    </wsdl:fault>
+      <wsdl:fault name="UndefinedScopeException" message="tns:UndefinedScopeException">
+    </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported" message="tns:ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="UndefinedMOException" message="tns:UndefinedMOException">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalScopeLevelException" message="tns:IllegalScopeLevelException">
+    </wsdl:fault>
+      <wsdl:fault name="ValueNotSupported" message="tns:ValueNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="FilterComplexityLimit" message="tns:FilterComplexityLimit">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalDNFormatException" message="tns:IllegalDNFormatException">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalScopeTypeException" message="tns:IllegalScopeTypeException">
+    </wsdl:fault>
+      <wsdl:fault name="FindManagedObjects" message="tns:FindManagedObjects">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_basicCm_IRP_operation_profile">
+      <wsdl:input name="get_basicCm_IRP_operation_profile" message="tns:get_basicCm_IRP_operation_profile">
+    </wsdl:input>
+      <wsdl:output name="get_basicCm_IRP_operation_profileResponse" message="tns:get_basicCm_IRP_operation_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetBasicCmIRPOperationProfile" message="tns:GetBasicCmIRPOperationProfile">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="create_managed_object">
+      <wsdl:input name="create_managed_object" message="tns:create_managed_object">
+    </wsdl:input>
+      <wsdl:output name="create_managed_objectResponse" message="tns:create_managed_objectResponse">
+    </wsdl:output>
+      <wsdl:fault name="CreateNotAllowed" message="tns:CreateNotAllowed">
+    </wsdl:fault>
+      <wsdl:fault name="DuplicateMO" message="tns:DuplicateMO">
+    </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported" message="tns:ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="UndefinedMOException" message="tns:UndefinedMOException">
+    </wsdl:fault>
+      <wsdl:fault name="CreateManagedObject" message="tns:CreateManagedObject">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="ObjectClassMismatch" message="tns:ObjectClassMismatch">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalDNFormatException" message="tns:IllegalDNFormatException">
+    </wsdl:fault>
+      <wsdl:fault name="NoSuchObjectClass" message="tns:NoSuchObjectClass">
+    </wsdl:fault>
+      <wsdl:fault name="ParentObjectDoesNotExist" message="tns:ParentObjectDoesNotExist">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modify_managed_objects">
+      <wsdl:input name="modify_managed_objects" message="tns:modify_managed_objects">
+    </wsdl:input>
+      <wsdl:output name="modify_managed_objectsResponse" message="tns:modify_managed_objectsResponse">
+    </wsdl:output>
+      <wsdl:fault name="IllegalFilterFormatException" message="tns:IllegalFilterFormatException">
+    </wsdl:fault>
+      <wsdl:fault name="UndefinedScopeException" message="tns:UndefinedScopeException">
+    </wsdl:fault>
+      <wsdl:fault name="ModifyManagedObjects" message="tns:ModifyManagedObjects">
+    </wsdl:fault>
+      <wsdl:fault name="UndefinedMOException" message="tns:UndefinedMOException">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalScopeLevelException" message="tns:IllegalScopeLevelException">
+    </wsdl:fault>
+      <wsdl:fault name="FilterComplexityLimit" message="tns:FilterComplexityLimit">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalDNFormatException" message="tns:IllegalDNFormatException">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalScopeTypeException" message="tns:IllegalScopeTypeException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_basicCm_IRP_version">
+      <wsdl:input name="get_basicCm_IRP_version" message="tns:get_basicCm_IRP_version">
+    </wsdl:input>
+      <wsdl:output name="get_basicCm_IRP_versionResponse" message="tns:get_basicCm_IRP_versionResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetBasicCmIRPVersion" message="tns:GetBasicCmIRPVersion">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delete_managed_objects">
+      <wsdl:input name="delete_managed_objects" message="tns:delete_managed_objects">
+    </wsdl:input>
+      <wsdl:output name="delete_managed_objectsResponse" message="tns:delete_managed_objectsResponse">
+    </wsdl:output>
+      <wsdl:fault name="IllegalFilterFormatException" message="tns:IllegalFilterFormatException">
+    </wsdl:fault>
+      <wsdl:fault name="UndefinedScopeException" message="tns:UndefinedScopeException">
+    </wsdl:fault>
+      <wsdl:fault name="UndefinedMOException" message="tns:UndefinedMOException">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalScopeLevelException" message="tns:IllegalScopeLevelException">
+    </wsdl:fault>
+      <wsdl:fault name="FilterComplexityLimit" message="tns:FilterComplexityLimit">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalDNFormatException" message="tns:IllegalDNFormatException">
+    </wsdl:fault>
+      <wsdl:fault name="IllegalScopeTypeException" message="tns:IllegalScopeTypeException">
+    </wsdl:fault>
+      <wsdl:fault name="DeleteManagedObjects" message="tns:DeleteManagedObjects">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicCmIrpOperationsCorbaBinding" type="tns:BasicCmIrpOperations">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+	<wsdl:operation name="get_basicCm_IRP_notification_profile">
+      <wsdl:input name="get_basicCm_IRP_notification_profile">
+      </wsdl:input>
+      <wsdl:output name="get_basicCm_IRP_notification_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="GetBasicCmIRPNotificationProfile">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="find_managed_objects">
+      <wsdl:input name="find_managed_objects">
+      </wsdl:input>
+      <wsdl:output name="find_managed_objectsResponse">
+      </wsdl:output>
+      <wsdl:fault name="UndefinedScopeException">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalFilterFormatException">
+      </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="UndefinedMOException">
+      </wsdl:fault>
+      <wsdl:fault name="ValueNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalScopeLevelException">
+      </wsdl:fault>
+      <wsdl:fault name="FilterComplexityLimit">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalDNFormatException">
+      </wsdl:fault>
+      <wsdl:fault name="FindManagedObjects">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalScopeTypeException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_basicCm_IRP_operation_profile">
+      <wsdl:input name="get_basicCm_IRP_operation_profile">
+      </wsdl:input>
+      <wsdl:output name="get_basicCm_IRP_operation_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetBasicCmIRPOperationProfile">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="create_managed_object">
+      <wsdl:input name="create_managed_object">
+      </wsdl:input>
+      <wsdl:output name="create_managed_objectResponse">
+      </wsdl:output>
+      <wsdl:fault name="DuplicateMO">
+      </wsdl:fault>
+      <wsdl:fault name="CreateNotAllowed">
+      </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="UndefinedMOException">
+      </wsdl:fault>
+      <wsdl:fault name="CreateManagedObject">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="ObjectClassMismatch">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalDNFormatException">
+      </wsdl:fault>
+      <wsdl:fault name="ParentObjectDoesNotExist">
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchObjectClass">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modify_managed_objects">
+      <wsdl:input name="modify_managed_objects">
+      </wsdl:input>
+      <wsdl:output name="modify_managed_objectsResponse">
+      </wsdl:output>
+      <wsdl:fault name="UndefinedScopeException">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalFilterFormatException">
+      </wsdl:fault>
+      <wsdl:fault name="ModifyManagedObjects">
+      </wsdl:fault>
+      <wsdl:fault name="UndefinedMOException">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalScopeLevelException">
+      </wsdl:fault>
+      <wsdl:fault name="FilterComplexityLimit">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalDNFormatException">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalScopeTypeException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delete_managed_objects">
+      <wsdl:input name="delete_managed_objects">
+      </wsdl:input>
+      <wsdl:output name="delete_managed_objectsResponse">
+      </wsdl:output>
+      <wsdl:fault name="UndefinedScopeException">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalFilterFormatException">
+      </wsdl:fault>
+      <wsdl:fault name="UndefinedMOException">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalScopeLevelException">
+      </wsdl:fault>
+      <wsdl:fault name="FilterComplexityLimit">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalDNFormatException">
+      </wsdl:fault>
+      <wsdl:fault name="DeleteManagedObjects">
+      </wsdl:fault>
+      <wsdl:fault name="IllegalScopeTypeException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_basicCm_IRP_version">
+      <wsdl:input name="get_basicCm_IRP_version">
+      </wsdl:input>
+      <wsdl:output name="get_basicCm_IRP_versionResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetBasicCmIRPVersion">
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BasicCmIrpOperationsService">
+    <wsdl:port name="BasicCmIrpOperationsCorbaPort" binding="tns:BasicCmIrpOperationsCorbaBinding">
+    	<wsdlsoap:address location="http://127.0.0.1:8230/basiccmirp"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

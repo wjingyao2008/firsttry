@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://NotificationIRPConstDefs/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://NotificationIRPConstDefs/">
+    <xs:simpleType name="subscriptionState">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ACTIVE"/>
+            <xs:enumeration value="SUSPENDED"/>
+            <xs:enumeration value="INVALID"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType final="#all" name="subscriptionStateArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:subscriptionState"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

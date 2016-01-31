@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="NotificationIRP" 
+		targetNamespace="http://NotificationIRPSystem.NotificationIRP" 
+		xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" 
+		xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+		xmlns:tns="http://NotificationIRPSystem.NotificationIRP" 
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" 
+    		elementFormDefault="qualified" 
+    		targetNamespace="http://NotificationIRPSystem.NotificationIRP" 
+    		xmlns="http://NotificationIRPSystem.NotificationIRP" 
+    		xmlns:ns1="http://ManagedGenericIRPConstDefs/" 
+    		xmlns:ns2="http://NotificationIRPConstDefs/" 
+    		xmlns:ns3="http://www.w3.org/2005/08/addressing" 
+    		xmlns:ns4="http://jaxb.dev.java.net/array" 
+    		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://ManagedGenericIRPConstDefs/" schemaLocation="TypeDef_ManagedGenericIRPConstDefs.xsd"/>
+    <xs:import namespace="http://NotificationIRPConstDefs/" schemaLocation="TypeDef_NotificationIRPConstDefs.xsd"/>
+    <xs:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="ws-addr.xsd"/>
+    <xs:import namespace="http://jaxb.dev.java.net/array" schemaLocation="TypeDef_array.xsd"/>
+    <xs:element name="attach_pull">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manager_reference" type="xs:string"/>
+                <xs:element name="time_tick" type="xs:int"/>
+                <xs:element maxOccurs="unbounded" name="notification_categories" type="xs:string"/>
+                <xs:element name="filter" type="ns1:StringTypeOpt"/>
+                <xs:element name="system_reference" type="ns3:EndpointReferenceType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="attach_pullResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="xs:string"/>
+                <xs:element name="system_reference" type="ns3:EndpointReferenceType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="attach_push">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manager_reference" type="xs:string"/>
+                <xs:element name="time_tick" type="xs:int"/>
+                <xs:element maxOccurs="unbounded" name="notification_categories" type="xs:string"/>
+                <xs:element name="filter" type="ns1:StringTypeOpt"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="attach_pushResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="attach_push_b">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manager_reference" type="xs:string"/>
+                <xs:element name="time_tick" type="xs:int"/>
+                <xs:element maxOccurs="unbounded" name="notification_categories" type="xs:string"/>
+                <xs:element name="filter" type="ns1:StringTypeOpt"/>
+                <xs:element name="system_reference" type="ns3:EndpointReferenceType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="attach_push_bResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="xs:string"/>
+                <xs:element name="system_reference" type="ns3:EndpointReferenceType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="change_subscription_filter">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="subscription_id" type="xs:string"/>
+                <xs:element name="filter" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="change_subscription_filterResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="detach">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manager_reference" type="xs:string"/>
+                <xs:element name="subscription_id" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="detachResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_notification_IRP_notification_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="notification_irp_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_notification_IRP_notification_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns1:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_notification_IRP_operations_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="notification_irp_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_notification_IRP_operations_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns1:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_notification_IRP_versions">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_notification_IRP_versionsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_notification_categories">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="notification_type_list" type="ns4:stringArray"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_notification_categoriesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="notification_type_list" type="ns4:stringArray"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_subscription_ids">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="manager_reference" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_subscription_idsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_subscription_status">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="subscription_id" type="xs:string"/>
+                <xs:element name="filter_in_effect" type="ns1:StringTypeOpt"/>
+                <xs:element name="subscription_state" type="ns2:subscriptionState"/>
+                <xs:element name="time_tick" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_subscription_statusResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+                <xs:element name="filter_in_effect" type="ns1:StringTypeOpt"/>
+                <xs:element name="subscription_state" type="ns2:subscriptionState"/>
+                <xs:element name="time_tick" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetSubscriptionIds" type="GetSubscriptionIds"/>
+    <xs:complexType name="GetSubscriptionIds">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="InvalidParameter" type="InvalidParameter"/>
+    <xs:complexType name="InvalidParameter">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="OperationNotSupported" type="OperationNotSupported"/>
+    <xs:complexType name="OperationNotSupported">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="GetNotificationIRPNotificationProfile" type="GetNotificationIRPNotificationProfile"/>
+    <xs:complexType name="GetNotificationIRPNotificationProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="AtLeastOneNotificationCategoryNotSupported" type="AtLeastOneNotificationCategoryNotSupported"/>
+    <xs:complexType name="AtLeastOneNotificationCategoryNotSupported">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="ParameterNotSupported" type="ParameterNotSupported"/>
+    <xs:complexType name="ParameterNotSupported">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Attach" type="Attach"/>
+    <xs:complexType name="Attach">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="AlreadySubscribed" type="AlreadySubscribed"/>
+    <xs:complexType name="AlreadySubscribed">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="GetSubscriptionStatus" type="GetSubscriptionStatus"/>
+    <xs:complexType name="GetSubscriptionStatus">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ChangeSubscriptionFilter" type="ChangeSubscriptionFilter"/>
+    <xs:complexType name="ChangeSubscriptionFilter">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetNotificationIRPOperationsProfile" type="GetNotificationIRPOperationsProfile"/>
+    <xs:complexType name="GetNotificationIRPOperationsProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetNotificationIRPVersions" type="GetNotificationIRPVersions"/>
+    <xs:complexType name="GetNotificationIRPVersions">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetNotificationCategories" type="GetNotificationCategories"/>
+    <xs:complexType name="GetNotificationCategories">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DetachException" type="DetachException"/>
+    <xs:complexType name="DetachException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="AlreadySubscribed">
+    <wsdl:part name="AlreadySubscribed" element="tns:AlreadySubscribed">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Attach">
+    <wsdl:part name="Attach" element="tns:Attach">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_notification_categoriesResponse">
+    <wsdl:part name="parameters" element="tns:get_notification_categoriesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="attach_push_b">
+    <wsdl:part name="parameters" element="tns:attach_push_b">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSubscriptionStatus">
+    <wsdl:part name="GetSubscriptionStatus" element="tns:GetSubscriptionStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetNotificationIRPOperationsProfile">
+    <wsdl:part name="GetNotificationIRPOperationsProfile" element="tns:GetNotificationIRPOperationsProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_notification_IRP_versions">
+    <wsdl:part name="parameters" element="tns:get_notification_IRP_versions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_subscription_idsResponse">
+    <wsdl:part name="parameters" element="tns:get_subscription_idsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeSubscriptionFilter">
+    <wsdl:part name="ChangeSubscriptionFilter" element="tns:ChangeSubscriptionFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OperationNotSupported">
+    <wsdl:part name="OperationNotSupported" element="tns:OperationNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidParameter">
+    <wsdl:part name="InvalidParameter" element="tns:InvalidParameter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetNotificationIRPVersions">
+    <wsdl:part name="GetNotificationIRPVersions" element="tns:GetNotificationIRPVersions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_notification_IRP_versionsResponse">
+    <wsdl:part name="parameters" element="tns:get_notification_IRP_versionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_subscription_statusResponse">
+    <wsdl:part name="parameters" element="tns:get_subscription_statusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetSubscriptionIds">
+    <wsdl:part name="GetSubscriptionIds" element="tns:GetSubscriptionIds">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ParameterNotSupported">
+    <wsdl:part name="ParameterNotSupported" element="tns:ParameterNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_notification_IRP_notification_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_notification_IRP_notification_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetNotificationIRPNotificationProfile">
+    <wsdl:part name="GetNotificationIRPNotificationProfile" element="tns:GetNotificationIRPNotificationProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_notification_categories">
+    <wsdl:part name="parameters" element="tns:get_notification_categories">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_notification_IRP_operations_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_notification_IRP_operations_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_subscription_ids">
+    <wsdl:part name="parameters" element="tns:get_subscription_ids">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DetachException">
+    <wsdl:part name="DetachException" element="tns:DetachException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_notification_IRP_operations_profile">
+    <wsdl:part name="parameters" element="tns:get_notification_IRP_operations_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="detachResponse">
+    <wsdl:part name="parameters" element="tns:detachResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetNotificationCategories">
+    <wsdl:part name="GetNotificationCategories" element="tns:GetNotificationCategories">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="change_subscription_filterResponse">
+    <wsdl:part name="parameters" element="tns:change_subscription_filterResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AtLeastOneNotificationCategoryNotSupported">
+    <wsdl:part name="AtLeastOneNotificationCategoryNotSupported" element="tns:AtLeastOneNotificationCategoryNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="attach_pushResponse">
+    <wsdl:part name="parameters" element="tns:attach_pushResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="attach_push">
+    <wsdl:part name="parameters" element="tns:attach_push">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_notification_IRP_notification_profile">
+    <wsdl:part name="parameters" element="tns:get_notification_IRP_notification_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="change_subscription_filter">
+    <wsdl:part name="parameters" element="tns:change_subscription_filter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="attach_pull">
+    <wsdl:part name="parameters" element="tns:attach_pull">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="attach_push_bResponse">
+    <wsdl:part name="parameters" element="tns:attach_push_bResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="detach">
+    <wsdl:part name="parameters" element="tns:detach">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="attach_pullResponse">
+    <wsdl:part name="parameters" element="tns:attach_pullResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_subscription_status">
+    <wsdl:part name="parameters" element="tns:get_subscription_status">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="NotificationIRP">
+    <wsdl:operation name="get_subscription_ids">
+      <wsdl:input name="get_subscription_ids" message="tns:get_subscription_ids">
+    </wsdl:input>
+      <wsdl:output name="get_subscription_idsResponse" message="tns:get_subscription_idsResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetSubscriptionIds" message="tns:GetSubscriptionIds">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_notification_IRP_notification_profile">
+      <wsdl:input name="get_notification_IRP_notification_profile" message="tns:get_notification_IRP_notification_profile">
+    </wsdl:input>
+      <wsdl:output name="get_notification_IRP_notification_profileResponse" message="tns:get_notification_IRP_notification_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetNotificationIRPNotificationProfile" message="tns:GetNotificationIRPNotificationProfile">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="attach_push">
+      <wsdl:input name="attach_push" message="tns:attach_push">
+    </wsdl:input>
+      <wsdl:output name="attach_pushResponse" message="tns:attach_pushResponse">
+    </wsdl:output>
+      <wsdl:fault name="AtLeastOneNotificationCategoryNotSupported" message="tns:AtLeastOneNotificationCategoryNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported" message="tns:ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="AlreadySubscribed" message="tns:AlreadySubscribed">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="Attach" message="tns:Attach">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_subscription_status">
+      <wsdl:input name="get_subscription_status" message="tns:get_subscription_status">
+    </wsdl:input>
+      <wsdl:output name="get_subscription_statusResponse" message="tns:get_subscription_statusResponse">
+    </wsdl:output>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="GetSubscriptionStatus" message="tns:GetSubscriptionStatus">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="change_subscription_filter">
+      <wsdl:input name="change_subscription_filter" message="tns:change_subscription_filter">
+    </wsdl:input>
+      <wsdl:output name="change_subscription_filterResponse" message="tns:change_subscription_filterResponse">
+    </wsdl:output>
+      <wsdl:fault name="ChangeSubscriptionFilter" message="tns:ChangeSubscriptionFilter">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_notification_IRP_operations_profile">
+      <wsdl:input name="get_notification_IRP_operations_profile" message="tns:get_notification_IRP_operations_profile">
+    </wsdl:input>
+      <wsdl:output name="get_notification_IRP_operations_profileResponse" message="tns:get_notification_IRP_operations_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetNotificationIRPOperationsProfile" message="tns:GetNotificationIRPOperationsProfile">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="attach_pull">
+      <wsdl:input name="attach_pull" message="tns:attach_pull">
+    </wsdl:input>
+      <wsdl:output name="attach_pullResponse" message="tns:attach_pullResponse">
+    </wsdl:output>
+      <wsdl:fault name="AtLeastOneNotificationCategoryNotSupported" message="tns:AtLeastOneNotificationCategoryNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported" message="tns:ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="AlreadySubscribed" message="tns:AlreadySubscribed">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="Attach" message="tns:Attach">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_notification_IRP_versions">
+      <wsdl:input name="get_notification_IRP_versions" message="tns:get_notification_IRP_versions">
+    </wsdl:input>
+      <wsdl:output name="get_notification_IRP_versionsResponse" message="tns:get_notification_IRP_versionsResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetNotificationIRPVersions" message="tns:GetNotificationIRPVersions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_notification_categories">
+      <wsdl:input name="get_notification_categories" message="tns:get_notification_categories">
+    </wsdl:input>
+      <wsdl:output name="get_notification_categoriesResponse" message="tns:get_notification_categoriesResponse">
+    </wsdl:output>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="GetNotificationCategories" message="tns:GetNotificationCategories">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="detach">
+      <wsdl:input name="detach" message="tns:detach">
+    </wsdl:input>
+      <wsdl:output name="detachResponse" message="tns:detachResponse">
+    </wsdl:output>
+      <wsdl:fault name="ParameterNotSupported" message="tns:ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="DetachException" message="tns:DetachException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="attach_push_b">
+      <wsdl:input name="attach_push_b" message="tns:attach_push_b">
+    </wsdl:input>
+      <wsdl:output name="attach_push_bResponse" message="tns:attach_push_bResponse">
+    </wsdl:output>
+      <wsdl:fault name="AtLeastOneNotificationCategoryNotSupported" message="tns:AtLeastOneNotificationCategoryNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported" message="tns:ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="AlreadySubscribed" message="tns:AlreadySubscribed">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="Attach" message="tns:Attach">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NotificationIRPCorbaBinding" type="tns:NotificationIRP">
+  	<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_subscription_ids">
+      <wsdl:input name="get_subscription_ids">
+      </wsdl:input>
+      <wsdl:output name="get_subscription_idsResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetSubscriptionIds">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_notification_IRP_notification_profile">
+      <wsdl:input name="get_notification_IRP_notification_profile">
+      </wsdl:input>
+      <wsdl:output name="get_notification_IRP_notification_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetNotificationIRPNotificationProfile">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="attach_push">
+      <wsdl:input name="attach_push">
+      </wsdl:input>
+      <wsdl:output name="attach_pushResponse">
+      </wsdl:output>
+      <wsdl:fault name="AtLeastOneNotificationCategoryNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="AlreadySubscribed">
+      </wsdl:fault>
+      <wsdl:fault name="Attach">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="change_subscription_filter">
+      <wsdl:input name="change_subscription_filter">
+      </wsdl:input>
+      <wsdl:output name="change_subscription_filterResponse">
+      </wsdl:output>
+      <wsdl:fault name="ChangeSubscriptionFilter">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_subscription_status">
+      <wsdl:input name="get_subscription_status">
+      </wsdl:input>
+      <wsdl:output name="get_subscription_statusResponse">
+      </wsdl:output>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="GetSubscriptionStatus">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="attach_pull">
+      <wsdl:input name="attach_pull">
+      </wsdl:input>
+      <wsdl:output name="attach_pullResponse">
+      </wsdl:output>
+      <wsdl:fault name="AtLeastOneNotificationCategoryNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="AlreadySubscribed">
+      </wsdl:fault>
+      <wsdl:fault name="Attach">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_notification_IRP_operations_profile">
+      <wsdl:input name="get_notification_IRP_operations_profile">
+      </wsdl:input>
+      <wsdl:output name="get_notification_IRP_operations_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetNotificationIRPOperationsProfile">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_notification_IRP_versions">
+      <wsdl:input name="get_notification_IRP_versions">
+      </wsdl:input>
+      <wsdl:output name="get_notification_IRP_versionsResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetNotificationIRPVersions">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="detach">
+      <wsdl:input name="detach">
+      </wsdl:input>
+      <wsdl:output name="detachResponse">
+      </wsdl:output>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="DetachException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_notification_categories">
+      <wsdl:input name="get_notification_categories">
+      </wsdl:input>
+      <wsdl:output name="get_notification_categoriesResponse">
+      </wsdl:output>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="GetNotificationCategories">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="attach_push_b">
+      <wsdl:input name="attach_push_b">
+      </wsdl:input>
+      <wsdl:output name="attach_push_bResponse">
+      </wsdl:output>
+      <wsdl:fault name="AtLeastOneNotificationCategoryNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="AlreadySubscribed">
+      </wsdl:fault>
+      <wsdl:fault name="Attach">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NotificationIRPService">
+    <wsdl:port name="NotificationIRPCorbaPort" binding="tns:NotificationIRPCorbaBinding">
+    	<wsdlsoap:address location="http://127.0.0.1:8230/notificationirp"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,591 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="AlarmIRP" targetNamespace="http://AlarmIRPSystem.AlarmIRP" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://AlarmIRPSystem.AlarmIRP" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://AlarmIRPSystem.AlarmIRP" xmlns="http://AlarmIRPSystem.AlarmIRP" xmlns:ns1="http://AlarmIRPConstDefs/" xmlns:ns2="http://ManagedGenericIRPConstDefs/" xmlns:ns3="http://www.w3.org/2005/08/addressing" xmlns:ns4="http://CosNotification/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://AlarmIRPConstDefs/" schemaLocation="TypeDef_AlarmIRPConstDefs.xsd"/>
+    <xs:import namespace="http://ManagedGenericIRPConstDefs/" schemaLocation="TypeDef_ManagedGenericIRPConstDefs.xsd"/>
+    <xs:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="ws-addr.xsd"/>
+    <xs:import namespace="http://CosNotification/" schemaLocation="TypeDef_CosNotification.xsd"/>
+    <xs:element name="acknowledge_alarms">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="alarm_information_id_and_sev_list" type="ns1:alarmInformationIdAndSev"/>
+                <xs:element name="ack_user_id" type="xs:string"/>
+                <xs:element name="ack_system_id" type="ns2:StringTypeOpt"/>
+                <xs:element maxOccurs="unbounded" name="bad_ack_alarm_info_list" type="ns1:badAcknowledgeAlarmInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="acknowledge_alarmsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns2:signal"/>
+                <xs:element maxOccurs="unbounded" name="bad_ack_alarm_info_list" type="ns1:badAcknowledgeAlarmInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="clear_alarms">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="alarm_information_id_list" type="xs:string"/>
+                <xs:element name="clear_user_id" type="xs:string"/>
+                <xs:element name="clear_system_id" type="ns2:StringTypeOpt"/>
+                <xs:element maxOccurs="unbounded" name="bad_alarm_information_id_list" type="ns1:badAlarmInformationId"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="clear_alarmsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns2:signal"/>
+                <xs:element maxOccurs="unbounded" name="bad_alarm_information_id_list" type="ns1:badAlarmInformationId"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="comment_alarms">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="alarm_information_id_list" type="xs:string"/>
+                <xs:element name="comment_user_id" type="xs:string"/>
+                <xs:element name="comment_system_id" type="ns2:StringTypeOpt"/>
+                <xs:element name="comment_text" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="bad_alarm_information_id_list" type="ns1:badAlarmInformationId"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="comment_alarmsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns2:signal"/>
+                <xs:element maxOccurs="unbounded" name="bad_alarm_information_id_list" type="ns1:badAlarmInformationId"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_IRP_notification_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="alarm_irp_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_IRP_notification_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns2:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_IRP_operations_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="alarm_irp_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_IRP_operations_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns2:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_IRP_versions">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_IRP_versionsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_count">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="filter" type="ns2:StringTypeOpt"/>
+                <xs:element name="critical_count" type="xs:int"/>
+                <xs:element name="major_count" type="xs:int"/>
+                <xs:element name="minor_count" type="xs:int"/>
+                <xs:element name="warning_count" type="xs:int"/>
+                <xs:element name="indeterminate_count" type="xs:int"/>
+                <xs:element name="cleared_count" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_countResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="critical_count" type="xs:int"/>
+                <xs:element name="major_count" type="xs:int"/>
+                <xs:element name="minor_count" type="xs:int"/>
+                <xs:element name="warning_count" type="xs:int"/>
+                <xs:element name="indeterminate_count" type="xs:int"/>
+                <xs:element name="cleared_count" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="filter" type="ns2:StringTypeOpt"/>
+                <xs:element name="base_object" type="ns1:DNTypeOpt"/>
+                <xs:element name="flag" type="xs:boolean"/>
+                <xs:element name="iter" type="ns3:EndpointReferenceType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_alarm_listResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns4:structuredEvent"/>
+                <xs:element name="flag" type="xs:boolean"/>
+                <xs:element name="iter" type="ns3:EndpointReferenceType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="unacknowledge_alarms">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="alarm_information_id_list" type="xs:string"/>
+                <xs:element name="ack_user_id" type="xs:string"/>
+                <xs:element name="ack_system_id" type="ns2:StringTypeOpt"/>
+                <xs:element maxOccurs="unbounded" name="bad_alarm_information_id_list" type="ns1:badAlarmInformationId"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="unacknowledge_alarmsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns2:signal"/>
+                <xs:element maxOccurs="unbounded" name="bad_alarm_information_id_list" type="ns1:badAlarmInformationId"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ParameterNotSupported" type="ParameterNotSupported"/>
+    <xs:complexType name="ParameterNotSupported">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="AcknowledgeAlarms" type="AcknowledgeAlarms"/>
+    <xs:complexType name="AcknowledgeAlarms">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="InvalidParameter" type="InvalidParameter"/>
+    <xs:complexType name="InvalidParameter">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetAlarmList" type="GetAlarmList"/>
+    <xs:complexType name="GetAlarmList">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="OperationNotSupported" type="OperationNotSupported"/>
+    <xs:complexType name="OperationNotSupported">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="UnacknowledgeAlarms" type="UnacknowledgeAlarms"/>
+    <xs:complexType name="UnacknowledgeAlarms">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetAlarmIRPNotificationProfile" type="GetAlarmIRPNotificationProfile"/>
+    <xs:complexType name="GetAlarmIRPNotificationProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetAlarmCount" type="GetAlarmCount"/>
+    <xs:complexType name="GetAlarmCount">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ClearAlarms" type="ClearAlarms"/>
+    <xs:complexType name="ClearAlarms">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetAlarmIRPVersions" type="GetAlarmIRPVersions"/>
+    <xs:complexType name="GetAlarmIRPVersions">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CommentAlarms" type="CommentAlarms"/>
+    <xs:complexType name="CommentAlarms">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetAlarmIRPOperationsProfile" type="GetAlarmIRPOperationsProfile"/>
+    <xs:complexType name="GetAlarmIRPOperationsProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="unacknowledge_alarmsResponse">
+    <wsdl:part element="tns:unacknowledge_alarmsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acknowledge_alarms">
+    <wsdl:part element="tns:acknowledge_alarms" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_IRP_operations_profileResponse">
+    <wsdl:part element="tns:get_alarm_IRP_operations_profileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAlarmIRPOperationsProfile">
+    <wsdl:part element="tns:GetAlarmIRPOperationsProfile" name="GetAlarmIRPOperationsProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="comment_alarmsResponse">
+    <wsdl:part element="tns:comment_alarmsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_IRP_operations_profile">
+    <wsdl:part element="tns:get_alarm_IRP_operations_profile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidParameter">
+    <wsdl:part element="tns:InvalidParameter" name="InvalidParameter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acknowledge_alarmsResponse">
+    <wsdl:part element="tns:acknowledge_alarmsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="unacknowledge_alarms">
+    <wsdl:part element="tns:unacknowledge_alarms" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_list">
+    <wsdl:part element="tns:get_alarm_list" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OperationNotSupported">
+    <wsdl:part element="tns:OperationNotSupported" name="OperationNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAlarmIRPVersions">
+    <wsdl:part element="tns:GetAlarmIRPVersions" name="GetAlarmIRPVersions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ParameterNotSupported">
+    <wsdl:part element="tns:ParameterNotSupported" name="ParameterNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_IRP_versionsResponse">
+    <wsdl:part element="tns:get_alarm_IRP_versionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_IRP_notification_profile">
+    <wsdl:part element="tns:get_alarm_IRP_notification_profile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAlarmIRPNotificationProfile">
+    <wsdl:part element="tns:GetAlarmIRPNotificationProfile" name="GetAlarmIRPNotificationProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_IRP_versions">
+    <wsdl:part element="tns:get_alarm_IRP_versions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcknowledgeAlarms">
+    <wsdl:part element="tns:AcknowledgeAlarms" name="AcknowledgeAlarms">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CommentAlarms">
+    <wsdl:part element="tns:CommentAlarms" name="CommentAlarms">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_count">
+    <wsdl:part element="tns:get_alarm_count" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="clear_alarmsResponse">
+    <wsdl:part element="tns:clear_alarmsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_countResponse">
+    <wsdl:part element="tns:get_alarm_countResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="clear_alarms">
+    <wsdl:part element="tns:clear_alarms" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="comment_alarms">
+    <wsdl:part element="tns:comment_alarms" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAlarmList">
+    <wsdl:part element="tns:GetAlarmList" name="GetAlarmList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnacknowledgeAlarms">
+    <wsdl:part element="tns:UnacknowledgeAlarms" name="UnacknowledgeAlarms">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAlarmCount">
+    <wsdl:part element="tns:GetAlarmCount" name="GetAlarmCount">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_listResponse">
+    <wsdl:part element="tns:get_alarm_listResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_alarm_IRP_notification_profileResponse">
+    <wsdl:part element="tns:get_alarm_IRP_notification_profileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClearAlarms">
+    <wsdl:part element="tns:ClearAlarms" name="ClearAlarms">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AlarmIRP">
+    <wsdl:operation name="acknowledge_alarms">
+      <wsdl:input message="tns:acknowledge_alarms" name="acknowledge_alarms">
+    </wsdl:input>
+      <wsdl:output message="tns:acknowledge_alarmsResponse" name="acknowledge_alarmsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ParameterNotSupported" name="ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AcknowledgeAlarms" name="AcknowledgeAlarms">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidParameter" name="InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_list">
+      <wsdl:input message="tns:get_alarm_list" name="get_alarm_list">
+    </wsdl:input>
+      <wsdl:output message="tns:get_alarm_listResponse" name="get_alarm_listResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ParameterNotSupported" name="ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:GetAlarmList" name="GetAlarmList">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidParameter" name="InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="unacknowledge_alarms">
+      <wsdl:input message="tns:unacknowledge_alarms" name="unacknowledge_alarms">
+    </wsdl:input>
+      <wsdl:output message="tns:unacknowledge_alarmsResponse" name="unacknowledge_alarmsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ParameterNotSupported" name="ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnacknowledgeAlarms" name="UnacknowledgeAlarms">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationNotSupported" name="OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidParameter" name="InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_IRP_notification_profile">
+      <wsdl:input message="tns:get_alarm_IRP_notification_profile" name="get_alarm_IRP_notification_profile">
+    </wsdl:input>
+      <wsdl:output message="tns:get_alarm_IRP_notification_profileResponse" name="get_alarm_IRP_notification_profileResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:OperationNotSupported" name="OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidParameter" name="InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault message="tns:GetAlarmIRPNotificationProfile" name="GetAlarmIRPNotificationProfile">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_count">
+      <wsdl:input message="tns:get_alarm_count" name="get_alarm_count">
+    </wsdl:input>
+      <wsdl:output message="tns:get_alarm_countResponse" name="get_alarm_countResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:GetAlarmCount" name="GetAlarmCount">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ParameterNotSupported" name="ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationNotSupported" name="OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidParameter" name="InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="clear_alarms">
+      <wsdl:input message="tns:clear_alarms" name="clear_alarms">
+    </wsdl:input>
+      <wsdl:output message="tns:clear_alarmsResponse" name="clear_alarmsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ClearAlarms" name="ClearAlarms">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ParameterNotSupported" name="ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationNotSupported" name="OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidParameter" name="InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_IRP_versions">
+      <wsdl:input message="tns:get_alarm_IRP_versions" name="get_alarm_IRP_versions">
+    </wsdl:input>
+      <wsdl:output message="tns:get_alarm_IRP_versionsResponse" name="get_alarm_IRP_versionsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:GetAlarmIRPVersions" name="GetAlarmIRPVersions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="comment_alarms">
+      <wsdl:input message="tns:comment_alarms" name="comment_alarms">
+    </wsdl:input>
+      <wsdl:output message="tns:comment_alarmsResponse" name="comment_alarmsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ParameterNotSupported" name="ParameterNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CommentAlarms" name="CommentAlarms">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationNotSupported" name="OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidParameter" name="InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_IRP_operations_profile">
+      <wsdl:input message="tns:get_alarm_IRP_operations_profile" name="get_alarm_IRP_operations_profile">
+    </wsdl:input>
+      <wsdl:output message="tns:get_alarm_IRP_operations_profileResponse" name="get_alarm_IRP_operations_profileResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:GetAlarmIRPOperationsProfile" name="GetAlarmIRPOperationsProfile">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationNotSupported" name="OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidParameter" name="InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlarmIRPCorbaBinding" type="tns:AlarmIRP">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="acknowledge_alarms">
+      <wsdl:input name="acknowledge_alarms">
+      </wsdl:input>
+      <wsdl:output name="acknowledge_alarmsResponse">
+      </wsdl:output>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="AcknowledgeAlarms">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_list">
+      <wsdl:input name="get_alarm_list">
+      </wsdl:input>
+      <wsdl:output name="get_alarm_listResponse">
+      </wsdl:output>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="GetAlarmList">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="unacknowledge_alarms">
+      <wsdl:input name="unacknowledge_alarms">
+      </wsdl:input>
+      <wsdl:output name="unacknowledge_alarmsResponse">
+      </wsdl:output>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="UnacknowledgeAlarms">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_IRP_notification_profile">
+      <wsdl:input name="get_alarm_IRP_notification_profile">
+      </wsdl:input>
+      <wsdl:output name="get_alarm_IRP_notification_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="GetAlarmIRPNotificationProfile">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_count">
+      <wsdl:input name="get_alarm_count">
+      </wsdl:input>
+      <wsdl:output name="get_alarm_countResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetAlarmCount">
+      </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="clear_alarms">
+      <wsdl:input name="clear_alarms">
+      </wsdl:input>
+      <wsdl:output name="clear_alarmsResponse">
+      </wsdl:output>
+      <wsdl:fault name="ClearAlarms">
+      </wsdl:fault>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_IRP_versions">
+      <wsdl:input name="get_alarm_IRP_versions">
+      </wsdl:input>
+      <wsdl:output name="get_alarm_IRP_versionsResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetAlarmIRPVersions">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="comment_alarms">
+      <wsdl:input name="comment_alarms">
+      </wsdl:input>
+      <wsdl:output name="comment_alarmsResponse">
+      </wsdl:output>
+      <wsdl:fault name="ParameterNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="CommentAlarms">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_alarm_IRP_operations_profile">
+      <wsdl:input name="get_alarm_IRP_operations_profile">
+      </wsdl:input>
+      <wsdl:output name="get_alarm_IRP_operations_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetAlarmIRPOperationsProfile">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AlarmIRPService">
+    <wsdl:port binding="tns:AlarmIRPCorbaBinding" name="AlarmIRPCorbaPort">
+      <wsdlsoap:address location="http://10.91.40.36:8080/alarmirp"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,157 @@
+//From: ftp://ftp.3gpp.org/Specs/2005-03/Rel-6/32_series/32673-620.zip
+//File: StateManagementIRPOptConstDefs.idl
+
+#ifndef StateManagementIRPOptConstDefs_idl
+#define StateManagementIRPOptConstDefs_idl
+
+#include "CosNotification.idl"
+#include "ManagedGenericIRPConstDefs.idl"
+#include "StateManagementIRPConstDefs.idl"
+
+// This statement must appear after all include statements
+#pragma prefix "3gppsa5.org"
+
+/* ## Module: StateManagementIRPOptConstDefs
+This module contains commonly used optional definitions for State Management IRP
+================================================================================
+*/
+module StateManagementIRPOptConstDefs
+{
+
+   /*
+   Definition of Operational State based on X.721 [3], if optional.
+   */
+   union OperationalStateTypeOpt switch(boolean)
+   {
+      case TRUE: StateManagementIRPConstDefs::OperationalState operational_state;
+   };
+
+   /*
+   Definition of Usage State based on X.721 [3], if optional.
+   */
+   union UsageStateTypeOpt switch(boolean)
+   {
+      case TRUE: StateManagementIRPConstDefs::UsageState usage_state;
+   };
+
+   /*
+   Definition of Administrative State based on X.721 [3], if optional.
+   */
+   union AdministrativeStateTypeOpt switch(boolean)
+   {
+      case TRUE: StateManagementIRPConstDefs::AdministrativeState administrative_state;
+   };
+
+   /*
+   Definition of Alarm Status based on M.3100 [4], if optional.
+   */
+   union AlarmStatusTypeOpt switch(boolean)
+   {
+      case TRUE: StateManagementIRPConstDefs::AlarmStatus alarm_status;
+   };
+
+   /*
+   Definition of Procedural Status based on X.721 [3], if optional.
+   */
+   union ProceduralStatusTypeOpt switch(boolean)
+   {
+      case TRUE: StateManagementIRPConstDefs::ProceduralStatus procedural_status;
+   };
+
+   /*
+   Definition of Availability Status based on X.721 [3], if optional.
+   */
+   union AvailabilityStatusTypeOpt switch(boolean)
+   {
+      case TRUE: StateManagementIRPConstDefs::AvailabilityStatus availability_status;
+   };
+
+   /*
+   Definition of Control Status based on X.721 [3], if optional.
+   */
+   union ControlStatusTypeOpt switch(boolean)
+   {
+      case TRUE: StateManagementIRPConstDefs::ControlStatus control_status;
+   };
+
+   /*
+   Definition of Standby Status based on X.721 [3], if optional.
+   */
+   union StandbyStatusTypeOpt switch(boolean)
+   {
+      case TRUE: StateManagementIRPConstDefs::StandbyStatus standby_status;
+   };
+
+   /*
+   Definition of Unknown Status based on X.721 [3], if optional.
+   */
+   union UnknownStatusTypeOpt switch(boolean)
+   {
+      case TRUE: StateManagementIRPConstDefs::UnknownStatus unknown_status;
+   };
+
+};
+
+module StateManagementIRPConstDefs
+{
+/*
+   The following structures provide the new state value,
+   and the optional old state value
+   The structures are passed in the value part of the cos structured event
+*/
+   struct OperationalStateOldNewValue{
+      OperationalState new;
+      StateManagementIRPOptConstDefs::OperationalStateTypeOpt old;
+   };
+
+
+   struct UsageStateOldNewValue{
+      UsageState new;
+      StateManagementIRPOptConstDefs:: UsageStateTypeOpt old;
+   };
+
+
+   struct AdministrativeStateOldNewValue{
+      AdministrativeState new;
+      StateManagementIRPOptConstDefs:: AdministrativeStateTypeOpt old;
+   };
+
+
+   struct AlarmStatusOldNewValue{
+      AlarmStatusValues new;
+      StateManagementIRPOptConstDefs:: AdministrativeStateTypeOpt old;
+   };
+
+
+   struct ProceduralStatusOldNewValue{
+      ProceduralStatusValues new;
+      StateManagementIRPOptConstDefs:: ProceduralStatusTypeOpt old;
+   };
+
+
+   struct AvailabilityStatusOldNewValue{
+      AvailabilityStatusValues new;
+      StateManagementIRPOptConstDefs:: AvailabilityStatusTypeOpt old;
+   };
+
+
+   struct ControlStatusOldNewValue{
+      ControlStatusValues new;
+      StateManagementIRPOptConstDefs:: ControlStatusTypeOpt old;
+   };
+
+
+   struct StandbyStatusOldNewValue{
+      StandbyStatus new;
+      StateManagementIRPOptConstDefs:: StandbyStatusTypeOpt old;
+   };
+
+
+   struct UnknownStatusOldNewValue{
+      UnknownStatus new;
+      StateManagementIRPOptConstDefs:: UnknownStatusTypeOpt old;
+   };
+};
+
+#endif
+

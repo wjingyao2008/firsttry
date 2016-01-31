@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EPIRP" targetNamespace="http://EPIRPSystem.EPIRP" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://EPIRPSystem.EPIRP" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://EPIRPSystem.EPIRP" xmlns="http://EPIRPSystem.EPIRP" xmlns:ns1="http://EPIRPConstDefs/" xmlns:ns2="http://ManagedGenericIRPConstDefs/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://EPIRPConstDefs/" schemaLocation="TypeDef_EPIRPConstDefs.xsd"/>
+    <xs:import namespace="http://ManagedGenericIRPConstDefs/" schemaLocation="TypeDef_ManagedGenericIRPConstDefs.xsd"/>
+    <xs:element name="get_EP_IRP_notification_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="iRPVersion" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_EP_IRP_notification_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns2:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_EP_IRP_operations_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="iRPVersion" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_EP_IRP_operations_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns2:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_EP_IRP_versions">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_EP_IRP_versionsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_IRP_outline">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="iRPVersion" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="supportedIRPList" type="ns1:supportedIRPListTypeElement"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_IRP_outlineResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns1:resultType"/>
+                <xs:element maxOccurs="unbounded" name="supportedIRPList" type="ns1:supportedIRPListTypeElement"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_IRP_reference">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="managerIdentifier" type="xs:string"/>
+                <xs:element name="systemDn" type="xs:string"/>
+                <xs:element name="irpId" type="xs:string"/>
+                <xs:element name="iRPReference" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_IRP_referenceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns1:resultType"/>
+                <xs:element name="iRPReference" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="release_IRP_reference">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="managerIdentifier" type="xs:string"/>
+                <xs:element name="iRPReference" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="release_IRP_referenceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns1:resultType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ReleaseIRPReference" type="ReleaseIRPReference"/>
+    <xs:complexType name="ReleaseIRPReference">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="UnknownIRPReference" type="UnknownIRPReference"/>
+    <xs:complexType name="UnknownIRPReference">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetEPIRPVersions" type="GetEPIRPVersions"/>
+    <xs:complexType name="GetEPIRPVersions">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetEPIRPNotificationProfile" type="GetEPIRPNotificationProfile"/>
+    <xs:complexType name="GetEPIRPNotificationProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="OperationNotSupported" type="OperationNotSupported"/>
+    <xs:complexType name="OperationNotSupported">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="InvalidParameter" type="InvalidParameter"/>
+    <xs:complexType name="InvalidParameter">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetEPIRPOperationsProfile" type="GetEPIRPOperationsProfile"/>
+    <xs:complexType name="GetEPIRPOperationsProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="InvalidIRPVersion" type="InvalidIRPVersion"/>
+    <xs:complexType name="InvalidIRPVersion">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetIRPOutline" type="GetIRPOutline"/>
+    <xs:complexType name="GetIRPOutline">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetIRPReference" type="GetIRPReference"/>
+    <xs:complexType name="GetIRPReference">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="get_IRP_reference">
+    <wsdl:part name="parameters" element="tns:get_IRP_reference">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnknownIRPReference">
+    <wsdl:part name="UnknownIRPReference" element="tns:UnknownIRPReference">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetEPIRPOperationsProfile">
+    <wsdl:part name="GetEPIRPOperationsProfile" element="tns:GetEPIRPOperationsProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReleaseIRPReference">
+    <wsdl:part name="ReleaseIRPReference" element="tns:ReleaseIRPReference">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetEPIRPNotificationProfile">
+    <wsdl:part name="GetEPIRPNotificationProfile" element="tns:GetEPIRPNotificationProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_IRP_outlineResponse">
+    <wsdl:part name="parameters" element="tns:get_IRP_outlineResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_EP_IRP_versionsResponse">
+    <wsdl:part name="parameters" element="tns:get_EP_IRP_versionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_EP_IRP_notification_profile">
+    <wsdl:part name="parameters" element="tns:get_EP_IRP_notification_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidIRPVersion">
+    <wsdl:part name="InvalidIRPVersion" element="tns:InvalidIRPVersion">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetIRPReference">
+    <wsdl:part name="GetIRPReference" element="tns:GetIRPReference">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="release_IRP_referenceResponse">
+    <wsdl:part name="parameters" element="tns:release_IRP_referenceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetIRPOutline">
+    <wsdl:part name="GetIRPOutline" element="tns:GetIRPOutline">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_EP_IRP_versions">
+    <wsdl:part name="parameters" element="tns:get_EP_IRP_versions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_EP_IRP_operations_profile">
+    <wsdl:part name="parameters" element="tns:get_EP_IRP_operations_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="release_IRP_reference">
+    <wsdl:part name="parameters" element="tns:release_IRP_reference">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_IRP_outline">
+    <wsdl:part name="parameters" element="tns:get_IRP_outline">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_EP_IRP_operations_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_EP_IRP_operations_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetEPIRPVersions">
+    <wsdl:part name="GetEPIRPVersions" element="tns:GetEPIRPVersions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidParameter">
+    <wsdl:part name="InvalidParameter" element="tns:InvalidParameter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_IRP_referenceResponse">
+    <wsdl:part name="parameters" element="tns:get_IRP_referenceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_EP_IRP_notification_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_EP_IRP_notification_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OperationNotSupported">
+    <wsdl:part name="OperationNotSupported" element="tns:OperationNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EPIRP">
+    <wsdl:operation name="release_IRP_reference">
+      <wsdl:input name="release_IRP_reference" message="tns:release_IRP_reference">
+    </wsdl:input>
+      <wsdl:output name="release_IRP_referenceResponse" message="tns:release_IRP_referenceResponse">
+    </wsdl:output>
+      <wsdl:fault name="UnknownIRPReference" message="tns:UnknownIRPReference">
+    </wsdl:fault>
+      <wsdl:fault name="ReleaseIRPReference" message="tns:ReleaseIRPReference">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_EP_IRP_versions">
+      <wsdl:input name="get_EP_IRP_versions" message="tns:get_EP_IRP_versions">
+    </wsdl:input>
+      <wsdl:output name="get_EP_IRP_versionsResponse" message="tns:get_EP_IRP_versionsResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetEPIRPVersions" message="tns:GetEPIRPVersions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_EP_IRP_notification_profile">
+      <wsdl:input name="get_EP_IRP_notification_profile" message="tns:get_EP_IRP_notification_profile">
+    </wsdl:input>
+      <wsdl:output name="get_EP_IRP_notification_profileResponse" message="tns:get_EP_IRP_notification_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="GetEPIRPNotificationProfile" message="tns:GetEPIRPNotificationProfile">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_EP_IRP_operations_profile">
+      <wsdl:input name="get_EP_IRP_operations_profile" message="tns:get_EP_IRP_operations_profile">
+    </wsdl:input>
+      <wsdl:output name="get_EP_IRP_operations_profileResponse" message="tns:get_EP_IRP_operations_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="GetEPIRPOperationsProfile" message="tns:GetEPIRPOperationsProfile">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_IRP_outline">
+      <wsdl:input name="get_IRP_outline" message="tns:get_IRP_outline">
+    </wsdl:input>
+      <wsdl:output name="get_IRP_outlineResponse" message="tns:get_IRP_outlineResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetIRPOutline" message="tns:GetIRPOutline">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidIRPVersion" message="tns:InvalidIRPVersion">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_IRP_reference">
+      <wsdl:input name="get_IRP_reference" message="tns:get_IRP_reference">
+    </wsdl:input>
+      <wsdl:output name="get_IRP_referenceResponse" message="tns:get_IRP_referenceResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetIRPReference" message="tns:GetIRPReference">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EPIRPCorbaBinding" type="tns:EPIRP">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="release_IRP_reference">
+      <wsdl:input name="release_IRP_reference">
+      </wsdl:input>
+      <wsdl:output name="release_IRP_referenceResponse">
+      </wsdl:output>
+      <wsdl:fault name="UnknownIRPReference">
+      </wsdl:fault>
+      <wsdl:fault name="ReleaseIRPReference">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_EP_IRP_versions">
+      <wsdl:input name="get_EP_IRP_versions">
+      </wsdl:input>
+      <wsdl:output name="get_EP_IRP_versionsResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetEPIRPVersions">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_EP_IRP_notification_profile">
+      <wsdl:input name="get_EP_IRP_notification_profile">
+      </wsdl:input>
+      <wsdl:output name="get_EP_IRP_notification_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="GetEPIRPNotificationProfile">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_EP_IRP_operations_profile">
+      <wsdl:input name="get_EP_IRP_operations_profile">
+      </wsdl:input>
+      <wsdl:output name="get_EP_IRP_operations_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="GetEPIRPOperationsProfile">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_IRP_outline">
+      <wsdl:input name="get_IRP_outline">
+      </wsdl:input>
+      <wsdl:output name="get_IRP_outlineResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetIRPOutline">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidIRPVersion">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_IRP_reference">
+      <wsdl:input name="get_IRP_reference">
+      </wsdl:input>
+      <wsdl:output name="get_IRP_referenceResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetIRPReference">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EPIRPService">
+    <wsdl:port name="EPIRPCorbaPort" binding="tns:EPIRPCorbaBinding">
+    	 <wsdlsoap:address location="http://127.0.0.1:8230/epirp"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

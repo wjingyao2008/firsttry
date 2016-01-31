@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://CosNotifyChannelAdmin/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://CosNotifyChannelAdmin/">
+    <xs:complexType name="adminLimit">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="value" type="xs:anyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="clientType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ANY_EVENT"/>
+            <xs:enumeration value="STRUCTURED_EVENT"/>
+            <xs:enumeration value="SEQUENCE_EVENT"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="proxyType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PUSH_ANY"/>
+            <xs:enumeration value="PULL_ANY"/>
+            <xs:enumeration value="PUSH_STRUCTURED"/>
+            <xs:enumeration value="PULL_STRUCTURED"/>
+            <xs:enumeration value="PUSH_SEQUENCE"/>
+            <xs:enumeration value="PULL_SEQUENCE"/>
+            <xs:enumeration value="PUSH_TYPED"/>
+            <xs:enumeration value="PULL_TYPED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="obtainInfoMode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ALL_NOW_UPDATES_OFF"/>
+            <xs:enumeration value="ALL_NOW_UPDATES_ON"/>
+            <xs:enumeration value="NONE_NOW_UPDATES_OFF"/>
+            <xs:enumeration value="NONE_NOW_UPDATES_ON"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="interFilterGroupOperator">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="AND_OP"/>
+            <xs:enumeration value="OR_OP"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType final="#all" name="clientTypeArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:clientType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="proxyTypeArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:proxyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="interFilterGroupOperatorArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:interFilterGroupOperator"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="adminLimitArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:adminLimit"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="obtainInfoModeArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:obtainInfoMode"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

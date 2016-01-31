@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="FileTransferIRP" 
+		targetNamespace="http://FileTransferIRPSystem.FileTransferIRP" 
+		xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" 
+		xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+		xmlns:tns="http://FileTransferIRPSystem.FileTransferIRP" 
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" 
+    		elementFormDefault="qualified" 
+    		targetNamespace="http://FileTransferIRPSystem.FileTransferIRP" 
+    		xmlns="http://FileTransferIRPSystem.FileTransferIRP" 
+    		xmlns:ns1="http://TimeBase/" 
+    		xmlns:ns2="http://FileTransferIRPConstDefs/" 
+    		xmlns:ns3="http://ManagedGenericIRPConstDefs/" 
+    		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://TimeBase/" schemaLocation="TypeDef_TimeBase.xsd"/>
+    <xs:import namespace="http://FileTransferIRPConstDefs/" schemaLocation="TypeDef_FileTransferIRPConstDefs.xsd"/>
+    <xs:import namespace="http://ManagedGenericIRPConstDefs/" schemaLocation="TypeDef_ManagedGenericIRPConstDefs.xsd"/>
+    <xs:element name="file_download_indication">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="file_info_list" type="ns2:fileInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="file_download_indicationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns2:result"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_file_transfer_irp_notifications_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="irp_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_file_transfer_irp_notifications_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns3:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_file_transfer_irp_operations_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="irp_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_file_transfer_irp_operations_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns3:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_file_transfer_irp_versions">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_file_transfer_irp_versionsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="list_available_files">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="management_data_type" type="xs:short"/>
+                <xs:element name="begin_time" type="ns1:utcT"/>
+                <xs:element name="end_time" type="ns1:utcT"/>
+                <xs:element maxOccurs="unbounded" name="file_info_list" type="ns2:fileInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="list_available_filesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="return" type="ns2:result"/>
+                <xs:element maxOccurs="unbounded" name="file_info_list" type="ns2:fileInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="InvalidTimes" type="InvalidTimes"/>
+    <xs:complexType name="InvalidTimes">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="InvalidParameter" type="InvalidParameter"/>
+    <xs:complexType name="InvalidParameter">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ListAvailableFiles" type="ListAvailableFiles"/>
+    <xs:complexType name="ListAvailableFiles">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetFileTransferIRPOperationsProfile" type="GetFileTransferIRPOperationsProfile"/>
+    <xs:complexType name="GetFileTransferIRPOperationsProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="OperationNotSupported" type="OperationNotSupported"/>
+    <xs:complexType name="OperationNotSupported">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="InvalidFileInfoList" type="InvalidFileInfoList"/>
+    <xs:complexType name="InvalidFileInfoList">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="FileDownloadIndication" type="FileDownloadIndication"/>
+    <xs:complexType name="FileDownloadIndication">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetFileTransferIRPVersions" type="GetFileTransferIRPVersions"/>
+    <xs:complexType name="GetFileTransferIRPVersions">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetFileTransferIRPNotificationsProfile" type="GetFileTransferIRPNotificationsProfile"/>
+    <xs:complexType name="GetFileTransferIRPNotificationsProfile">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="list_available_filesResponse">
+    <wsdl:part name="parameters" element="tns:list_available_filesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FileDownloadIndication">
+    <wsdl:part name="FileDownloadIndication" element="tns:FileDownloadIndication">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_file_transfer_irp_operations_profile">
+    <wsdl:part name="parameters" element="tns:get_file_transfer_irp_operations_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_file_transfer_irp_operations_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_file_transfer_irp_operations_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFileTransferIRPOperationsProfile">
+    <wsdl:part name="GetFileTransferIRPOperationsProfile" element="tns:GetFileTransferIRPOperationsProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="file_download_indicationResponse">
+    <wsdl:part name="parameters" element="tns:file_download_indicationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="list_available_files">
+    <wsdl:part name="parameters" element="tns:list_available_files">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidFileInfoList">
+    <wsdl:part name="InvalidFileInfoList" element="tns:InvalidFileInfoList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFileTransferIRPVersions_Exception">
+    <wsdl:part name="GetFileTransferIRPVersions" element="tns:GetFileTransferIRPVersions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_file_transfer_irp_notifications_profile">
+    <wsdl:part name="parameters" element="tns:get_file_transfer_irp_notifications_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OperationNotSupported">
+    <wsdl:part name="OperationNotSupported" element="tns:OperationNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_file_transfer_irp_notifications_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_file_transfer_irp_notifications_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidParameter">
+    <wsdl:part name="InvalidParameter" element="tns:InvalidParameter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="file_download_indication">
+    <wsdl:part name="parameters" element="tns:file_download_indication">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFileTransferIRPNotificationsProfile_Exception">
+    <wsdl:part name="GetFileTransferIRPNotificationsProfile" element="tns:GetFileTransferIRPNotificationsProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidTimes">
+    <wsdl:part name="InvalidTimes" element="tns:InvalidTimes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_file_transfer_irp_versionsResponse">
+    <wsdl:part name="parameters" element="tns:get_file_transfer_irp_versionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_file_transfer_irp_versions">
+    <wsdl:part name="parameters" element="tns:get_file_transfer_irp_versions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ListAvailableFiles">
+    <wsdl:part name="ListAvailableFiles" element="tns:ListAvailableFiles">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FileTransferIRP">
+    <wsdl:operation name="list_available_files">
+      <wsdl:input name="list_available_files" message="tns:list_available_files">
+    </wsdl:input>
+      <wsdl:output name="list_available_filesResponse" message="tns:list_available_filesResponse">
+    </wsdl:output>
+      <wsdl:fault name="ListAvailableFiles" message="tns:ListAvailableFiles">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidTimes" message="tns:InvalidTimes">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_file_transfer_irp_operations_profile">
+      <wsdl:input name="get_file_transfer_irp_operations_profile" message="tns:get_file_transfer_irp_operations_profile">
+    </wsdl:input>
+      <wsdl:output name="get_file_transfer_irp_operations_profileResponse" message="tns:get_file_transfer_irp_operations_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetFileTransferIRPOperationsProfile" message="tns:GetFileTransferIRPOperationsProfile">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="file_download_indication">
+      <wsdl:input name="file_download_indication" message="tns:file_download_indication">
+    </wsdl:input>
+      <wsdl:output name="file_download_indicationResponse" message="tns:file_download_indicationResponse">
+    </wsdl:output>
+      <wsdl:fault name="InvalidFileInfoList" message="tns:InvalidFileInfoList">
+    </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="FileDownloadIndication" message="tns:FileDownloadIndication">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_file_transfer_irp_versions">
+      <wsdl:input name="get_file_transfer_irp_versions" message="tns:get_file_transfer_irp_versions">
+    </wsdl:input>
+      <wsdl:output name="get_file_transfer_irp_versionsResponse" message="tns:get_file_transfer_irp_versionsResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetFileTransferIRPVersions_Exception" message="tns:GetFileTransferIRPVersions_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_file_transfer_irp_notifications_profile">
+      <wsdl:input name="get_file_transfer_irp_notifications_profile" message="tns:get_file_transfer_irp_notifications_profile">
+    </wsdl:input>
+      <wsdl:output name="get_file_transfer_irp_notifications_profileResponse" message="tns:get_file_transfer_irp_notifications_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="GetFileTransferIRPNotificationsProfile_Exception" message="tns:GetFileTransferIRPNotificationsProfile_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FileTransferIRPCorbaBinding" type="tns:FileTransferIRP">
+	<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="list_available_files">
+      <wsdl:input name="list_available_files">
+      </wsdl:input>
+      <wsdl:output name="list_available_filesResponse">
+      </wsdl:output>
+      <wsdl:fault name="ListAvailableFiles">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidTimes">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_file_transfer_irp_operations_profile">
+      <wsdl:input name="get_file_transfer_irp_operations_profile">
+      </wsdl:input>
+      <wsdl:output name="get_file_transfer_irp_operations_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetFileTransferIRPOperationsProfile">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="file_download_indication">
+      <wsdl:input name="file_download_indication">
+      </wsdl:input>
+      <wsdl:output name="file_download_indicationResponse">
+      </wsdl:output>
+      <wsdl:fault name="InvalidFileInfoList">
+      </wsdl:fault>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="FileDownloadIndication">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_file_transfer_irp_versions">
+      <wsdl:input name="get_file_transfer_irp_versions">
+      </wsdl:input>
+      <wsdl:output name="get_file_transfer_irp_versionsResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetFileTransferIRPVersions_Exception">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_file_transfer_irp_notifications_profile">
+      <wsdl:input name="get_file_transfer_irp_notifications_profile">
+      </wsdl:input>
+      <wsdl:output name="get_file_transfer_irp_notifications_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="GetFileTransferIRPNotificationsProfile_Exception">
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileTransferIRPService">
+    <wsdl:port name="FileTransferIRPCorbaPort" binding="tns:FileTransferIRPCorbaBinding">
+    	<wsdlsoap:address location="http://127.0.0.1:8230/ftirp"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

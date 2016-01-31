@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://CSIRPConstDefs/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://CSIRPConstDefs/">
+    <xs:simpleType name="resultType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Success"/>
+            <xs:enumeration value="Failure"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="triggerFlagType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="IRPManager"/>
+            <xs:enumeration value="IRPAgent"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType final="#all" name="resultTypeArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:resultType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="triggerFlagTypeArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:triggerFlagType"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

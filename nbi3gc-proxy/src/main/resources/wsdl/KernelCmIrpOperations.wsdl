@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="GBK"?>
+<wsdl:definitions name="KernelCmIrpOperations" 
+		targetNamespace="http://KernelCmIRPSystem.KernelCmIrpOperations" 
+		xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" 
+		xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"  
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+		xmlns:tns="http://KernelCmIRPSystem.KernelCmIrpOperations" 
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" 
+    		elementFormDefault="qualified" 
+    		targetNamespace="http://KernelCmIRPSystem.KernelCmIrpOperations" 
+    		xmlns="http://KernelCmIRPSystem.KernelCmIrpOperations" 
+    		xmlns:ns1="http://ManagedGenericIRPConstDefs/" 
+    		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://ManagedGenericIRPConstDefs/" schemaLocation="TypeDef_ManagedGenericIRPConstDefs.xsd"/>
+    <xs:element name="get_NRM_IRP_version">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="versionNumberList" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="vSEVersionNumberList" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_NRM_IRP_versionResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="versionNumberList" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="vSEVersionNumberList" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_kernel_CM_IRP_notification_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="kernel_CM_IRP_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_kernel_CM_IRP_notification_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns1:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_kernel_CM_IRP_operation_profile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="kernel_CM_IRP_version" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_kernel_CM_IRP_operation_profileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="ns1:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_kernel_CM_IRP_versions">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="get_kernel_CM_IRP_versionsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="return" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="InvalidParameter" type="InvalidParameter"/>
+    <xs:complexType name="InvalidParameter">
+        <xs:sequence>
+            <xs:element name="parameter" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="OperationNotSupported" type="OperationNotSupported"/>
+    <xs:complexType name="OperationNotSupported">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="GetKernelCMIRPNotificationProfileException" type="GetKernelCMIRPNotificationProfileException"/>
+    <xs:complexType name="GetKernelCMIRPNotificationProfileException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetKernelCMIRPOperationProfileException" type="GetKernelCMIRPOperationProfileException"/>
+    <xs:complexType name="GetKernelCMIRPOperationProfileException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetKernelCMIRPVersionsException" type="GetKernelCMIRPVersionsException"/>
+    <xs:complexType name="GetKernelCMIRPVersionsException">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetNRMIRPVersion" type="GetNRMIRPVersion"/>
+    <xs:complexType name="GetNRMIRPVersion">
+        <xs:sequence>
+            <xs:element name="reason" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetKernelCMIRPNotificationProfileException">
+    <wsdl:part name="GetKernelCMIRPNotificationProfileException" element="tns:GetKernelCMIRPNotificationProfileException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetKernelCMIRPVersionsException">
+    <wsdl:part name="GetKernelCMIRPVersionsException" element="tns:GetKernelCMIRPVersionsException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetNRMIRPVersion">
+    <wsdl:part name="GetNRMIRPVersion" element="tns:GetNRMIRPVersion">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidParameter">
+    <wsdl:part name="InvalidParameter" element="tns:InvalidParameter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_kernel_CM_IRP_notification_profile">
+    <wsdl:part name="parameters" element="tns:get_kernel_CM_IRP_notification_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OperationNotSupported">
+    <wsdl:part name="OperationNotSupported" element="tns:OperationNotSupported">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_kernel_CM_IRP_notification_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_kernel_CM_IRP_notification_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetKernelCMIRPOperationProfileException">
+    <wsdl:part name="GetKernelCMIRPOperationProfileException" element="tns:GetKernelCMIRPOperationProfileException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_NRM_IRP_version">
+    <wsdl:part name="parameters" element="tns:get_NRM_IRP_version">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_kernel_CM_IRP_operation_profileResponse">
+    <wsdl:part name="parameters" element="tns:get_kernel_CM_IRP_operation_profileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_kernel_CM_IRP_versionsResponse">
+    <wsdl:part name="parameters" element="tns:get_kernel_CM_IRP_versionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_NRM_IRP_versionResponse">
+    <wsdl:part name="parameters" element="tns:get_NRM_IRP_versionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_kernel_CM_IRP_versions">
+    <wsdl:part name="parameters" element="tns:get_kernel_CM_IRP_versions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_kernel_CM_IRP_operation_profile">
+    <wsdl:part name="parameters" element="tns:get_kernel_CM_IRP_operation_profile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="KernelCmIrpOperations">
+    <wsdl:operation name="get_kernel_CM_IRP_notification_profile">
+      <wsdl:input name="get_kernel_CM_IRP_notification_profile" message="tns:get_kernel_CM_IRP_notification_profile">
+    </wsdl:input>
+      <wsdl:output name="get_kernel_CM_IRP_notification_profileResponse" message="tns:get_kernel_CM_IRP_notification_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="GetKernelCMIRPNotificationProfileException" message="tns:GetKernelCMIRPNotificationProfileException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_kernel_CM_IRP_operation_profile">
+      <wsdl:input name="get_kernel_CM_IRP_operation_profile" message="tns:get_kernel_CM_IRP_operation_profile">
+    </wsdl:input>
+      <wsdl:output name="get_kernel_CM_IRP_operation_profileResponse" message="tns:get_kernel_CM_IRP_operation_profileResponse">
+    </wsdl:output>
+      <wsdl:fault name="OperationNotSupported" message="tns:OperationNotSupported">
+    </wsdl:fault>
+      <wsdl:fault name="InvalidParameter" message="tns:InvalidParameter">
+    </wsdl:fault>
+      <wsdl:fault name="GetKernelCMIRPOperationProfileException" message="tns:GetKernelCMIRPOperationProfileException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_kernel_CM_IRP_versions">
+      <wsdl:input name="get_kernel_CM_IRP_versions" message="tns:get_kernel_CM_IRP_versions">
+    </wsdl:input>
+      <wsdl:output name="get_kernel_CM_IRP_versionsResponse" message="tns:get_kernel_CM_IRP_versionsResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetKernelCMIRPVersionsException" message="tns:GetKernelCMIRPVersionsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_NRM_IRP_version">
+      <wsdl:input name="get_NRM_IRP_version" message="tns:get_NRM_IRP_version">
+    </wsdl:input>
+      <wsdl:output name="get_NRM_IRP_versionResponse" message="tns:get_NRM_IRP_versionResponse">
+    </wsdl:output>
+      <wsdl:fault name="GetNRMIRPVersion" message="tns:GetNRMIRPVersion">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="KernelCmIrpOperationsCorbaBinding" type="tns:KernelCmIrpOperations">
+	<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_kernel_CM_IRP_notification_profile">
+      <wsdl:input name="get_kernel_CM_IRP_notification_profile">
+      </wsdl:input>
+      <wsdl:output name="get_kernel_CM_IRP_notification_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="GetKernelCMIRPNotificationProfileException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_kernel_CM_IRP_operation_profile">
+      <wsdl:input name="get_kernel_CM_IRP_operation_profile">
+      </wsdl:input>
+      <wsdl:output name="get_kernel_CM_IRP_operation_profileResponse">
+      </wsdl:output>
+      <wsdl:fault name="OperationNotSupported">
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameter">
+      </wsdl:fault>
+      <wsdl:fault name="GetKernelCMIRPOperationProfileException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_kernel_CM_IRP_versions">
+      <wsdl:input name="get_kernel_CM_IRP_versions">
+      </wsdl:input>
+      <wsdl:output name="get_kernel_CM_IRP_versionsResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetKernelCMIRPVersionsException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="get_NRM_IRP_version">
+      <wsdl:input name="get_NRM_IRP_version">
+      </wsdl:input>
+      <wsdl:output name="get_NRM_IRP_versionResponse">
+      </wsdl:output>
+      <wsdl:fault name="GetNRMIRPVersion">
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="KernelCmIrpOperationsService">
+    <wsdl:port name="KernelCmIrpOperationsCorbaPort" binding="tns:KernelCmIrpOperationsCorbaBinding">
+    	<wsdlsoap:address location="http://127.0.0.1:8230/kernelcmirp"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
