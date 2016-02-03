@@ -37,7 +37,7 @@ class AlarmOperationImplTest extends TestKitAndFunSpec {
        val result=alarmOperationImpl.get_alarm_IRP_versions()
        result should contain (version(0))
        result should contain (version(1))
-
+        println(actorRef.path)
 
      }
 

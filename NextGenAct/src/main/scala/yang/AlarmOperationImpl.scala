@@ -1,20 +1,18 @@
 package yang
 
-import java.util.concurrent.TimeoutException
-
-import akka.actor.{ActorRef, Actor}
-import akka.actor.Actor.Receive
+import akka.actor.ActorRef
 import akka.pattern.ask
-import com.nsn.oss.nbi.common.Logger
-import yang.Protocol.AlarmOptPtl.{reply_get_alarm_count, request_get_alarm_count, get_alarm_IRP_versions_msg}
+import akka.util.Timeout
+import org.apache.log4j.Logger
+import org.omg.CORBA.{BooleanHolder, IntHolder}
+import org.omg.CosNotification.StructuredEvent
+import yang.Protocol.AlarmOptPtl.{get_alarm_IRP_versions_msg, reply_get_alarm_count, request_get_alarm_count}
+import com.nsn.oss.nbi.corba.AlarmIRPConstDefs.{AlarmInformationIdAndSev, BadAcknowledgeAlarmInfoSeqHolder, BadAlarmInformationIdSeqHolder, DNTypeOpt}
+import com.nsn.oss.nbi.corba.AlarmIRPSystem.{AlarmIRPOperations, AlarmIRPPOA, AlarmInformationIteratorHolder, GetAlarmIRPVersions}
+import com.nsn.oss.nbi.corba.ManagedGenericIRPConstDefs.{Method, Signal, StringTypeOpt}
+
 import scala.concurrent.Await
 import scala.concurrent.duration._
-import akka.util.Timeout
-import com.nsn.oss.nbi.corba.AlarmIRPConstDefs.{BadAcknowledgeAlarmInfoSeqHolder, AlarmInformationIdAndSev, BadAlarmInformationIdSeqHolder, DNTypeOpt}
-import com.nsn.oss.nbi.corba.AlarmIRPSystem.{AlarmIRPPOA, GetAlarmIRPVersions, AlarmInformationIteratorHolder, AlarmIRPOperations}
-import com.nsn.oss.nbi.corba.ManagedGenericIRPConstDefs.{Signal, StringTypeOpt, Method}
-import org.omg.CORBA.{IntHolder, BooleanHolder}
-import org.omg.CosNotification.StructuredEvent
 
 
 
@@ -33,7 +31,7 @@ class AlarmOperationImpl(alarmOperationActor:ActorRef) extends AlarmIRPPOA with 
       Await.result(futureResult,timeout.duration).asInstanceOf[Array[String]]
      }catch{
        case e:Exception=> {
-         LOGGER.error("Fail to get alarm irp versions", e.getMessage);
+         LOGGER.error("Fail to get alarm irp versions", e);
          throw new GetAlarmIRPVersions(e.getMessage);
        }
      }
@@ -44,7 +42,8 @@ class AlarmOperationImpl(alarmOperationActor:ActorRef) extends AlarmIRPPOA with 
                                major_count: IntHolder, minor_count: IntHolder,
                                warning_count: IntHolder, indeterminate_count: IntHolder,
                                cleared_count: IntHolder): Unit = {
-    val futureResult=alarmOperationActor ? request_get_alarm_count(filter)
+    val filterStr=filter.value()
+    val futureResult=alarmOperationActor ? request_get_alarm_count(filterStr)
     try{
       val result=Await.result(futureResult,timeout.duration).asInstanceOf[reply_get_alarm_count]
       critical_count.value=result.critical_count
@@ -55,7 +54,7 @@ class AlarmOperationImpl(alarmOperationActor:ActorRef) extends AlarmIRPPOA with 
       cleared_count.value=result.cleared_count
     }catch{
       case e:Exception=> {
-        LOGGER.error("Fail to get alarm irp versions", e.getMessage);
+        LOGGER.error("Fail to get alarm irp versions", e);
         throw new GetAlarmIRPVersions(e.getMessage);
       }
     }
@@ -77,7 +76,7 @@ class AlarmOperationImpl(alarmOperationActor:ActorRef) extends AlarmIRPPOA with 
       Await.result(futureResult,timeout.duration).asInstanceOf[Array[Method]]
     }catch{
       case e:Exception=> {
-        LOGGER.error("Fail to get alarm irp notification profile", e.getMessage);
+        LOGGER.error("Fail to get alarm irp notification profile", e);
         throw new GetAlarmIRPVersions(e.getMessage);
       }
     }

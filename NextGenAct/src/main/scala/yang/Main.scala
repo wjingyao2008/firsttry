@@ -3,8 +3,7 @@ package yang
 import java.util.concurrent.{Executors, ExecutorService}
 
 import akka.actor.{Props, ActorSystem}
-import com.nsn.oss.nbi.{ProxyUtil, IteratorStarter, AlarmIRPImpl, AlarmIRPStarter}
-
+import com.nsn.oss.nbi.AlarmIRPStarter
 /**
   * Created by y28yang on 1/31/2016.
   */
