@@ -3,7 +3,10 @@ package yang
 import java.util.concurrent.{Executors, ExecutorService}
 
 import akka.actor.{Props, ActorSystem}
-import com.nsn.oss.nbi.AlarmIRPStarter
+import com.nsn.oss.nbi.{IRPInfoServiceInstance, AlarmIRPStarter}
+import yang.alarm.{AlarmOperationServiceImpl, AlarmCountActor}
+import yang.common.VersionProfilesInfoActor
+
 /**
   * Created by y28yang on 1/31/2016.
   */
@@ -14,7 +17,7 @@ object Main {
    println(runable)
     EXECUTOR_SERVICE.execute(runable)
   }
-  //System.getProperties.put("rootPath","D:\\WorkShop\\myscalamaven\\NextGenAct\\src\\test\\resources\\")
+
   val EXECUTOR_SERVICE: ExecutorService = Executors.newCachedThreadPool
 
   def main(args: Array[String]) {
@@ -22,13 +25,20 @@ object Main {
 //    submit(iterator)
     val system = ActorSystem("MyActors")
 
-    val stubActor=system.actorOf(Props(new StubActor))
-    val alarmActorPros = Props(new AlarmOperationActor(stubActor,null))
-    val alarmOperationActor=system.actorOf(alarmActorPros)
-    val alarmirpImpl = new AlarmOperationImpl(alarmOperationActor);
+
+
+    //val stubActor=system.actorOf(Props(new StubActor))
+//    val alarmCountActor=system.actorOf(Props(new AlarmCountActor(new AlarmOperationServiceImpl)))
+//    val versionProfileActor=system.actorOf(Props(new VersionProfilesInfoActor(new IRPInfoServiceInstance)))
+//    val alarmActorPros = Props(new AlarmOperationActor(versionProfileActor,alarmCountActor))
+//
+//
+//    val alarmOperationActor=system.actorOf(alarmActorPros)
+    val alarmirpImpl = new AlarmOperationImpl(null);
     val alarmirp = new AlarmIRPStarter(alarmirpImpl);
     alarmirp.run()
   }
+
 
 
 

@@ -1,12 +1,9 @@
 package yang.alarm
 
 import akka.actor.{ActorLogging, Actor}
-import akka.event.slf4j.Logger
-import com.nsn.oss.nbi.fm.operation.AlarmOperationService
-
 import yang.Protocol.AlarmOptPtl._
 import com.nsn.oss.nbi.common.etcl.Engine
-import com.nsn.oss.nbi.fm.operation.interfaces.{UserInfo, GetAllAlarmCounts, Filter}
+import com.nsn.oss.nbi.fm.operation.interfaces.{UserInfo, Filter}
 
 /**
   * Created by y28yang on 1/31/2016.
