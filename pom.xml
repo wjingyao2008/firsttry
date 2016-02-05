@@ -3,11 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.nsn.oss</groupId>
-        <artifactId>nbi</artifactId>
-        <version>DYNAMIC-SNAPSHOT</version>
-    </parent>
+    <!--<parent>-->
+        <!--<groupId>com.nsn.oss</groupId>-->
+        <!--<artifactId>nbi</artifactId>-->
+        <!--<version>DYNAMIC-SNAPSHOT</version>-->
+    <!--</parent>-->
     <groupId>com.nsn.oss.myscalamaven</groupId>
     <artifactId>myscalamaven</artifactId>
     <packaging>pom</packaging>
@@ -165,7 +165,6 @@
                 <groupId>com.nsn.oss.nbi.common</groupId>
                 <artifactId>nbi-logging</artifactId>
                 <version>DYNAMIC-SNAPSHOT</version>
-                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>com.nsn.oss.nbi.common</groupId>

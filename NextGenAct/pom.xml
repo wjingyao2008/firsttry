@@ -17,13 +17,13 @@
             <artifactId>nbi3gc-proxy</artifactId>
             <version>DYNAMIC-SNAPSHOT</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.nsn.obs.mw.medfra</groupId>-->
+            <!--<artifactId>mf-core</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.nsn.oss.nbi.common</groupId>
             <artifactId>nbi-logging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.nsn.obs.mw.medfra</groupId>
-            <artifactId>mf-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.nsn.oss.nbi</groupId>

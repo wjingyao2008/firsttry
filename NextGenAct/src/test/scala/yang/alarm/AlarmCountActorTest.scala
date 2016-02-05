@@ -1,19 +1,14 @@
 package yang.alarm
 
 import akka.actor.Props
-import akka.testkit.TestActorRef
 import com.nsn.oss.nbi.common.etcl.EtclMapping
 import com.nsn.oss.nbi.corba.ManagedGenericIRPConstDefs.StringTypeOpt
-import com.nsn.oss.nbi.fm.operation.{AlarmOperationService, GetAllAlarmsCountsService}
 import com.nsn.oss.nbi.fm.operation.interfaces.{AlarmCounts, Filter, UserInfo}
-import org.mockito.{Matchers, Mockito}
-import org.omg.CORBA.IntHolder
-import org.scalatest.{FunSuiteLike, FunSuite}
-import yang.alarm.AlarmCountActor
-import yang.{AlarmOperationImpl, AlarmOperationActor, TestKitAndFunSpec}
-import org.mockito.Mockito._
+import org.mockito.Matchers
 import org.mockito.Matchers._
-import scala.collection.JavaConversions._
+import org.mockito.Mockito._
+import org.omg.CORBA.IntHolder
+import yang.{AlarmOperationActor, AlarmOperationImpl, TestKitAndFunSpec}
 /**
   * Created by y28yang on 2/3/2016.
   */
