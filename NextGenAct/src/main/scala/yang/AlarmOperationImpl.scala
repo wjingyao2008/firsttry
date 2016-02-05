@@ -15,26 +15,24 @@ import scala.concurrent.Await
 import scala.concurrent.duration._
 
 
-
-
 /**
   * Created by y28yang on 1/30/2016.
   */
 
-class AlarmOperationImpl(alarmOperationActor:ActorRef) extends AlarmIRPPOA with AlarmIRPOperations{
+class AlarmOperationImpl(alarmOperationActor: ActorRef) extends AlarmIRPPOA with AlarmIRPOperations {
   implicit val timeout = Timeout(5 seconds)
   private val LOGGER = Logger.getLogger(classOf[AlarmOperationImpl])
 
   override def get_alarm_IRP_versions(): Array[String] = {
-     val futureResult=alarmOperationActor ? get_alarm_IRP_versions_msg
-     try{
-      Await.result(futureResult,timeout.duration).asInstanceOf[Array[String]]
-     }catch{
-       case e:Exception=> {
-         LOGGER.error("Fail to get alarm irp versions", e);
-         throw new GetAlarmIRPVersions(e.getMessage);
-       }
-     }
+    val futureResult = alarmOperationActor ? get_alarm_IRP_versions_msg
+    try {
+      Await.result(futureResult, timeout.duration).asInstanceOf[Array[String]]
+    } catch {
+      case e: Exception => {
+        LOGGER.error("Fail to get alarm irp versions", e);
+        throw new GetAlarmIRPVersions(e.getMessage);
+      }
+    }
   }
 
 
@@ -42,18 +40,21 @@ class AlarmOperationImpl(alarmOperationActor:ActorRef) extends AlarmIRPPOA with 
                                major_count: IntHolder, minor_count: IntHolder,
                                warning_count: IntHolder, indeterminate_count: IntHolder,
                                cleared_count: IntHolder): Unit = {
-    val filterStr=filter.value()
-    val futureResult=alarmOperationActor ? request_get_alarm_count(filterStr)
-    try{
-      val result=Await.result(futureResult,timeout.duration).asInstanceOf[reply_get_alarm_count]
-      critical_count.value=result.critical_count
-      major_count.value=result.major_count
-      minor_count.value=result.minor_count
-      warning_count.value=result.warning_count
-      indeterminate_count.value=result.indeterminate_count
-      cleared_count.value=result.cleared_count
-    }catch{
-      case e:Exception=> {
+    val filterStr = if (filter.discriminator())
+      filter.value()
+    else null
+
+    val futureResult = alarmOperationActor ? request_get_alarm_count(filterStr)
+    try {
+      val result = Await.result(futureResult, timeout.duration).asInstanceOf[reply_get_alarm_count]
+      critical_count.value = result.critical_count
+      major_count.value = result.major_count
+      minor_count.value = result.minor_count
+      warning_count.value = result.warning_count
+      indeterminate_count.value = result.indeterminate_count
+      cleared_count.value = result.cleared_count
+    } catch {
+      case e: Exception => {
         LOGGER.error("Fail to get alarm irp versions", e);
         throw new GetAlarmIRPVersions(e.getMessage);
       }
@@ -71,11 +72,11 @@ class AlarmOperationImpl(alarmOperationActor:ActorRef) extends AlarmIRPPOA with 
   override def get_alarm_list(filter: StringTypeOpt, base_object: DNTypeOpt, flag: BooleanHolder, iter: AlarmInformationIteratorHolder): Array[StructuredEvent] = ???
 
   override def get_alarm_IRP_operations_profile(alarm_irp_version: String): Array[Method] = {
-    val futureResult=alarmOperationActor ? get_alarm_IRP_operations_profile(alarm_irp_version)
-    try{
-      Await.result(futureResult,timeout.duration).asInstanceOf[Array[Method]]
-    }catch{
-      case e:Exception=> {
+    val futureResult = alarmOperationActor ? get_alarm_IRP_operations_profile(alarm_irp_version)
+    try {
+      Await.result(futureResult, timeout.duration).asInstanceOf[Array[Method]]
+    } catch {
+      case e: Exception => {
         LOGGER.error("Fail to get alarm irp notification profile", e);
         throw new GetAlarmIRPVersions(e.getMessage);
       }

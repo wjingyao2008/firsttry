@@ -12,10 +12,11 @@ public class AlarmIRPStarter extends ServantStarter {
     private final static Logger LOGGER = Logger.getLogger(com.nsn.oss.nbi.AlarmIRPStarter.class);
 
     private Servant servant;
+    private String port;
 
-
-    public AlarmIRPStarter(Servant servant) {
+    public AlarmIRPStarter(Servant servant,String portStr) {
         this.servant = servant;
+        port=portStr;
     }
 
     @Override
@@ -42,6 +43,6 @@ public class AlarmIRPStarter extends ServantStarter {
     @Override
     protected String getPort() {
         //return ProxyUtil.getPortByInstanceIdandKey(ProxyUtil.getProxyInstanceId(), this.getClass().getName());
-        return "8291";
+        return port;
     }
 }
