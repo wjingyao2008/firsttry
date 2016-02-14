@@ -78,7 +78,7 @@ class AlarmOperationImpl(alarmOperationActor: ActorRef) extends AlarmIRPPOA with
     } catch {
       case e: Exception => {
         LOGGER.error("Fail to get alarm irp notification profile", e);
-        throw new GetAlarmIRPVersions(e.getMessage);
+        throw new GetAlarmIRPOperationsProfile(e.getMessage);
       }
     }
   }
