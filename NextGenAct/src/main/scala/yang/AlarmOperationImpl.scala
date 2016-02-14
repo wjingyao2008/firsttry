@@ -8,7 +8,7 @@ import org.omg.CORBA.{BooleanHolder, IntHolder}
 import org.omg.CosNotification.StructuredEvent
 import yang.Protocol.AlarmOptPtl.{get_alarm_IRP_versions_msg, reply_get_alarm_count, request_get_alarm_count}
 import com.nsn.oss.nbi.corba.AlarmIRPConstDefs.{AlarmInformationIdAndSev, BadAcknowledgeAlarmInfoSeqHolder, BadAlarmInformationIdSeqHolder, DNTypeOpt}
-import com.nsn.oss.nbi.corba.AlarmIRPSystem.{AlarmIRPOperations, AlarmIRPPOA, AlarmInformationIteratorHolder, GetAlarmIRPVersions}
+import com.nsn.oss.nbi.corba.AlarmIRPSystem._
 import com.nsn.oss.nbi.corba.ManagedGenericIRPConstDefs.{Method, Signal, StringTypeOpt}
 
 import scala.concurrent.Await
@@ -20,7 +20,7 @@ import scala.concurrent.duration._
   */
 
 class AlarmOperationImpl(alarmOperationActor: ActorRef) extends AlarmIRPPOA with AlarmIRPOperations {
-  implicit val timeout = Timeout(5 seconds)
+  implicit val timeout = Timeout(15 seconds)
   private val LOGGER = Logger.getLogger(classOf[AlarmOperationImpl])
 
   override def get_alarm_IRP_versions(): Array[String] = {
@@ -55,8 +55,8 @@ class AlarmOperationImpl(alarmOperationActor: ActorRef) extends AlarmIRPPOA with
       cleared_count.value = result.cleared_count
     } catch {
       case e: Exception => {
-        LOGGER.error("Fail to get alarm irp versions", e);
-        throw new GetAlarmIRPVersions(e.getMessage);
+        LOGGER.error("Fail to get alarm count", e);
+        throw new GetAlarmCount(e.getMessage());
       }
     }
   }
