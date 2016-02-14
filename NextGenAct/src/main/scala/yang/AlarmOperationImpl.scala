@@ -1,38 +1,46 @@
 package yang
 
 import akka.actor.ActorRef
+import akka.dispatch.sysmsg.Failed
 import akka.pattern.ask
 import akka.util.Timeout
 import org.apache.log4j.Logger
-import org.omg.CORBA.{BooleanHolder, IntHolder}
+import org.omg.CORBA.{UserException, BooleanHolder, IntHolder}
 import org.omg.CosNotification.StructuredEvent
-import yang.Protocol.AlarmOptPtl.{get_alarm_IRP_versions_msg, reply_get_alarm_count, request_get_alarm_count}
+import yang.Protocol.AlarmOptPtl.{get_alarm_IRP_operations_profile_msg, get_alarm_IRP_versions_msg, reply_get_alarm_count, request_get_alarm_count}
 import com.nsn.oss.nbi.corba.AlarmIRPConstDefs.{AlarmInformationIdAndSev, BadAcknowledgeAlarmInfoSeqHolder, BadAlarmInformationIdSeqHolder, DNTypeOpt}
 import com.nsn.oss.nbi.corba.AlarmIRPSystem._
 import com.nsn.oss.nbi.corba.ManagedGenericIRPConstDefs.{Method, Signal, StringTypeOpt}
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
+import scala.util.{Failure, Success}
 
 
 /**
   * Created by y28yang on 1/30/2016.
   */
 
-class AlarmOperationImpl(alarmOperationActor: ActorRef) extends AlarmIRPPOA with AlarmIRPOperations {
-  implicit val timeout = Timeout(15 seconds)
+class AlarmOperationImpl(alarmOperationActor: ActorRef,timeoutSec:Long) extends AlarmIRPPOA with AlarmIRPOperations {
+  implicit val timeout = Timeout(timeoutSec seconds)
   private val LOGGER = Logger.getLogger(classOf[AlarmOperationImpl])
+
+  def this(alarmOperationActor:ActorRef)=this(alarmOperationActor,15)
 
   override def get_alarm_IRP_versions(): Array[String] = {
     val futureResult = alarmOperationActor ? get_alarm_IRP_versions_msg
-    try {
-      Await.result(futureResult, timeout.duration).asInstanceOf[Array[String]]
-    } catch {
-      case e: Exception => {
-        LOGGER.error("Fail to get alarm irp versions", e);
-        throw new GetAlarmIRPVersions(e.getMessage);
-      }
-    }
+        try {
+          Await.result(futureResult, timeout.duration).asInstanceOf[Array[String]]
+        }catch {
+          case corbaExp:UserException =>{
+            LOGGER.error("Fail to get alarm irp versions", corbaExp);
+            throw corbaExp
+          }
+          case e: Exception => {
+            LOGGER.error("Fail to get alarm irp versions", e);
+            throw new GetAlarmIRPVersions(e.getMessage());
+          }
+        }
   }
 
 
@@ -72,7 +80,7 @@ class AlarmOperationImpl(alarmOperationActor: ActorRef) extends AlarmIRPPOA with
   override def get_alarm_list(filter: StringTypeOpt, base_object: DNTypeOpt, flag: BooleanHolder, iter: AlarmInformationIteratorHolder): Array[StructuredEvent] = ???
 
   override def get_alarm_IRP_operations_profile(alarm_irp_version: String): Array[Method] = {
-    val futureResult = alarmOperationActor ? get_alarm_IRP_operations_profile(alarm_irp_version)
+    val futureResult = alarmOperationActor ? get_alarm_IRP_operations_profile_msg(alarm_irp_version)
     try {
       Await.result(futureResult, timeout.duration).asInstanceOf[Array[Method]]
     } catch {

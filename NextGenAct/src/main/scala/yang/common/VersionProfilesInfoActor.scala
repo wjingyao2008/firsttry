@@ -1,6 +1,7 @@
 package yang.common
 
-import akka.actor.Actor
+import akka.actor.SupervisorStrategy.{Resume, Escalate}
+import akka.actor.{ActorLogging, OneForOneStrategy, Actor}
 import com.nsn.oss.nbi.corba.ManagedGenericIRPConstDefs.Method
 import com.nsn.oss.nbi.corba.ManagedGenericIRPSystem.InvalidParameter
 import com.nsn.oss.nbi.{IRPInfo, IRPInfoServiceInstance}
@@ -10,7 +11,7 @@ import scala.collection.JavaConversions._
 /**
   * Created by y28yang on 1/31/2016.
   */
-class VersionProfilesInfoActor(infoService: IRPInfoServiceInstance) extends Actor{
+class VersionProfilesInfoActor(infoService: IRPInfoServiceInstance) extends Actor with  ActorLogging{
 
   private val ALARM_IRP_ID = "AlarmIRP"
   private val BCM_IRP_ID = "BasicCMIRP"
@@ -19,7 +20,7 @@ class VersionProfilesInfoActor(infoService: IRPInfoServiceInstance) extends Acto
   private val EP_IRP_ID = "EPIRP"
   private val CS_IRP_ID = "CSIRP"
   private val NOTIFICATION_IRP_ID = "NotificationIRP"
-//  private var irpInfos=Map[String,IRPInfo]()
+
 
   override def receive = {
     case `get_alarm_IRP_versions_msg` => {
@@ -46,7 +47,9 @@ class VersionProfilesInfoActor(infoService: IRPInfoServiceInstance) extends Acto
     }
     else {
       val expectVersions=irpInfo.getVersions.mkString("'",",","'")
-      throw new InvalidParameter(s"Unsupported Alarm IRP version '$version'. Supported version is $expectVersions")
+      val exp=new InvalidParameter(s"Unsupported Alarm IRP version '$version'. Supported version is $expectVersions")
+      sender !  akka.actor.Status.Failure(exp)
+      throw exp
     }
   }
 
