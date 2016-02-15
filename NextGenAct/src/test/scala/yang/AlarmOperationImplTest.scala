@@ -17,9 +17,9 @@ import yang.common.VersionProfilesInfoActor
 /**
   * Created by y28yang on 1/30/2016.
   */
-class AlarmOperationImplTest extends TestKitAndFunSpec {
+class AlarmOperationImplTest extends TestKitAndFunSuite {
 
-  it("testGet_alarm_IRP_versions") {
+  test("testGet_alarm_IRP_versions") {
       val infoservice = Mockito.mock(classOf[IRPInfoServiceInstance])
       val version = Array("123.0.1", "32.111 V6.2")
       val versionSet = new util.HashSet[String]()
@@ -39,7 +39,7 @@ class AlarmOperationImplTest extends TestKitAndFunSpec {
       println(actorRef.path)
 
   }
-    it("should timeout when timeout") {
+    test("should timeout when timeout") {
       val actorRef = system.actorOf(Props(new TimeOutActor(10000)))
       val alarmOperationImpl = new AlarmOperationImpl(actorRef, 5)
       val thrown = intercept[GetAlarmIRPVersions] {
@@ -49,7 +49,7 @@ class AlarmOperationImplTest extends TestKitAndFunSpec {
     }
 
 
-    it("should handle exception  when process") {
+    test("should handle exception  when process") {
       val actorRef = system.actorOf(Props(new ExceptionHandler))
       val alarmOperationImpl = new AlarmOperationImpl(actorRef, 5)
       val thrown = intercept[GetAlarmIRPVersions] {

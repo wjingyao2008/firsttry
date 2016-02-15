@@ -8,11 +8,11 @@ import org.mockito.Matchers
 import org.mockito.Matchers._
 import org.mockito.Mockito._
 import org.omg.CORBA.IntHolder
-import yang.{AlarmOperationActor, AlarmOperationImpl, TestKitAndFunSpec}
+import yang.{AlarmOperationActor, AlarmOperationImpl, TestKitAndFunSuite}
 /**
   * Created by y28yang on 2/3/2016.
   */
-class AlarmCountActorTest extends TestKitAndFunSpec with mockAlarmOperationService {
+class AlarmCountActorTest extends TestKitAndFunSuite with mockAlarmOperationService {
 
   override def beforeAll(): Unit = {
     //throw new RuntimeException("123")
@@ -21,8 +21,7 @@ class AlarmCountActorTest extends TestKitAndFunSpec with mockAlarmOperationServi
     mapping.readCfg("/example.xml")
   }
 
-  describe("testAroundPostStop") {
-    it(" filter should ok"){
+  test("testAroundPostStop filter should ok") {
     val alarCount = new AlarmCounts
     alarCount.setCriticalCount(1: Long)
     alarCount.setMajorCount(2: Long)
@@ -53,8 +52,6 @@ class AlarmCountActorTest extends TestKitAndFunSpec with mockAlarmOperationServi
     intHodler5.value shouldBe 5
     intHodler6.value shouldBe 6
   }
-}
-
 
 
 }

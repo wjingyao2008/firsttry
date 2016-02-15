@@ -2,65 +2,23 @@ package yang.common
 
 import akka.actor.Status.Failure
 import akka.actor._
-import akka.testkit.{ImplicitSender, TestKit}
 import akka.util.Timeout
 import com.nsn.oss.nbi.corba.ManagedGenericIRPConstDefs.Method
 import com.nsn.oss.nbi.corba.ManagedGenericIRPSystem.InvalidParameter
 import com.nsn.oss.nbi.{IRPInfo, IRPInfoServiceInstance, Operation}
-import com.typesafe.config.ConfigFactory
-import org.junit.runner.RunWith
-import org.junit.{Test, After, Before}
 import org.mockito.Mockito
 import org.mockito.Mockito._
-import org.scalatest.junit.AssertionsForJUnit
-import org.scalatest.{FunSuiteLike, BeforeAndAfterAll, Matchers, FlatSpecLike}
 import yang.Protocol.AlarmOptPtl.get_alarm_IRP_operations_profile_msg
-import yang.{SupervisorTestActor, TestKitAndFlatSpec}
+import yang.SupervisorTestActor
+import yang.TestKitAndFunSuite
 
 import scala.concurrent.duration._
 
 /**
   * Created by y28yang on 1/31/2016.
   */
-class TestKitAndFunSuite(actorSystem: ActorSystem) extends TestKit(_system = actorSystem)
-  with FunSuiteLike
-  with Matchers
-  with ImplicitSender
-  with BeforeAndAfterAll
-{
 
-  // def this()=>this(ActorSystem("FaultHandlingDocSpec"))
-  //when mixin,then this will shutdown all
-  // this:TestKit with  Suite =>
-  override protected def afterAll(): Unit ={
-    super.afterAll()
-    println("shutdown correctly")
-    system.shutdown()
-  }
-
-
-
-  def this(logLevel: String)=this(ActorSystem("testSystem",
-    ConfigFactory.parseString(
-      s"""
-      akka {
-        loggers = ["akka.testkit.TestEventListener"]
-        loglevel = "$logLevel"
-                                actor {
-                                   debug {
-                                      receive = on
-                                      autoreceive = on
-                                      lifecycle = on
-                                    }
-                                  }
-      }
-      """)))
-
-  def this()=this("INFO")
-
-}
-
-class VersionProfilesInfoActorTest3 extends TestKitAndFunSuite {
+class VersionProfilesInfoActorTest2 extends TestKitAndFunSuite {
     test("when receive none version profile should throw exception" ){
       val infoservice = Mockito.mock(classOf[IRPInfoServiceInstance])
       when(infoservice.getIRPInfoById("AlarmIRP")).thenReturn(new IRPInfo("id", "idInNs"))
@@ -80,8 +38,8 @@ class VersionProfilesInfoActorTest3 extends TestKitAndFunSuite {
         }
       }
     }
-}
-class VersionProfilesInfoActorTest2 extends TestKitAndFunSuite {
+//}
+//class VersionProfilesInfoActorTest3 extends TestKitAndFunSuite {
   test("when receive getOperationProfile should return array[Mehod]") {
       val infoservice = Mockito.mock(classOf[IRPInfoServiceInstance])
       val irpinfo = new IRPInfo("id", "idInNs")
