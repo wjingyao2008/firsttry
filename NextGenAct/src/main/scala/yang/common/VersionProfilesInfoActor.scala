@@ -11,7 +11,7 @@ import scala.collection.JavaConversions._
 /**
   * Created by y28yang on 1/31/2016.
   */
-class VersionProfilesInfoActor(infoService: IRPInfoServiceInstance) extends Actor with  ActorLogging{
+class VersionProfilesInfoActor(infoService: IRPInfoServiceInstance) extends Actor with  ActorLogging with FailurePropatingActor{
 
   private val ALARM_IRP_ID = "AlarmIRP"
   private val BCM_IRP_ID = "BasicCMIRP"
@@ -47,9 +47,7 @@ class VersionProfilesInfoActor(infoService: IRPInfoServiceInstance) extends Acto
     }
     else {
       val expectVersions=irpInfo.getVersions.mkString("'",",","'")
-      val exp=new InvalidParameter(s"Unsupported Alarm IRP version '$version'. Supported version is $expectVersions")
-      sender !  akka.actor.Status.Failure(exp)
-      throw exp
+      throw new InvalidParameter(s"Unsupported Alarm IRP version '$version'. Supported version is $expectVersions")
     }
   }
 

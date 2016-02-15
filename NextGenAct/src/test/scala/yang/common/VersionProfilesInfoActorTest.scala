@@ -1,51 +1,46 @@
 package yang.common
 
-import java.util.concurrent.TimeoutException
-
-import akka.actor.Props
-import akka.pattern.ask
+import akka.actor.Status.Failure
+import akka.actor._
 import akka.util.Timeout
 import com.nsn.oss.nbi.corba.ManagedGenericIRPConstDefs.Method
+import com.nsn.oss.nbi.corba.ManagedGenericIRPSystem.InvalidParameter
 import com.nsn.oss.nbi.{IRPInfo, IRPInfoServiceInstance, Operation}
 import org.mockito.Mockito
 import org.mockito.Mockito._
 import yang.Protocol.AlarmOptPtl.get_alarm_IRP_operations_profile_msg
-import yang.{Supervisor, TestKitAndFunSpec}
+import yang.{SupervisorTestActor, TestKitAndFlatSpec}
 
-import scala.concurrent.Await
 import scala.concurrent.duration._
-
 
 /**
   * Created by y28yang on 1/31/2016.
   */
-class VersionProfilesInfoActorTest extends TestKitAndFunSpec {
-//  describe("when receive none version profile") {
-//    it("should throw exception") {
-//      implicit val timeout = Timeout(5 seconds)
-//      val infoservice = Mockito.mock(classOf[IRPInfoServiceInstance])
-//      when(infoservice.getIRPInfoById("AlarmIRP")).thenReturn(new IRPInfo("id", "idInNs"))
-//      //val versionProfileInfoActor = system.actorOf(Props(new VersionProfilesInfoActor(infoservice)))
-//
-//      val supervisor = system.actorOf(Props(new Supervisor(Props(new VersionProfilesInfoActor(infoservice)))),"supervisor")
-//      val result = supervisor ? get_alarm_IRP_operations_profile_msg("v3")
-//
-//      try {
-//         Await.result(result, timeout.duration).asInstanceOf[Array[String]]
-//        fail()
-//      } catch {
-//        case ex: TimeoutException => {
-//          fail()
-//        }
-//        case e: Exception => {
-//          assert(true)
-//        }
-//      }
-//    }
-//
-//  }
-  describe("when receive getOperationProfile") {
-    it("should return array[Mehod]") {
+
+class VersionProfilesInfoActorTest extends TestKitAndFlatSpec {
+
+
+  "when receive none version profile" must "should throw exception"  in {
+    val infoservice = Mockito.mock(classOf[IRPInfoServiceInstance])
+    when(infoservice.getIRPInfoById("AlarmIRP")).thenReturn(new IRPInfo("id", "idInNs"))
+    val supervisor = system.actorOf(Props[SupervisorTestActor], "supervisor")
+
+    supervisor ! Props(new VersionProfilesInfoActor(infoservice))
+
+    val profileChild = expectMsgType[ActorRef]
+    profileChild ! get_alarm_IRP_operations_profile_msg("v3")
+    expectMsgPF() {
+      case Failure(cause: InvalidParameter) => {
+        assert(true)
+      }
+      case x => {
+        fail()
+      }
+    }
+  }
+
+
+  "when receive getOperationProfile" must "should return array[Mehod]" in {
       val infoservice = Mockito.mock(classOf[IRPInfoServiceInstance])
       val irpinfo = new IRPInfo("id", "idInNs")
       val operation = new Operation("get_version")
@@ -79,8 +74,5 @@ class VersionProfilesInfoActorTest extends TestKitAndFunSpec {
         }
       }
     }
-  }
-
 }
-
 
