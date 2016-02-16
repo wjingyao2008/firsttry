@@ -14,6 +14,6 @@ trait AlarmOperationServiceInterface {
 
 class AlarmOperationServiceImpl extends AlarmOperationServiceInterface{
   override def getAllAlarmCounts(filters: util.List[Filter], userInfo: UserInfo): AlarmCounts = {
-    return ServiceLocator.getAlarmMonitorPort().getAllAlarmCounts(filters, userInfo);
+     ServiceLocator.getAlarmMonitorPort().getAllAlarmCounts(filters, userInfo)
   }
 }

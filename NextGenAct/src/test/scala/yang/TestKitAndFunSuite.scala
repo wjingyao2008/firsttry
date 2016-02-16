@@ -33,11 +33,16 @@ class TestKitAndFunSuite(actorSystem: ActorSystem) extends TestKit(_system = act
                                       autoreceive = on
                                       lifecycle = on
                                     }
+                                  info {
+                                              receive = on
+                                               autoreceive = on
+                                              lifecycle = on
+                                      }
                                   }
       }
       """)))
 
-  def this() = this("INFO")
+  def this() = this("DEBUG")
 }
 
 
