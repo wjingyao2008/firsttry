@@ -81,14 +81,15 @@ class AlarmOperationImpl(alarmOperationActor: ActorRef, timeoutSec: Long) extend
       throw new GetAlarmList(ProxyUtil.REQUEST_REJECT_REASON_WHEN_PROXY_UNDEPLOYED)
     }
     val filterString = if (filter.discriminator) filter.value else ""
-    val baseObjectString = if (base_object.discriminator) base_object.value else ""
-    LOGGER.debug(s"get_alarm_list filter: $filterString ,baseObject: $baseObjectString")
+    val baseObjectUsed=base_object.discriminator
+    val isBaseObjectString = if (baseObjectUsed) base_object.value else ""
+    LOGGER.info(s"get_alarm_list filter: $filterString ,baseObject is used? $baseObjectUsed,baseObject: $isBaseObjectString")
 
-    val futureResult = alarmOperationActor ? request_get_alarm_list(filterString, baseObjectString, proxyId())
+    val futureResult = alarmOperationActor ? request_get_alarm_list(filterString, baseObjectUsed,isBaseObjectString, proxyId())
     try {
       val returned = Await.result(futureResult, timeout.duration).asInstanceOf[reply_get_alarm_list]
       flag.value = returned.booleanFlag
-      iter.value = returned.iterator
+      iter.value = returned.iterator._this()
       returned.structEvents
     } catch {
       case e: Exception => {

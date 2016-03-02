@@ -32,7 +32,7 @@ class AlarmCountActorTest extends TestKitAndFunSuite with mockAlarmOperationServ
     when(mockAlarmOperationService.getAllAlarmCounts(Matchers.anyListOf(classOf[Filter]), any[UserInfo]))
       .thenReturn(alarCount)
     val alarmCountActor = system.actorOf(Props(new AlarmCountActor(this.mockAlarmOperationService)))
-    val actorRef = system.actorOf(Props(new AlarmOperationActor(null, alarmCountActor)))
+    val actorRef = system.actorOf(Props(new AlarmOperationActor(null, alarmCountActor,null)))
     val alarmOperationImpl = new AlarmOperationImpl(actorRef)
     val filter = new StringTypeOpt
     val intHodler1 = new IntHolder

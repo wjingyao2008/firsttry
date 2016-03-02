@@ -8,7 +8,8 @@ import yang.Protocol.AlarmOptPtl._
   * Created by y28yang on 1/30/2016.
   */
 class AlarmOperationActor(versionProfileAct:ActorRef,
-                          alarmCountActor:ActorRef) extends Actor{
+                          alarmCountActor:ActorRef,
+                          alarmGetListActor:ActorRef) extends Actor{
 
   override def receive = {
     case `get_alarm_IRP_versions_msg` =>{
@@ -20,6 +21,9 @@ class AlarmOperationActor(versionProfileAct:ActorRef,
     }
     case msg:request_get_alarm_count =>{
       alarmCountActor forward msg
+    }
+    case msg:request_get_alarm_list =>{
+      alarmGetListActor forward msg
     }
     case _=> ???
   }

@@ -1,12 +1,17 @@
 package yang
 
+import java.util
+import java.util.Properties
 import java.util.concurrent.{Executors, ExecutorService}
 
-import akka.actor.{Props, ActorSystem}
-import com.nsn.oss.nbi.IRPInfoServiceInstance
+import akka.actor.{ActorLogging, ActorRef, Props, ActorSystem}
+import com.nsn.oss.nbi.{IteratorStarter, IRPInfoServiceInstance}
+import com.nsn.oss.nbi.common.Logger
+import com.nsn.oss.nbi.fm.operation.interfaces._
+import com.nsn.oss.nbi.iterator.IteratorManager
 import com.typesafe.config.{ConfigFactory, Config}
-import yang.alarm.{AlarmOperationServiceImpl, AlarmCountActor}
-import yang.common.VersionProfilesInfoActor
+import yang.alarm._
+import yang.common._
 import yang.corba.AlarmIRPStarter
 
 /**
@@ -15,38 +20,75 @@ import yang.corba.AlarmIRPStarter
 object Main {
 
 
-  def submit(runable:Runnable): Unit ={
-   println(runable)
+  def submit(runable: Runnable): Unit = {
+    println(runable)
     EXECUTOR_SERVICE.execute(runable)
   }
 
   val EXECUTOR_SERVICE: ExecutorService = Executors.newCachedThreadPool
+  val LOGGER = Logger.getLogger("Main");
 
   def main(args: Array[String]) {
-//    val iterator: IteratorStarter = new IteratorStarter
-//    submit(iterator)
 
+    val iteratorStarter: IteratorStarter = new IteratorStarter {
+      override def getProperties: Properties = {
+        val properties: Properties = new Properties
+        properties.put("OAPort", "8999")
+        properties.put("OASSLPort", "8998")
+        return properties
+      }
+    }
+    submit(iteratorStarter)
     val system = ActorSystem("MyActors")
-    println("args:"+args.mkString(","))
+    LOGGER.info("args:" + args.mkString(","))
 
-    println("inital akka")
-    val stubActor=system.actorOf(Props(new StubActor))
-    val alarmCountActor=system.actorOf(Props(new AlarmCountActor(new AlarmOperationServiceImpl)),"AlarmCount")
-    val versionProfileActor=system.actorOf(Props(new VersionProfilesInfoActor(new IRPInfoServiceInstance)),"VersionProfile")
-    val alarmActorPros = Props(new AlarmOperationActor(versionProfileActor,alarmCountActor))
+    LOGGER.info("inital akka")
+    val stubActor = system.actorOf(Props(new StubActor))
+    val alarmCountActor = system.actorOf(Props(new AlarmCountActor(new AlarmFmServiceImpl)), "AlarmCount")
+    val versionProfileActor = system.actorOf(Props(new VersionProfilesInfoActor(new IRPInfoServiceInstance)), "VersionProfile")
 
 
-    val alarmOperationActor=system.actorOf(alarmActorPros,"AlarmOpt")
- //   val alarmirpImpl = new AlarmOperationImpl(null);
+
+    val alarmGetListActor = getAlarmListActor(system, iteratorStarter)
+
+    val alarmActorPros = Props(new AlarmOperationActor(versionProfileActor, alarmCountActor, alarmGetListActor))
+
+
+    val alarmOperationActor = system.actorOf(alarmActorPros, "AlarmOpt")
     println("initial jacorb")
-    val alarmirpImpl = new AlarmOperationImpl(alarmOperationActor);
-    var port="8300"
-    if(args.length>0) port=args(0)
-    val alarmirp = new AlarmIRPStarter(alarmirpImpl,port);
+    val alarmirpImpl = new AlarmOperationImpl(alarmOperationActor)
+    var port = "8300"
+    if (args.length > 0) port = args(0)
+    val alarmirp = new AlarmIRPStarter(alarmirpImpl, port);
     alarmirp.run()
   }
 
+  def getAlarmListActor(system: ActorSystem, iterator: IteratorStarter): ActorRef = {
 
 
+    //     val inputProcesser=new GetAlarmListGetInputParameterProcessor(new ProxyFilterManagerImpl,
+    //      new DnNameMapperImpl,iteratorFlexMappingActor)
+    val iteratorIorService = system.actorOf(Props.create(classOf[IteratorManager],null, iterator))
+    val pullerFromFm = system.actorOf(Props[PullerFromFmForIterator])
+
+    val getAlarmListFromFmActor = system.actorOf(Props.create(classOf[GetAlarmListFromFmActor], new AlarmFmServiceImpl, iteratorIorService, pullerFromFm))
+    val iteratorFlexMappingActor = system.actorOf(Props.create(classOf[IteratorFlexMappingActor], getAlarmListFromFmActor))
+    val inputProcesserActor = system.actorOf(Props.create(classOf[GetAlarmListGetInputParameterProcessor],
+      new ProxyFilterManagerImpl,
+      new DnNameMapperImpl,
+      iteratorFlexMappingActor))
+    inputProcesserActor
+  }
+
+  class mockFmService extends AlarmFmServiceInterface {
+    override def getAllAlarmCounts(filters: util.List[Filter], userInfo: UserInfo): AlarmCounts = ???
+
+    override def getAllAlarm(filters: util.List[Filter], userInfo: UserInfo): Int = {
+      45
+    }
+
+    @throws(classOf[IterationFault])
+    override def getNext(iteratorId: Int, howMany: Int): util.List[NsnAlarm] = ???
+  }
 
 }

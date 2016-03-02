@@ -30,7 +30,7 @@ class AlarmOperationImplTest extends TestKitAndFunSuite {
       when(infoservice.getIRPInfoById(any[String])).thenReturn(info)
       when(info.getVersions()).thenReturn(versionSet)
       val versionProfileInfoActor = system.actorOf(Props(new VersionProfilesInfoActor(infoservice)))
-      val actorRef = system.actorOf(Props(new AlarmOperationActor(versionProfileInfoActor, null)))
+      val actorRef = system.actorOf(Props(new AlarmOperationActor(versionProfileInfoActor, null,null)))
       val alarmOperationImpl = new AlarmOperationImpl(actorRef)
 
       val result = alarmOperationImpl.get_alarm_IRP_versions()
@@ -64,7 +64,6 @@ class AlarmOperationImplTest extends TestKitAndFunSuite {
     override def receive = {
       case _ => {
         Thread.sleep(timeOut)
-        AnyRef
       }
     }
 

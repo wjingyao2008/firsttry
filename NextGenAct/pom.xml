@@ -22,8 +22,23 @@
             <!--<artifactId>mf-core</artifactId>-->
         <!--</dependency>-->
         <dependency>
+            <groupId>com.nsn.oss.nbi.component</groupId>
+            <artifactId>servicemix-3gppCorba</artifactId>
+            <version>DYNAMIC-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.nsn.oss.nbi.common</groupId>
+            <artifactId>common-filterMonitor</artifactId>
+            <version>DYNAMIC-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.nsn.oss.nbi.common</groupId>
             <artifactId>nbi-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.nsn.oss.nbi.common</groupId>
+            <artifactId>dn-mapping</artifactId>
+            <version>DYNAMIC-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.nsn.oss.nbi</groupId>

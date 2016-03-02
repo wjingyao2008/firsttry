@@ -8,7 +8,7 @@ import com.nsn.oss.nbi.fm.operation.interfaces.{UserInfo, Filter}
 /**
   * Created by y28yang on 1/31/2016.
   */
-class AlarmCountActor(alarmOperationService: AlarmOperationServiceInterface) extends Actor with ActorLogging {
+class AlarmCountActor(alarmOperationService: AlarmFmServiceInterface) extends Actor with ActorLogging {
 
 
   override def receive = {
