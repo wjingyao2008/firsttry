@@ -9,7 +9,7 @@ import yang.iterator.IteratorProtocol._
 
 object IteratorActorTest{
   class DonothingPoller extends DataPoller{
-    override def startPoll(iteratorRef:ActorRef): Boolean = {
+    override def startPoll(iteratorRef:ActorRef, iteratorId: Int): Boolean = {
       false
     }
   }
@@ -22,7 +22,7 @@ class IteratorActorTest extends TestKitAndFunSuite {
   test("test auto poll") {
     val dataPoller = new mockDataPoller(testActor)
 
-    val iteratorActorRef = system.actorOf(Props(new IteratorActor(dataPoller, testActor)),"1")
+    val iteratorActorRef = system.actorOf(Props(new IteratorActor(dataPoller, testActor,1)),"1")
     Thread.sleep(500)
     dataPoller.pollCount shouldBe 4
   }
@@ -30,12 +30,12 @@ class IteratorActorTest extends TestKitAndFunSuite {
   test("actor test for take more than it has") {
     val dataPoller = new DonothingPoller
 
-    val iteratorActorRef:TestActorRef[IteratorActor] = TestActorRef(Props(new IteratorActor(dataPoller, testActor)))
+    val iteratorActorRef:TestActorRef[IteratorActor] = TestActorRef(Props(new IteratorActor(dataPoller, testActor,1)))
     val underlying=iteratorActorRef.underlyingActor
     underlying.hasMoreDataToTaken() shouldBe true
     iteratorActorRef ! request_next_date(3)
     expectMsgPF() {
-      case respond_next_date(hasNext,eventArray)=> {
+      case RespondNextDate(hasNext,eventArray)=> {
         hasNext shouldBe true
         eventArray.size shouldBe 0
       }
@@ -45,7 +45,7 @@ class IteratorActorTest extends TestKitAndFunSuite {
     iteratorActorRef ! appended_flexmapped_data(false,Array(s1))
     iteratorActorRef ! request_next_date(3)
     expectMsgPF() {
-      case respond_next_date(hasNext,eventArray)=> {
+      case RespondNextDate(hasNext,eventArray)=> {
         hasNext shouldBe false
         eventArray.size shouldBe 1
         eventArray(0) shouldBe s1
@@ -58,7 +58,7 @@ class IteratorActorTest extends TestKitAndFunSuite {
 
   test("test for get next") {
     val dataPoller2 = new DonothingPoller
-    val iteratorActorRef = system.actorOf(Props(new IteratorActor(dataPoller2, testActor)))
+    val iteratorActorRef = system.actorOf(Props(new IteratorActor(dataPoller2, testActor,0)))
     val s1=new StructuredEvent()
     val s2=new StructuredEvent()
     val s3=new StructuredEvent()
@@ -72,7 +72,7 @@ class IteratorActorTest extends TestKitAndFunSuite {
 
   test("test for get next in turn") {
     val dataPoller2 = new DonothingPoller
-    val iteratorActorRef = system.actorOf(Props(new IteratorActor(dataPoller2, testActor)))
+    val iteratorActorRef = system.actorOf(Props(new IteratorActor(dataPoller2, testActor,1)))
     val s1=new StructuredEvent()
     val s2=new StructuredEvent()
     val s3=new StructuredEvent()
@@ -92,7 +92,7 @@ class IteratorActorTest extends TestKitAndFunSuite {
   def expect(iteratorActorRef:ActorRef,event:StructuredEvent,expectHasNext:Boolean)={
     iteratorActorRef ! request_next_date(1)
     expectMsgPF() {
-      case respond_next_date(hasNext,eventArray)=> {
+      case RespondNextDate(hasNext,eventArray)=> {
         hasNext shouldBe expectHasNext
         eventArray(0) shouldBe event
         println("assert ok")
@@ -114,7 +114,7 @@ class IteratorActorTest extends TestKitAndFunSuite {
     @volatile
     var pollCount=0
     println(events.mkString(","))
-    override def startPoll(iteratorRef:ActorRef):Boolean= {
+    override def startPoll(iteratorRef:ActorRef, iteratorId: Int):Boolean= {
       println(s"poll $pollCount,event size: ${events.size}")
       pollCount+=1
       val hasNext=events.size > 0

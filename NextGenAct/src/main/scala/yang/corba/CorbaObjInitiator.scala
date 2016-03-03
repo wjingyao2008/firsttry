@@ -1,4 +1,4 @@
-package yang.alarm
+package yang.corba
 
 import org.omg.PortableServer.Servant
 

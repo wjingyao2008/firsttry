@@ -6,7 +6,7 @@ import akka.actor.ActorRef
   * Created by y28yang on 3/2/2016.
   */
 trait DataPoller {
-  def startPoll(iteratorRef:ActorRef):Boolean
+  def startPoll(iteratorRef:ActorRef, iteratorId: Int):Boolean
 
 
 //  def startPoll(nextActorSendTo:ActorRef) = {

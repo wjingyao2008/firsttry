@@ -5,7 +5,7 @@ import akka.actor.{ActorRef, Actor, Props, ActorSystem}
 import com.nsn.oss.nbi.IteratorStarter
 import yang.corba.AlarmIRPStarter
 import yang.iterator.IteratorManager
-import yang.iterator.IteratorProtocol.request_create_iterator_ior
+import yang.iterator.IteratorProtocol.RequestCreateIteratorIor
 import yang.{AlarmOperationImpl, BlockingAsk, ExecutorPool}
 import yang.Protocol.AlarmOptPtl.{reply_get_alarm_list}
 
@@ -41,7 +41,7 @@ object IteratorIorServiceTest extends ExecutorPool with BlockingAsk{
 class mockActor(actor:ActorRef) extends Actor{
   override def receive: Receive={
     case _=>{
-      actor forward request_create_iterator_ior
+      actor forward RequestCreateIteratorIor(0)
     }
   }
 }

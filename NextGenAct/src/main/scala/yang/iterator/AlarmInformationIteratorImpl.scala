@@ -20,14 +20,14 @@ class AlarmInformationIteratorImpl(val iteratorActor: ActorRef, timeoutSec: Long
 
 
   override def destroy(): Unit = {
-    iteratorActor ! request_destroy_iterator
+    iteratorActor ! RequestDestroyIterator
   }
 
   override def next_alarmInformations(howMany: Short, eventBatchHolder: EventBatchHolder): Boolean = {
     touch()
     val futureResult = iteratorActor ? request_next_date(howMany)
     try {
-      val respond = Await.result(futureResult, timeout.duration).asInstanceOf[respond_next_date]
+      val respond = Await.result(futureResult, timeout.duration).asInstanceOf[RespondNextDate]
       eventBatchHolder.value = respond.structuredEvents
       respond.hasNext
     } catch {

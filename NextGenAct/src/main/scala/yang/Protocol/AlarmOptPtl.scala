@@ -26,7 +26,7 @@ object AlarmOptPtl {
   case class request_get_alarm_list(filter: String,isBaseObjectString:Boolean,baseObject: String, proxyId: String)
   case class request_get_alarm_list_combined(combinedFilter: String, baseObject: String)
 
-  case class request_poll_alarm_list_from_fm(iteratorId:Int)
+  case class request_poll_alarm_list_from_fm(iteratorFmId:Int)
   case class reply_get_alarm_list(booleanFlag:Boolean,
                                   iterator: AlarmInformationIteratorImpl,
                                   structEvents:Array[StructuredEvent])

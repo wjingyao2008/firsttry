@@ -69,9 +69,8 @@ object Main {
     //     val inputProcesser=new GetAlarmListGetInputParameterProcessor(new ProxyFilterManagerImpl,
     //      new DnNameMapperImpl,iteratorFlexMappingActor)
     val iteratorIorService = system.actorOf(Props.create(classOf[IteratorManager],null, iterator))
-    val pullerFromFm = system.actorOf(Props[PullerFromFmForIterator])
 
-    val getAlarmListFromFmActor = system.actorOf(Props.create(classOf[GetAlarmListFromFmActor], new AlarmFmServiceImpl, iteratorIorService, pullerFromFm))
+    val getAlarmListFromFmActor = system.actorOf(Props.create(classOf[GetAlarmListFromFmActor], new AlarmFmServiceImpl, iteratorIorService, iteratorIorService))
     val iteratorFlexMappingActor = system.actorOf(Props.create(classOf[IteratorFlexMappingActor], getAlarmListFromFmActor))
     val inputProcesserActor = system.actorOf(Props.create(classOf[GetAlarmListGetInputParameterProcessor],
       new ProxyFilterManagerImpl,

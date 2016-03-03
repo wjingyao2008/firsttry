@@ -6,7 +6,7 @@ import akka.actor._
 import org.omg.CosNotification.StructuredEvent
 import org.omg.PortableServer.Servant
 import yang.Protocol.AlarmOptPtl.reply_get_alarm_list
-import yang.alarm.CorbaObjInitiator
+import yang.corba.CorbaObjInitiator
 import yang.iterator.IteratorProtocol._
 
 import scala.collection.mutable
@@ -22,7 +22,6 @@ class IteratorManager(corbaObjInitiator: CorbaObjInitiator,
                       iteratorTimeOutEach:Long=60000) extends Actor with ActorLogging {
 
   val iteratorMap = new mutable.HashMap[ActorRef, Servant with TimeoutCheckable]
-  var iteratorIndex=0:Int
 
   override def preStart(): Unit = {
     val delay = Duration.create(scheduleIntervalMilSec, TimeUnit.MILLISECONDS)
@@ -32,9 +31,8 @@ class IteratorManager(corbaObjInitiator: CorbaObjInitiator,
   }
 
   override def receive: Receive = {
-    case `request_create_iterator_ior` => {
-      val newIndex = generateIndex()
-      val actorRef = createNewIterator(newIndex)
+    case RequestCreateIteratorIor(iteratorId) => {
+      val actorRef = createNewIterator(iteratorId)
       log.info(s"creating ior for iterator:${actorRef.path}")
       val alarmIterator = new AlarmInformationIteratorImpl(actorRef, 5)
       corbaObjInitiator.active(alarmIterator)
@@ -55,11 +53,6 @@ class IteratorManager(corbaObjInitiator: CorbaObjInitiator,
 
   }
 
- def generateIndex():Int={
-   iteratorIndex+=1
-   if(iteratorIndex<0) iteratorIndex=0
-   iteratorIndex
- }
 
   def deleteIterator(iterator: ActorRef) = {
     log.info(s"deleting iterator: ${iterator.path}")
@@ -71,8 +64,9 @@ class IteratorManager(corbaObjInitiator: CorbaObjInitiator,
 
   def createNewIterator(iteratorIndex: Int): ActorRef = {
     val iteratorName=iteratorChildName+iteratorIndex
+    val boxedIndex=Int.box(iteratorIndex)
     val actorRef = context.actorOf(Props.create(classOf[IteratorActor],
-      dataPoller,self),iteratorName)
+      dataPoller,self,boxedIndex),iteratorName)
     actorRef
   }
 }
