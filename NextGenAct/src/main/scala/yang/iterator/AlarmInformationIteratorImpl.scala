@@ -18,7 +18,7 @@ class AlarmInformationIteratorImpl(val iteratorActor: ActorRef, timeoutSec: Long
   val LOGGER = Logger.getLogger("AlarmInformationIteratorImpl");
   implicit val timeout = Timeout(timeoutSec seconds)
 
-
+   //test for remote git
   override def destroy(): Unit = {
     iteratorActor ! RequestDestroyIterator
   }
