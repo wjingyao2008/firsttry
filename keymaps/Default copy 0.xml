@@ -1,0 +1,6 @@
+<keymap version="1" name="Default copy 0" parent="$default">
+  <action id="FileStructurePopup" />
+  <action id="RevealIn">
+    <keyboard-shortcut first-keystroke="ctrl f12" />
+  </action>
+</keymap>
