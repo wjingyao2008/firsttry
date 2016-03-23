@@ -37,6 +37,12 @@
             <Goal>
               <option name="commandLine" value="-DskipTests clean package" />
             </Goal>
+            <Goal>
+              <option name="commandLine" value="-DskipTest=true clean install" />
+            </Goal>
+            <Goal>
+              <option name="commandLine" value="-Dmaven.test.skip=true clean intall" />
+            </Goal>
           </list>
         </option>
       </Goals>
