@@ -1,5 +1,15 @@
 <keymap version="1" name="Default copy 0" parent="$default">
+  <action id="Back">
+    <mouse-shortcut keystroke="button4" />
+    <keyboard-shortcut first-keystroke="alt left" />
+  </action>
   <action id="FileStructurePopup" />
+  <action id="Forward">
+    <mouse-shortcut keystroke="button5" />
+    <keyboard-shortcut first-keystroke="alt right" />
+  </action>
+  <action id="NextTab" />
+  <action id="PreviousTab" />
   <action id="RevealIn">
     <keyboard-shortcut first-keystroke="ctrl f12" />
   </action>
