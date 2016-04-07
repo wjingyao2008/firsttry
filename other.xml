@@ -67,6 +67,9 @@
     <option name="enotes" value="" />
     <option name="selectednoteindex" value="0" />
   </component>
+  <component name="RefactoringSettings">
+    <option name="MOVE_PREVIEW_USAGES" value="false" />
+  </component>
   <component name="SbtSettings">
     <option name="jdkHome" value="" />
     <option name="sbtLauncherJarPath" value="C:/sbt/bin/sbt-launch.jar" />
