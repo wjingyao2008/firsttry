@@ -43,6 +43,15 @@
             <Goal>
               <option name="commandLine" value="-Dmaven.test.skip=true clean intall" />
             </Goal>
+            <Goal>
+              <option name="commandLine" value="docker:build" />
+            </Goal>
+            <Goal>
+              <option name="commandLine" value="docker:build -e" />
+            </Goal>
+            <Goal>
+              <option name="commandLine" value="docker:build -e -DDOCKER_HOST=tcp://10.140.0.223:2375" />
+            </Goal>
           </list>
         </option>
       </Goals>
