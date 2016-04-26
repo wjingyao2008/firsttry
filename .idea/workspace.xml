@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c524960b-a7e4-452e-83f0-96c8b64082c7" name="Default" comment="">
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\copyright\profiles_settings.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__com_typesafe_akka_akka_actor_2_11_2_3_14.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__com_typesafe_akka_akka_slf4j_2_11_2_3_14.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__com_typesafe_config_1_2_1.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__junit_junit_4_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__log4j_log4j_1_2_17.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__org_scala_lang_modules_scala_xml_2_11_1_0_2.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__org_scala_lang_scala_library_2_11_5.xml" afterPath="" />
@@ -15,53 +16,12 @@
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__org_scalatest_scalatest_2_11_2_2_5.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__org_slf4j_slf4j_api_1_7_5.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\libraries\Maven__org_slf4j_slf4j_log4j12_1_7_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\modules.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\scala_compiler.xml" afterPath="" />
       <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\IntelliLang.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\_windows\applicationLibraries.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\_windows\git.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\_windows\hg.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\_windows\keymap.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\_windows\laf.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\_windows\path.macros.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\colors.scheme.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\colors\Default copy.icls" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\conda_packages.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\debugger.renderers.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\debugger.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\diff.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\editor.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\file.template.settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\filetypes.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\find.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\firsttry\firsttry.iml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\github_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\gradle.run.settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\ide.general.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\ignore.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\inspection\Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\javaeeExternalResources.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\keymaps\Default copy 0.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\keymaps\Default copy.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\mavenRunHelper.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\mavenVersion.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\myscalamaven.iml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\other.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\packages.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\plugin_ui.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\proxy.settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\scala.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\scratches.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\ui.lnf.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\usageView.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\web-browsers.xml" afterPath="" />
-      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\xStructure.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\workshop\firsttry\firsttry\.idea\workspace.xml" afterPath="" />
     </list>
     <ignored path="myscalamaven.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -400,6 +360,13 @@
       <option name="number" value="Default" />
       <updated>1461683395822</updated>
     </task>
+    <task id="LOCAL-00001" summary="remove useless xml">
+      <created>1461683699032</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1461683699032</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -409,6 +376,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -433,6 +401,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="remove useless xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove useless xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
