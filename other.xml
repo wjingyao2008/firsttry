@@ -1,0 +1,11 @@
+<application>
+  <component name="Quick Notes by Jitendra Rana">
+    <option name="enotes" value="" />
+    <option name="selectednoteindex" value="0" />
+  </component>
+  <component name="SbtSettings">
+    <option name="jdkHome" value="" />
+    <option name="sbtLauncherJarPath" value="C:/sbt/bin/sbt-launch.jar" />
+    <option name="sbtLauncherVmParameters" value="-Dsbt.log.format=true   -Dsbt.override.build.repos=true -Dsbt.repository.config=&quot;C:\sbt\conf\repositories&quot; -Dakka.scaladoc.diagrams=false   -Xms512m -XX:+CMSClassUnloadingEnabled" />
+  </component>
+</application>
