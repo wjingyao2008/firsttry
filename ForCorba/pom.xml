@@ -14,11 +14,6 @@
 
    <dependencies>
        <dependency>
-           <groupId>com.nsn.oss.myscalamaven</groupId>
-           <artifactId>NextGenAct</artifactId>
-           <version>DYNAMIC-SNAPSHOT</version>
-       </dependency>
-       <dependency>
            <groupId>org.jacorb</groupId>
            <artifactId>jacorb</artifactId>
        </dependency>
