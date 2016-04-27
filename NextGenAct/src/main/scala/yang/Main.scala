@@ -2,14 +2,13 @@ package yang
 
 import java.util
 import java.util.Properties
-import java.util.concurrent.{Executors, ExecutorService}
+import java.util.concurrent.{ExecutorService, Executors}
 
-import akka.actor.{ActorLogging, ActorRef, Props, ActorSystem}
-import com.nsn.oss.nbi.{IteratorStarter, IRPInfoServiceInstance}
+import akka.actor.{ActorRef, ActorSystem, Props}
 import com.nsn.oss.nbi.common.Logger
 import com.nsn.oss.nbi.fm.operation.interfaces._
 import com.nsn.oss.nbi.iterator.IteratorManager
-import com.typesafe.config.{ConfigFactory, Config}
+import com.nsn.oss.nbi.{IRPInfoServiceInstance, IteratorStarter}
 import yang.alarm._
 import yang.common._
 import yang.corba.AlarmIRPStarter
@@ -20,22 +19,17 @@ import yang.corba.AlarmIRPStarter
 object Main {
 
 
-  def submit(runable: Runnable): Unit = {
-    println(runable)
-    EXECUTOR_SERVICE.execute(runable)
-  }
-
   val EXECUTOR_SERVICE: ExecutorService = Executors.newCachedThreadPool
-  val LOGGER = Logger.getLogger("Main");
+  val LOGGER = Logger.getLogger("Main")
 
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
 
     val iteratorStarter: IteratorStarter = new IteratorStarter {
       override def getProperties: Properties = {
         val properties: Properties = new Properties
         properties.put("OAPort", "8999")
         properties.put("OASSLPort", "8998")
-        return properties
+        properties
       }
     }
     submit(iteratorStarter)
@@ -43,7 +37,7 @@ object Main {
     LOGGER.info("args:" + args.mkString(","))
 
     LOGGER.info("inital akka")
-    val stubActor = system.actorOf(Props(new StubActor))
+
     val alarmCountActor = system.actorOf(Props(new AlarmCountActor(new AlarmFmServiceImpl)), "AlarmCount")
     val versionProfileActor = system.actorOf(Props(new VersionProfilesInfoActor(new IRPInfoServiceInstance)), "VersionProfile")
 
@@ -59,8 +53,16 @@ object Main {
     val alarmirpImpl = new AlarmOperationImpl(alarmOperationActor)
     var port = "8300"
     if (args.length > 0) port = args(0)
-    val alarmirp = new AlarmIRPStarter(alarmirpImpl, port);
+    val alarmirp = new AlarmIRPStarter(alarmirpImpl, port)
     alarmirp.run()
+
+
+    //    val notificationIRPImpl=new NotificationIRPImpl
+  }
+
+  def submit(runable: Runnable): Unit = {
+    println(runable)
+    EXECUTOR_SERVICE.execute(runable)
   }
 
   def getAlarmListActor(system: ActorSystem, iterator: IteratorStarter): ActorRef = {
@@ -68,7 +70,7 @@ object Main {
 
     //     val inputProcesser=new GetAlarmListGetInputParameterProcessor(new ProxyFilterManagerImpl,
     //      new DnNameMapperImpl,iteratorFlexMappingActor)
-    val iteratorIorService = system.actorOf(Props.create(classOf[IteratorManager],null, iterator))
+    val iteratorIorService = system.actorOf(Props.create(classOf[IteratorManager], null, iterator))
 
     val getAlarmListFromFmActor = system.actorOf(Props.create(classOf[GetAlarmListFromFmActor], new AlarmFmServiceImpl, iteratorIorService, iteratorIorService))
     val iteratorFlexMappingActor = system.actorOf(Props.create(classOf[IteratorFlexMappingActor], getAlarmListFromFmActor))

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap"
+                  xmlns:impl="http://www.nokiasiemens.com/nd-callback"
+                  xmlns:tns1="http://dtos.notificationdispatcher.icf.interfaces.oss.nokia.com"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://www.nokiasiemens.com/nd-callback">
+    <!--WSDL created by Apache Axis version: 1.4
+    Built on Apr 22, 2006 (06:55:48 PDT)-->
+    <wsdl:types>
+        <schema elementFormDefault="qualified" targetNamespace="http://www.nokiasiemens.com/nd-callback"
+                xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://dtos.notificationdispatcher.icf.interfaces.oss.nokia.com"/>
+            <import namespace="http://xml.apache.org/xml-soap"/>
+            <import namespace="http://io.java"/>
+            <element name="processNotification">
+                <complexType>
+                    <sequence>
+                        <element name="in0" type="tns1:NotificationDTO"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <complexType name="ArrayOf_xsd_anyType">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+                </sequence>
+            </complexType>
+            <element name="processNotificationResponse">
+                <complexType/>
+            </element>
+        </schema>
+        <schema elementFormDefault="qualified" targetNamespace="http://xml.apache.org/xml-soap"
+                xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://dtos.notificationdispatcher.icf.interfaces.oss.nokia.com"/>
+            <import namespace="http://www.nokiasiemens.com/nd-callback"/>
+            <import namespace="http://io.java"/>
+            <complexType name="mapItem">
+                <sequence>
+                    <element name="key" nillable="true" type="xsd:anyType"/>
+                    <element name="value" nillable="true" type="xsd:anyType"/>
+                </sequence>
+            </complexType>
+            <complexType name="Map">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="item" type="apachesoap:mapItem"/>
+                </sequence>
+            </complexType>
+            <complexType name="Vector">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+                </sequence>
+            </complexType>
+        </schema>
+        <schema elementFormDefault="qualified"
+                targetNamespace="http://dtos.notificationdispatcher.icf.interfaces.oss.nokia.com"
+                xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xml.apache.org/xml-soap"/>
+            <import namespace="http://www.nokiasiemens.com/nd-callback"/>
+            <import namespace="http://io.java"/>
+            <complexType name="MapMessage">
+                <sequence>
+                    <element name="mapData" nillable="true" type="apachesoap:Map"/>
+                </sequence>
+            </complexType>
+            <complexType name="ObjectMessage">
+                <sequence>
+                    <element name="byteData" nillable="true" type="xsd:base64Binary"/>
+                    <element name="data" nillable="true" type="xsd:anyType"/>
+                </sequence>
+            </complexType>
+            <complexType name="TextMessage">
+                <sequence>
+                    <element name="text" nillable="true" type="xsd:string"/>
+                </sequence>
+            </complexType>
+            <complexType name="NotificationDTO">
+                <sequence>
+                    <element name="QId" nillable="true" type="xsd:string"/>
+                    <element name="attributeValueMap" nillable="true" type="apachesoap:Map"/>
+                    <element name="comparatorKey" nillable="true" type="xsd:string"/>
+                    <element name="componentType" nillable="true" type="xsd:string"/>
+                    <element name="mapMessage" nillable="true" type="tns1:MapMessage"/>
+                    <element name="notificationType" nillable="true" type="xsd:string"/>
+                    <element name="objectMessage" nillable="true" type="tns1:ObjectMessage"/>
+                    <element name="objectType" nillable="true" type="xsd:string"/>
+                    <element name="operationId" nillable="true" type="xsd:string"/>
+                    <element name="textMessage" nillable="true" type="tns1:TextMessage"/>
+                    <element name="timeStamp" nillable="true" type="xsd:dateTime"/>
+                </sequence>
+            </complexType>
+        </schema>
+    </wsdl:types>
+
+    <wsdl:message name="processNotificationResponse">
+
+        <wsdl:part element="impl:processNotificationResponse" name="parameters"/>
+
+    </wsdl:message>
+
+    <wsdl:message name="processNotificationRequest">
+
+        <wsdl:part element="impl:processNotification" name="parameters"/>
+
+    </wsdl:message>
+
+    <wsdl:portType name="NotificationWSCallbackInterface">
+
+        <wsdl:operation name="processNotification">
+
+            <wsdl:input message="impl:processNotificationRequest" name="processNotificationRequest"/>
+
+            <wsdl:output message="impl:processNotificationResponse" name="processNotificationResponse"/>
+
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="nd-callbackSoapBinding" type="impl:NotificationWSCallbackInterface">
+
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="processNotification">
+
+            <wsdlsoap:operation soapAction=""/>
+
+            <wsdl:input name="processNotificationRequest">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:input>
+
+            <wsdl:output name="processNotificationResponse">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="NotificationWSCallbackInterfaceService">
+
+        <wsdl:port binding="impl:nd-callbackSoapBinding" name="nd-callback">
+
+            <wsdlsoap:address location="http://localhost:8306/fmascii/host1/NotificationWSCallbackInterfaceService"/>
+
+        </wsdl:port>
+
+    </wsdl:service>
+
+</wsdl:definitions>

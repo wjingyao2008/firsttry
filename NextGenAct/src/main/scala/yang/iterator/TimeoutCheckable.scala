@@ -6,15 +6,16 @@ package yang.iterator
 trait TimeoutCheckable {
 
   @volatile
-  var lastTimeStamp=System.currentTimeMillis()
-  def touch()={
-    lastTimeStamp=System.currentTimeMillis()
+  var lastTimeStamp = System.currentTimeMillis()
+
+  def touch() {
+    lastTimeStamp = System.currentTimeMillis()
   }
 
-  def isTimeOut(maxUnusedTime:Long):Boolean={
-    val currentTime=System.currentTimeMillis()
-    val timeHasPast=currentTime-lastTimeStamp
-    maxUnusedTime<timeHasPast
+  def isTimeOut(maxUnusedTime: Long): Boolean = {
+    val currentTime = System.currentTimeMillis()
+    val timeHasPast = currentTime - lastTimeStamp
+    maxUnusedTime < timeHasPast
   }
 
 }

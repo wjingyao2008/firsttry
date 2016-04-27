@@ -1,12 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0be1ced2-7896-443f-b4b9-fdddcd4f0b0d" name="Default" comment="" />
+    <list default="true" id="c524960b-a7e4-452e-83f0-96c8b64082c7" name="Default" comment="updateto new">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ForCorba/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ForCorba/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/AlarmAssembler.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/DeployableProxy.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/notification/CorbaAnyValCreator.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/notification/NotificationCorbaModule.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/notification/NotificationCorbaProtocol.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/notification/NotificationIRPImpl.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/notification/NotificationSender.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/notification/NotificationSenderCreator.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/FlexMappingActor.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/FlexMappingModule.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/FlexProtocol.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/StructuredEventWarpper.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/datas/DataHolder.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/datas/DataHolderCreator.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/datas/DataHolderCreatorFactory.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/datas/OutValueCreator.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/enrich/Enrich.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/enrich/EnrichActor.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/enrich/EnrichSimpleImpl.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/getval/GetValFixedVal.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/getval/GetValFromEvent.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/getval/GetValFromMulti.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/getval/GetValue.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/getval/handler/AttributeNameTypeHandler.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/getval/handler/EmpytyStringGetHandlerImpl.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/process/AttributeProcesser.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/process/FlemxMappingProcesserCreator.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/process/FlexMappingProcesser.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/flexmapping/process/HeaderConverter.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/AlarmNotificationConvert.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/NotificationCoreModule.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/NotificationSourceActor.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/RegistrationStateChangeCallBackImpl.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/UserActorCreator.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/UserChangedNotifiable.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/UserManager.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/UserProtocol.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/was/NotificationCallBack.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/was/NotificationRegister.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/notification/was/WasSpringModule.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/Known Hosts/10.91.24.88[10.91.24.88]22.pub" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/Known Hosts/hostsmap.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/resources/ND_CallBack.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/resources/fmFlexMappingFile_REL6.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/corba/notification/NotificationSenderTest.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/flexmapping/AttributeProcesserTest.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/flexmapping/FlemxMappingProcesserCreatorTest.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/flexmapping/FlexMappingModuleTest.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/flexmapping/GetValue$Test.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/flexmapping/HeaderConverterTest.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/flexmapping/datas/DataHolderCreatorFactory$Test.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/notification/NotificationCallBackTest.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/notification/NotificationCoreModuleTest.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/notification/UserManagerTest.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myarchtype/src/test/scala/tool/CorbaTest.scala" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/NextGenAct/src/main/resources/jacorb.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/NextGenAct/src/test/resources/proxy-1/jacorb.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/proxy-yang.zip" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/pom.xml" afterPath="$PROJECT_DIR$/NextGenAct/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/AlarmOperationActor.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/AlarmOperationActor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/AlarmOperationImpl.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/AlarmOperationImpl.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/BlockingAsk.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/BlockingAsk.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/ExecutorPool.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/ExecutorPool.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/Main.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/Main.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/Protocol/AlarmOptPtl.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/Protocol/AlarmOptPtl.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/AlarmCountActor.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/AlarmCountActor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/AlarmFmServiceInterface.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/AlarmFmServiceInterface.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/FilterParser.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/FilterParser.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/GetAlarmListFromFmActor.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/GetAlarmListFromFmActor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/GetAlarmListGetInputParameterProcessor.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/GetAlarmListGetInputParameterProcessor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/IteratorFlexMappingActor.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/alarm/IteratorFlexMappingActor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/common/DnNameMapper.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/common/DnNameMapper.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/common/FailurePropatingActor.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/common/FailurePropatingActor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/common/ProxyFilterManagerInterface.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/common/ProxyFilterManagerInterface.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/common/VersionProfilesInfoActor.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/common/VersionProfilesInfoActor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/AlarmIRPStarter.java" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/AlarmIRPStarter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/CorbaObjInitiator.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/corba/CorbaObjInitiator.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/AlarmInformationIteratorImpl.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/AlarmInformationIteratorImpl.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/DataPoller.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/DataPoller.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/IteratorActor.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/IteratorActor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/IteratorManager.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/IteratorManager.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/IteratorProtocol.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/IteratorProtocol.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/TimeoutCheckable.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/TimeoutCheckable.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/resources/application.conf" afterPath="$PROJECT_DIR$/NextGenAct/src/test/resources/application.conf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/resources/example.xml" afterPath="$PROJECT_DIR$/NextGenAct/src/test/resources/example.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/resources/log4j.xml" afterPath="$PROJECT_DIR$/NextGenAct/src/test/resources/log4j.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/resources/mapping.xml" afterPath="$PROJECT_DIR$/NextGenAct/src/test/resources/mapping.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/AlarmOperationImplTest.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/AlarmOperationImplTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/Supervisor.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/Supervisor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/TestKitAndFlatSpec.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/TestKitAndFlatSpec.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/TestKitAndFunSuite.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/TestKitAndFunSuite.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/alarm/AlarmCountActorTest.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/alarm/AlarmCountActorTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/alarm/IteratorIorServiceTest.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/alarm/IteratorIorServiceTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/alarm/mockAlarmOperationService.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/alarm/mockAlarmOperationService.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/common/VersionProfilesInfoActorTest2.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/common/VersionProfilesInfoActorTest2.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/iterator/IteratorActorTest.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/iterator/IteratorActorTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/iterator/IteratorManagerTest.scala" afterPath="$PROJECT_DIR$/NextGenAct/src/test/scala/yang/iterator/IteratorManagerTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/firsttry/firsttry.iml" afterPath="$PROJECT_DIR$/firsttry/firsttry.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myarchtype/.gitignore" afterPath="$PROJECT_DIR$/myarchtype/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myarchtype/pom.xml" afterPath="$PROJECT_DIR$/myarchtype/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myarchtype/src/main/scala/yang/App.scala" afterPath="$PROJECT_DIR$/myarchtype/src/main/scala/yang/App.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myarchtype/src/test/scala/samples/JunitTest.scala" afterPath="$PROJECT_DIR$/myarchtype/src/test/scala/samples/JunitTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myarchtype/src/test/scala/samples/scalatest.scala" afterPath="$PROJECT_DIR$/myarchtype/src/test/scala/samples/scalatest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+    </list>
     <ignored path="myscalamaven.iws" />
     <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/firsttry/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/myarchtype/target/" />
+    <ignored path="$PROJECT_DIR$/firsttry/target/" />
+    <ignored path="$PROJECT_DIR$/NextGenAct/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,136 +132,83 @@
     <favorites_list name="myscalamaven" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myarchtype/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/firsttry/pom.xml">
           <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="104" column="27" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListSuite.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myarchtype/src/test/scala/samples/ListSuite.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding>
-                <element signature="e#131#160#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myarchtype/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11320755">
-              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+            <state relative-caret-position="149">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/App.scala">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NextGenAct/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyActor.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/MyActor.scala">
+      <file leaf-file-name="AlarmInformationIteratorImpl.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/AlarmInformationIteratorImpl.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-              <folding>
-                <element signature="e#14#37#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="284">
+              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.conf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myarchtype/src/main/resources/application.conf">
+      <file leaf-file-name="FmIteratorActor.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/FmIteratorActor.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+            <state relative-caret-position="154">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlockingAsk.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NextGenAct/src/main/scala/yang/BlockingAsk.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="log4j.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myarchtype/src/main/resources/log4j.xml">
+        <entry file="file://$PROJECT_DIR$/NextGenAct/src/test/resources/log4j.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="86" selection-start-line="5" selection-start-column="86" selection-end-line="5" selection-end-column="86" />
+            <state relative-caret-position="44">
+              <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JunitTest.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myarchtype/src/test/scala/samples/JunitTest.scala">
+      <file leaf-file-name="example.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/NextGenAct/src/test/resources/example.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-              <folding>
-                <element signature="e#17#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoxOffice.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/BoxOffice.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-              <folding>
-                <element signature="e#14#46#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="44">
+              <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Package Object" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="wjingyao2008" />
-      </list>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -163,38 +219,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/myarchtype/src/test/scala/samples/junit.scala" />
-        <option value="$PROJECT_DIR$/myarchtype/src/test/scala/samples/scalatest.scala" />
-        <option value="$PROJECT_DIR$/myarchtype/src/main/scala/yang/package.scala" />
-        <option value="$PROJECT_DIR$/myarchtype/src/main/scala/yang/MessageProtecol.scala" />
-        <option value="$PROJECT_DIR$/myarchtype/src/main/scala/yang/TicketSeller.scala" />
-        <option value="$PROJECT_DIR$/myarchtype/src/main/scala/yang/MessageProtelcol.scala" />
-        <option value="$PROJECT_DIR$/myarchtype/src/main/scala/yang/BoxOffice.scala" />
-        <option value="$USER_HOME$/.m2/settings _private.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/myarchtype/pom.xml" />
-        <option value="$PROJECT_DIR$/myarchtype/src/test/resources/log4j.xml" />
-        <option value="$PROJECT_DIR$/myarchtype/src/main/resources/log4j.xml" />
-        <option value="$PROJECT_DIR$/myarchtype/src/test/scala/samples/JunitTest.scala" />
-        <option value="$PROJECT_DIR$/myarchtype/src/main/scala/yang/MyActor.scala" />
-        <option value="$PROJECT_DIR$/myarchtype/src/main/scala/yang/App.scala" />
-        <option value="$PROJECT_DIR$/myarchtype/src/main/resources/application.conf" />
-        <option value="$PROJECT_DIR$/myarchtype/src/test/scala/samples/ListSuite.scala" />
+        <option value="$PROJECT_DIR$/NextGenAct/src/main/scala/yang/BlockingAsk.scala" />
       </list>
     </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="C:\Users\y28yang\.m2\repository" />
         <option name="mavenHome" value="Bundled (Maven 3)" />
-        <option name="userSettingsFile" value="C:\Users\y28yang\.m2\settings _private.xml" />
       </MavenGeneralSettings>
-    </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
@@ -204,10 +237,6 @@
           <option name="myItemId" value="" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="myscalamaven" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -218,10 +247,6 @@
           <option name="myItemId" value="myscalamaven" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
-        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -229,55 +254,7 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="myarchtype" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="myarchtype" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="myarchtype" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="firsttry" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="firsttry" />
+          <option name="myItemId" value="myscalamaven" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -288,19 +265,18 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="264" />
-    <option name="y" value="24" />
-    <option name="width" value="1289" />
-    <option name="height" value="768" />
+    <option name="x" value="406" />
+    <option name="width" value="1194" />
+    <option name="height" value="870" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -319,79 +295,68 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myscalamaven" />
+              <option name="myItemId" value="firsttry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myscalamaven" />
+              <option name="myItemId" value="firsttry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myscalamaven" />
+              <option name="myItemId" value="firsttry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myscalamaven" />
+              <option name="myItemId" value="firsttry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myscalamaven" />
+              <option name="myItemId" value="firsttry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myarchtype" />
+              <option name="myItemId" value="NextGenAct" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myscalamaven" />
+              <option name="myItemId" value="firsttry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myscalamaven" />
+              <option name="myItemId" value="firsttry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myarchtype" />
+              <option name="myItemId" value="NextGenAct" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myscalamaven" />
+              <option name="myItemId" value="firsttry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myscalamaven" />
+              <option name="myItemId" value="firsttry" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="myarchtype" />
+              <option name="myItemId" value="NextGenAct" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -402,142 +367,141 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="firsttry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="firsttry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NextGenAct" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iterator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="firsttry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="firsttry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NextGenAct" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flexmapping" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="firsttry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="firsttry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NextGenAct" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="74" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="81" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="80" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="856" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="74" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="81" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="80" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="856" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\WorkShop\myscalamaven\myarchtype\src\test\resources" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration default="false" name="All in myarchtype" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="myarchtype" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="All in myarchtype (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="myarchtype" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="All in myarchtype (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="myarchtype" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="App" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="yang.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="yang.App" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="myarchtype" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="JunitTest.testKO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="samples.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="myarchtype" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="samples" />
-      <option name="MAIN_CLASS_NAME" value="samples.JunitTest" />
-      <option name="METHOD_NAME" value="testKO" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -546,31 +510,21 @@
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
-      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
-      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
-      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -580,31 +534,18 @@
       <option name="METHOD_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
-      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
-      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
-      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -635,6 +576,16 @@
       <option name="PARAMETERS" value="" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="BatchConfigurationType" factoryName="Batch">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
@@ -729,26 +680,16 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list />
-            </option>
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -819,7 +760,7 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -860,6 +801,18 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="firsttry" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -982,597 +935,142 @@
       <envs />
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.All in myarchtype" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.All in myarchtype (1)" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.All in myarchtype (2)" />
-      <item index="3" class="java.lang.String" itemvalue="Application.App" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.JunitTest.testKO" />
-    </list>
-    <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.App" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.JunitTest.testKO" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.All in myarchtype (2)" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.All in myarchtype (1)" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.All in myarchtype" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="D:/akka" value="81655836620760" />
+      </map>
+    </option>
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration">
-    <configuration />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0be1ced2-7896-443f-b4b9-fdddcd4f0b0d" name="Default" comment="" />
-      <created>1453946844437</created>
+      <changelist id="c524960b-a7e4-452e-83f0-96c8b64082c7" name="Default" comment="" />
+      <created>1461683395822</created>
       <option name="number" value="Default" />
-      <updated>1453946844437</updated>
+      <option name="presentableId" value="Default" />
+      <updated>1461683395822</updated>
     </task>
-    <task id="LOCAL-00001" summary="myfirstAkka">
-      <created>1453995365900</created>
+    <task id="LOCAL-00001" summary="remove useless xml">
+      <created>1461683699032</created>
       <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1453995365900</updated>
+      <updated>1461683699032</updated>
     </task>
-    <task id="LOCAL-00002" summary="myfirstAkka">
-      <created>1453999055009</created>
-      <option name="number" value="00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1453999055009</updated>
-    </task>
-    <task id="LOCAL-00003" summary="myfirstAkka">
-      <created>1453999852257</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1453999852257</updated>
-    </task>
-    <task id="LOCAL-00004" summary="test commit&#10;">
-      <created>1454000489357</created>
-      <option name="number" value="00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1454000489357</updated>
-    </task>
-    <task id="LOCAL-00005" summary="try to compare">
-      <created>1454000882828</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1454000882828</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 22h 50m 26s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 22h 55m 40s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 22h 57m 43s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 22h 58m 43s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 23h 06m 18s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 23h 13m 27s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 23h 14m 26s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 23h 14m 47s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 23h 15m 32s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JunitTest_testKO - 2016.01.28 at 23h 34m 27s.xml">
-      <configuration name="JunitTest.testKO" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="ToolWindowManager">
-    <frame x="264" y="24" width="1289" height="768" extended-state="0" />
+    <frame x="406" y="0" width="1194" height="870" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3286517" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17544988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2372134" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5575843" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28885272" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24955909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="876" y="351" width="444" height="167" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43114755" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286517" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15027538" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5772472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19905587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="myfirstAkka" />
-    <MESSAGE value="test commit&#10;" />
-    <MESSAGE value="try to compare" />
-    <option name="LAST_COMMIT_MESSAGE" value="try to compare" />
+    <MESSAGE value="remove useless xml" />
+    <MESSAGE value="updateto new" />
+    <option name="LAST_COMMIT_MESSAGE" value="updateto new" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/myarchtype/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/firsttry/pom.xml">
       <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="27" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
+        <state relative-caret-position="149">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/test/scala/samples/ListSuite.scala">
+    <entry file="file://$PROJECT_DIR$/NextGenAct/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#131#160#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/App.scala">
+    <entry file="file://$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/AlarmInformationIteratorImpl.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        <state relative-caret-position="284">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/MyActor.scala">
+    <entry file="file://$PROJECT_DIR$/NextGenAct/src/main/scala/yang/iterator/FmIteratorActor.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="e#14#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/resources/application.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        <state relative-caret-position="154">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/resources/log4j.xml">
+    <entry file="file://$PROJECT_DIR$/NextGenAct/src/main/scala/yang/BlockingAsk.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="86" selection-start-line="5" selection-start-column="86" selection-end-line="5" selection-end-column="86" />
+        <state relative-caret-position="154">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/test/scala/samples/JunitTest.scala">
+    <entry file="file://$PROJECT_DIR$/NextGenAct/src/test/resources/log4j.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding>
-            <element signature="e#17#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/BoxOffice.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="e#14#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/pom.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="24" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.m2/settings _private.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/MessageProtelcol.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/MyActor.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="e#14#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/App.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        <state relative-caret-position="44">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/test/scala/samples/JunitTest.scala">
+    <entry file="file://$PROJECT_DIR$/NextGenAct/src/test/resources/example.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-          <folding>
-            <element signature="e#17#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/resources/application.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        <state relative-caret-position="44">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/TicketSeller.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/BoxOffice.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding>
-            <element signature="e#14#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.m2/settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="36.903225">
-          <caret line="44" column="60" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0.M6-SNAP8/scalatest_2.10-2.0.M6-SNAP8.jar!/org/scalatest/matchers/ClassicMatchers.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.7777777">
-          <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/MessageProtelcol.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.m2/settings _private.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.064516">
-          <caret line="37" column="2" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/TicketSeller.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/test/scala/samples/scalatest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="6" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="27" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/test/scala/samples/JunitTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding>
-            <element signature="e#17#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/BoxOffice.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="e#14#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/resources/log4j.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="86" selection-start-line="5" selection-start-column="86" selection-end-line="5" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/MyActor.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="e#14#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/scala/yang/App.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/main/resources/application.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/src/test/scala/samples/ListSuite.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#131#160#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myarchtype/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11320755">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Python 2.7.9 (C:\Python27\python.exe) interpreter library</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>firsttry</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: org.scala-lang:scala-library:2.10.0</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
