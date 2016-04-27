@@ -11,6 +11,7 @@ import org.apache.log4j.Logger
 import org.omg.CORBA.{BooleanHolder, IntHolder, UserException}
 import org.omg.CosNotification.StructuredEvent
 import yang.Protocol.AlarmOptPtl._
+import yang.corba.DeployableProxy
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
@@ -20,7 +21,7 @@ import scala.concurrent.duration._
   * Created by y28yang on 1/30/2016.
   */
 
-class AlarmOperationImpl(alarmOperationActor: ActorRef, timeoutSec: Long) extends AlarmIRPPOA with AlarmIRPOperations {
+class AlarmOperationImpl(alarmOperationActor: ActorRef, timeoutSec: Long) extends AlarmIRPPOA with AlarmIRPOperations with DeployableProxy {
   implicit val timeout = Timeout(timeoutSec seconds)
   private val LOGGER = Logger.getLogger(classOf[AlarmOperationImpl])
 
@@ -31,14 +32,14 @@ class AlarmOperationImpl(alarmOperationActor: ActorRef, timeoutSec: Long) extend
     try {
       Await.result(futureResult, timeout.duration).asInstanceOf[Array[String]]
     } catch {
-      case corbaExp: UserException => {
+      case corbaExp: UserException =>
         LOGGER.error("Fail to get alarm irp versions", corbaExp)
         throw corbaExp
-      }
-      case e: Exception => {
+
+      case e: Exception =>
         LOGGER.error("Fail to get alarm irp versions", e)
-        throw new GetAlarmIRPVersions(e.getMessage())
-      }
+        throw new GetAlarmIRPVersions(e.getMessage)
+
     }
   }
 
@@ -61,10 +62,9 @@ class AlarmOperationImpl(alarmOperationActor: ActorRef, timeoutSec: Long) extend
       indeterminate_count.value = result.indeterminate_count
       cleared_count.value = result.cleared_count
     } catch {
-      case e: Exception => {
+      case e: Exception =>
         LOGGER.error("Fail to get alarm count", e)
         throw new GetAlarmCount(e.getMessage)
-      }
     }
   }
 
@@ -81,21 +81,20 @@ class AlarmOperationImpl(alarmOperationActor: ActorRef, timeoutSec: Long) extend
       throw new GetAlarmList(ProxyUtil.REQUEST_REJECT_REASON_WHEN_PROXY_UNDEPLOYED)
     }
     val filterString = if (filter.discriminator) filter.value else ""
-    val baseObjectUsed=base_object.discriminator
+    val baseObjectUsed = base_object.discriminator
     val isBaseObjectString = if (baseObjectUsed) base_object.value else ""
     LOGGER.info(s"get_alarm_list filter: $filterString ,baseObject is used? $baseObjectUsed,baseObject: $isBaseObjectString")
 
-    val futureResult = alarmOperationActor ? request_get_alarm_list(filterString, baseObjectUsed,isBaseObjectString, proxyId())
+    val futureResult = alarmOperationActor ? request_get_alarm_list(filterString, baseObjectUsed, isBaseObjectString, proxyId)
     try {
       val returned = Await.result(futureResult, timeout.duration).asInstanceOf[reply_get_alarm_list]
       flag.value = returned.booleanFlag
       iter.value = returned.iterator._this()
-      returned.structEvents
+      new Array[StructuredEvent](0)
     } catch {
-      case e: Exception => {
+      case e: Exception =>
         LOGGER.error("Fail to get alarm irp notification profile", e)
         throw new GetAlarmList(e.getMessage)
-      }
     }
   }
 
@@ -104,21 +103,13 @@ class AlarmOperationImpl(alarmOperationActor: ActorRef, timeoutSec: Long) extend
     try {
       Await.result(futureResult, timeout.duration).asInstanceOf[Array[Method]]
     } catch {
-      case e: Exception => {
+      case e: Exception =>
         LOGGER.error("Fail to get alarm irp notification profile", e)
         throw new GetAlarmIRPOperationsProfile(e.getMessage)
-      }
     }
   }
 
   override def get_alarm_IRP_notification_profile(alarm_irp_version: String): Array[Method] = ???
 
 
-  def isProxyDeployed(): Boolean = {
-    true
-  }
-
-  def proxyId(): String = {
-    "1"
-  }
 }

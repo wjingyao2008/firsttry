@@ -1,9 +1,6 @@
 package yang.corba;
 
-import com.nsn.oss.nbi.NamingServiceRegister;
-import com.nsn.oss.nbi.ProxyUtil;
 import com.nsn.oss.nbi.ServantStarter;
-
 import org.apache.log4j.Logger;
 import org.omg.PortableServer.Servant;
 
@@ -11,18 +8,18 @@ public class AlarmIRPStarter extends ServantStarter {
 
     private final static Logger LOGGER = Logger.getLogger(com.nsn.oss.nbi.AlarmIRPStarter.class);
 
-    private Servant servant;
-    private String port;
+    private final Servant servant;
+    private final String port;
 
-    public AlarmIRPStarter(Servant servant,String portStr) {
+    public AlarmIRPStarter(Servant servant, String portStr) {
         this.servant = servant;
-        port=portStr;
+        port = portStr;
     }
 
     @Override
     public void publish(org.omg.CORBA.Object object) throws Exception {
 
-        LOGGER.info("Alarm IRP :"+object);
+        LOGGER.info("Alarm IRP :" + object);
     }
 
     @Override

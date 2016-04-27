@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>com.nsn.oss.myscalamaven</groupId>
@@ -9,17 +9,46 @@
 
     <artifactId>NextGenAct</artifactId>
     <version>DYNAMIC-SNAPSHOT</version>
+    <properties>
+        <esymac-version>15.9</esymac-version>
 
+    </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.nsn.oss.nbi.common</groupId>
+            <artifactId>common-flexmapping</artifactId>
+            <version>DYNAMIC-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.ibm.ws.ejb</groupId>
+                    <artifactId>thinclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.ibm.ws.thinclient</groupId>
+                    <artifactId>orb</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.ibm.ws.thinclient</groupId>
+                    <artifactId>ejb.thinclient</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>com.nsn.oss.nbi.component</groupId>
             <artifactId>nbi3gc-proxy</artifactId>
             <version>DYNAMIC-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.nsn.oss.nbi.common</groupId>
+            <artifactId>common-utils</artifactId>
+            <version>DYNAMIC-SNAPSHOT</version>
+        </dependency>
+
+
         <!--<dependency>-->
-            <!--<groupId>com.nsn.obs.mw.medfra</groupId>-->
-            <!--<artifactId>mf-core</artifactId>-->
+        <!--<groupId>com.nsn.obs.mw.medfra</groupId>-->
+        <!--<artifactId>mf-core</artifactId>-->
         <!--</dependency>-->
         <dependency>
             <groupId>com.nsn.oss.nbi.component</groupId>
@@ -30,6 +59,30 @@
             <groupId>com.nsn.oss.nbi.common</groupId>
             <artifactId>common-filterMonitor</artifactId>
             <version>DYNAMIC-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.nsn.oss.nbi</groupId>
+            <artifactId>nd-register</artifactId>
+            <version>DYNAMIC-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.ibm.ws.ejb</groupId>
+                    <artifactId>thinclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.ibm.ws.thinclient</groupId>
+                    <artifactId>orb</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
         </dependency>
         <dependency>
             <groupId>com.nsn.oss.nbi.common</groupId>
@@ -50,14 +103,7 @@
             <artifactId>EtclEngine</artifactId>
             <version>DYNAMIC-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>org.jacorb</groupId>
-            <artifactId>jacorb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jacorb</groupId>
-            <artifactId>jacorb-services</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
@@ -75,8 +121,8 @@
             <artifactId>akka-testkit_2.11</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.slf4j</groupId>-->
-            <!--<artifactId>slf4j-log4j12</artifactId>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-log4j12</artifactId>-->
         <!--</dependency>-->
         <dependency>
             <groupId>com.typesafe.akka</groupId>
@@ -85,12 +131,11 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
-            <version>1.10.8</version>
             <scope>test</scope>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>log4j</groupId>-->
-            <!--<artifactId>log4j</artifactId>-->
+        <!--<groupId>log4j</groupId>-->
+        <!--<artifactId>log4j</artifactId>-->
         <!--</dependency>-->
 
         <!--<dependency>-->

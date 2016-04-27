@@ -3,7 +3,6 @@ package yang
 import akka.actor.Status.Failure
 import akka.actor.SupervisorStrategy.Restart
 import akka.actor._
-import com.typesafe.config.ConfigFactory
 import yang.common.FailurePropatingActor
 
 /**
@@ -13,40 +12,40 @@ class Supervisor(props: Props) extends Actor {
 
   import akka.actor.OneForOneStrategy
   import akka.actor.SupervisorStrategy._
-  import scala.concurrent.duration._
 
-  val child = context.actorOf(props, "child")
+  import scala.concurrent.duration._
 
   override val supervisorStrategy =
     OneForOneStrategy(maxNrOfRetries = 1, withinTimeRange = 1 minute) {
 
-      case exp: Exception => {
+      case exp: Exception =>
         println("strategy used!:" + sender().path.toString)
         sender ! akka.actor.Status.Failure(exp)
         Resume
-      }
+
     }
+  val child = context.actorOf(props, "child")
 
   def receive = {
     case p: Object => child forward p
   }
 }
-case class CreateChild(props:Props, childName:String)
+
+case class CreateChild(props: Props, childName: String)
+
 class SupervisorTestActor extends Actor {
   override val supervisorStrategy =
   //OneForOneStrategy(maxNrOfRetries = 1, withinTimeRange = 1 minute) {
     OneForOneStrategy() {
-      case _: Exception => {
+      case _: Exception =>
         println("has been apply startegy")
         Restart
-      }
     }
-  var childActorName="child"
+  var childActorName = "child"
+
   override def receive = {
-    case p: Props => sender() ! context.actorOf(p,childActorName)
-    case CreateChild(props,childName)=>{
-      sender() ! context.actorOf(props,childName)
-    }
+    case p: Props => sender() ! context.actorOf(p, childActorName)
+    case CreateChild(props, childName) => sender() ! context.actorOf(props, childName)
   }
 }
 
@@ -59,11 +58,12 @@ class Child extends FailurePropatingActor {
 }
 
 
-class FaultHandlingDocSpec(s:String) extends TestKitAndFlatSpec(logLevel = s) {
-  def this()=this("DEBUG")
+class FaultHandlingDocSpec(s: String) extends TestKitAndFlatSpec(logLevel = s) {
+  def this() = this("DEBUG")
+
   "A supervisor" must "apply the chosen strategy for its child" in {
     val supervisor = system.actorOf(Props[SupervisorTestActor], "supervisor")
-    supervisor ! CreateChild(Props[Child],"child1")
+    supervisor ! CreateChild(Props[Child], "child1")
 
     val child = expectMsgType[ActorRef]
     child ! "123"
@@ -72,14 +72,14 @@ class FaultHandlingDocSpec(s:String) extends TestKitAndFlatSpec(logLevel = s) {
     child ! 1
 
     expectMsgPF() {
-      case Failure(cause: RuntimeException) => {
+      case Failure(cause: RuntimeException) =>
         println(cause.getMessage)
         assert(true)
-      }
-      case x => {
+
+      case x =>
         println(x)
         fail()
-      }
+
     }
   }
 }
