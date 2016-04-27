@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <groupId>com.nsn.oss.myscalamaven</groupId>
+        <groupId>yang.myscalamaven</groupId>
         <artifactId>myscalamaven</artifactId>
         <version>DYNAMIC-SNAPSHOT</version>
     </parent>
@@ -16,24 +16,12 @@
 
 
   <dependencies>
-      <!--<dependency>-->
-          <!--<groupId>org.jacorb</groupId>-->
-          <!--<artifactId>jacorb</artifactId>-->
-          <!--<version>3.1</version>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-          <!--<groupId>org.jacorb</groupId>-->
-          <!--<artifactId>jacorb-services</artifactId>-->
-          <!--<version>3.1</version>-->
-      <!--</dependency>-->
+
       <dependency>
           <groupId>com.typesafe.akka</groupId>
           <artifactId>akka-actor_2.11</artifactId>
       </dependency>
-      <!--<dependency>-->
-          <!--<groupId>com.typesafe.akka</groupId>-->
-          <!--<artifactId>akka-tests_2.11</artifactId>-->
-      <!--</dependency>-->
+
       <dependency>
           <groupId>com.typesafe.akka</groupId>
           <artifactId>akka-testkit_2.11</artifactId>

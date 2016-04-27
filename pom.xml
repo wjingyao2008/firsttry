@@ -3,22 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!--<parent>-->
-        <!--<groupId>com.nsn.oss</groupId>-->
-        <!--<artifactId>nbi</artifactId>-->
-        <!--<version>DYNAMIC-SNAPSHOT</version>-->
-    <!--</parent>-->
-    <groupId>com.nsn.oss.myscalamaven</groupId>
+    <groupId>yang.myscalamaven</groupId>
     <artifactId>myscalamaven</artifactId>
     <packaging>pom</packaging>
     <version>DYNAMIC-SNAPSHOT</version>
 
     <modules>
-        <module>firsttry</module>
+        <module>firstcorba</module>
         <module>myarchtype</module>
         <module>NextGenAct</module>
         <module>ForCorba</module>
-        <module>Notification</module>
     </modules>
     <properties>
         <maven.compiler.source>1.6</maven.compiler.source>
