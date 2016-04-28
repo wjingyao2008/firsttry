@@ -6,7 +6,7 @@
         <version>DYNAMIC-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>myarchtype</artifactId>
+    <artifactId>lightreporter</artifactId>
     <version>DYNAMIC-SNAPSHOT</version>
     <name>${project.artifactId}</name>
 
@@ -20,11 +20,15 @@
           <groupId>com.typesafe.akka</groupId>
           <artifactId>akka-actor_2.11</artifactId>
       </dependency>
-
+      <dependency>
+          <groupId>com.typesafe.akka</groupId>
+          <artifactId>akka-stream_2.11</artifactId>
+      </dependency>
       <dependency>
           <groupId>com.typesafe.akka</groupId>
           <artifactId>akka-testkit_2.11</artifactId>
       </dependency>
+
       <dependency>
           <groupId>com.typesafe.akka</groupId>
           <artifactId>akka-slf4j_2.11</artifactId>

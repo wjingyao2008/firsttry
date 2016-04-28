@@ -27,15 +27,13 @@ class AlarmOperationImpl(alarmOperationActor: ActorRef, timeoutSec: Long) extend
 
   def this(alarmOperationActor: ActorRef) = this(alarmOperationActor, 15)
 
-
   override def get_alarm_IRP_versions(): Array[String] = {
     val futureResult = alarmOperationActor ? get_alarm_IRP_versions_msg
-
     try {
       Await.result(futureResult, timeout.duration).asInstanceOf[Array[String]]
     } catch {
       case corbaExp: UserException =>
-        LOGGER.error("Fail to get alarm irp versions", corbaExp)
+        LOGGER.error("Fail  to get alarm irp versions", corbaExp)
         throw corbaExp
 
       case e: Exception =>

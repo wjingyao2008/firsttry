@@ -53,7 +53,7 @@ class TestKitAndFunSuite(actorSystem: ActorSystem) extends TestKit(_system = act
   override protected def afterAll() {
     super.afterAll()
     println("shutdown correctly")
-    //    system.shutdown()
+    system.terminate()
   }
 }
 

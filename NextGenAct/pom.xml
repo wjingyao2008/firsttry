@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>yang.myscalamaven</groupId>
-        <artifactId>myscalamaven</artifactId>
+        <artifactId>firsttry</artifactId>
         <version>DYNAMIC-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -165,4 +165,49 @@
             </plugin>
         </plugins>
     </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.nsn.oss.nbi</groupId>
+                <artifactId>util</artifactId>
+                <version>${nbi-common-lib-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nsn.oss.nbi.common.lib.util</groupId>
+                <artifactId>common-utils-dynconf</artifactId>
+                <version>${nbi-common-lib-version}</version>
+            </dependency>
+
+
+
+            <dependency>
+                <groupId>org.jacorb</groupId>
+                <artifactId>jacorb-services</artifactId>
+                <version>${jacorb-version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.nsn.oss.nbi.common</groupId>
+                <artifactId>irp-info-service</artifactId>
+                <version>DYNAMIC-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nsn.oss.nbi.common</groupId>
+                <artifactId>nbi-logging</artifactId>
+                <version>DYNAMIC-SNAPSHOT</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.nsn.oss.nbi.common</groupId>
+                <artifactId>nbi3gc-internal-corba-interface</artifactId>
+                <version>DYNAMIC-SNAPSHOT</version>
+            </dependency>
+
+
+
+        </dependencies>
+    </dependencyManagement>
 </project>
