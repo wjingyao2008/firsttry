@@ -12,7 +12,7 @@ object UserProtocol {
   case class UnRegister(user: String)
   case class OperationSuccss(userName: String)
 
-  case class Msg[T](arrays:List[T])
+  case class Msg[T](arrays:Iterable[T])
 
   case object RequestAllUser
   case class  ReplyAllUser(users:List[String])

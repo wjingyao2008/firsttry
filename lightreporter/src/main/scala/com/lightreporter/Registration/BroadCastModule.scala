@@ -30,6 +30,7 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
     isInited = true
   }
 
+
   def setTimeOutSecs(tick: Int) = {
     timeout = Timeout(tick seconds)
     this
@@ -41,9 +42,17 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
     this
   }
 
-  def getBroadCastPath()={
+  def getBroadCastRef={
     mustAfterInit()
-    this.broadCaster.path.toString
+    this.broadCaster
+  }
+
+  def getBroadCastPath={
+    getBroadCastRef.path.toString
+  }
+
+  def sendMsg(msg:Msg[T])={
+    broadCaster ! msg
   }
 
   def setNotifiable(userChangedNotifiable: UserChangedNotifiable) = {
