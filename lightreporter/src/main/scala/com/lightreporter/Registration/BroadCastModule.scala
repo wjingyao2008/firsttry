@@ -39,6 +39,11 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
     this
   }
 
+  def getBroadCastPath()={
+    mustAfterInit()
+    this.broadCaster.path.toString
+  }
+
   def setNotifiable(userChangedNotifiable: UserChangedNotifiable) = {
     mustBeforeInit()
     this.notifiable = Some(userChangedNotifiable)
