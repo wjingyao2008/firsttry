@@ -1,7 +1,6 @@
 package com.lightreporter.Registration
 
 import akka.actor.Actor
-import akka.actor.Actor.Receive
 import com.lightreporter.Registration.UserProtocol.Msg
 
 /**

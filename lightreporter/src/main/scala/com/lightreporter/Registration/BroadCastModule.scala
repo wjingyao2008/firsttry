@@ -7,7 +7,6 @@ import com.lightreporter.Registration.UserProtocol._
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
-import scala.util.{Failure, Success}
 
 /**
   * Created by Administrator on 2016/4/30 0030.
