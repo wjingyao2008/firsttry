@@ -7,7 +7,4 @@ trait UserChangedNotifiable {
 
   def userChanged(users: Iterable[String])
 
-  def startScheduleCheck(): Unit
-
-
 }

@@ -9,7 +9,7 @@ import com.lightreporter.Registration.UserProtocol._
 /**
   * Created by y28yang on 3/29/2016.
   */
-class BroadCaster[T <: AnyRef](val notifier: Option[UserChangedNotifiable]) extends Actor with ActorLogging {
+class BroadCaster[T <: AnyRef](notifierActor:Option[ActorRef]) extends Actor with ActorLogging {
 
 
   private var allUser = Map[String, ActorRef]()
@@ -72,8 +72,7 @@ class BroadCaster[T <: AnyRef](val notifier: Option[UserChangedNotifiable]) exte
   }
 
   def notifyUserChanged() {
-    if (notifier.isDefined)
-      notifier.get.userChanged(allUser.keys)
+    notifierActor.foreach(_ ! UserChanged(allUser.keys))
   }
 
 }

@@ -14,12 +14,12 @@ import scala.concurrent.duration._
 class BroadCastModule[T <: AnyRef](system: ActorSystem) {
 
   private var broadCaster: ActorRef = null
-  private var notifiable: Option[UserChangedNotifiable] = None
+  private var notifiable: Option[ActorRef] = None
   private var broadCasterName = "BroadCast"
   @volatile
   private var isInited = false
   @volatile
-  private var bufferSize = 1000
+  private var bufferSize = 500
   private implicit var timeout: Timeout = Timeout(5 seconds)
 
 
@@ -55,7 +55,7 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
     broadCaster ! msg
   }
 
-  def setNotifiable(userChangedNotifiable: UserChangedNotifiable) = {
+  def setNotifiable(userChangedNotifiable:ActorRef) = {
     mustBeforeInit()
     this.notifiable = Some(userChangedNotifiable)
     this
@@ -76,7 +76,7 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
     askBroadCaster[OperationSuccss](unRegisterMsg)
   }
 
-  def requestAllUser():List[String] = {
+  def requestAllUser():Iterable[String] = {
     askBroadCaster[ReplyAllUser](RequestAllUser).users
   }
 

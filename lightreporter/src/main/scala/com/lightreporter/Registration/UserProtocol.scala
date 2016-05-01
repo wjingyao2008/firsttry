@@ -15,6 +15,7 @@ object UserProtocol {
   case class Msg[T](arrays:Iterable[T])
 
   case object RequestAllUser
-  case class  ReplyAllUser(users:List[String])
+  case class  ReplyAllUser(users:Iterable[String])
+  case class  UserChanged(users:Iterable[String])
 
 }
