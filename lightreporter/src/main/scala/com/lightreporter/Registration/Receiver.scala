@@ -7,7 +7,6 @@ trait Receiver[T <: AnyRef] {
 
   //  type Receive = PartialFunction[Any, Unit]
 
-
   def receive(msg: Iterable[T])
 
   def start()

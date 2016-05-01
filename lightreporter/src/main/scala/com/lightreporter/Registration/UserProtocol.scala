@@ -7,7 +7,7 @@ object UserProtocol {
 
 
 
-  case class Register[T<:AnyRef](userName: String, receiver: Receiver[T])
+  case class Register[T<:AnyRef](userName: String, receiver: Receiver[T],bufferSize:Int)
 
   case class UnRegister(user: String)
   case class OperationSuccss(userName: String)

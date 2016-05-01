@@ -18,6 +18,8 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
   private var broadCasterName = "BroadCast"
   @volatile
   private var isInited = false
+  @volatile
+  private var bufferSize = 1000
   private implicit var timeout: Timeout = Timeout(5 seconds)
 
 
@@ -50,9 +52,13 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
     this
   }
 
+  def setBroadCastBuffer(bufferSize:Int) ={
+    this.bufferSize=bufferSize
+    this
+  }
 
   def register(userName: String, receiver: Receiver[T]) = {
-    val registerMsg=Register(userName, receiver)
+    val registerMsg=Register(userName, receiver,bufferSize)
     askBroadCaster[OperationSuccss](registerMsg)
   }
 
