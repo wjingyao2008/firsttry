@@ -1,7 +1,7 @@
 package com.lightreporter.Registration
 
 import akka.actor.ActorSystem
-import akka.testkit.TestKit
+import akka.testkit.{TestKit, TestProbe}
 import com.lightreporter.Registration.UserProtocol.{Msg, OperationSuccss}
 import org.scalatest.{BeforeAndAfter, FunSuiteLike, Matchers}
 
@@ -14,7 +14,7 @@ class BroadCastModuleTest extends TestKit(ActorSystem("TestKitUsageSpec"))
 
 
 
-  test("testInit") {
+  test("test init and then register successful") {
     val broadCastModule = new BroadCastModule[String](system)
     broadCastModule.init()
     val receiver = new StringReciver("-")
@@ -23,7 +23,7 @@ class BroadCastModuleTest extends TestKit(ActorSystem("TestKitUsageSpec"))
 
   test("test duplicate register") {
     val broadCastModule = new BroadCastModule[String](system)
-    broadCastModule.setModuleName("br1").init()
+    broadCastModule.setModuleName("broadcastDuplicateReg").init()
     val receiver = new StringReciver("-")
     broadCastModule.register("123", receiver) shouldBe OperationSuccss("123")
     intercept[IllegalArgumentException]{
@@ -33,7 +33,7 @@ class BroadCastModuleTest extends TestKit(ActorSystem("TestKitUsageSpec"))
 
   test("test register and unregister") {
     val broadCastModule = new BroadCastModule[String](system)
-    broadCastModule.setModuleName("br3").init()
+    broadCastModule.setModuleName("broadCastRegAndUnReg").init()
     val receiver = new StringReciver("-")
     broadCastModule.register("123", receiver) shouldBe OperationSuccss("123")
     broadCastModule.register("124", receiver) shouldBe OperationSuccss("124")
@@ -46,19 +46,28 @@ class BroadCastModuleTest extends TestKit(ActorSystem("TestKitUsageSpec"))
     actorRef ! Msg[String](List("testMsg"))
   }
 
-  test("test register send msg") {
+  test("register 2 recivers,send msg to broadcast,then expecting receive them") {
     val broadCastModule = new BroadCastModule[String](system)
-    broadCastModule.setModuleName("br3").init()
-    val receiver = new ActorReciver(this.testActor)
-    broadCastModule.register("123", receiver) shouldBe OperationSuccss("123")
+    broadCastModule.setModuleName("broadcastTo2User").init()
+    val dest1= registerTo(broadCastModule,"user1")
+    val dest2=registerTo(broadCastModule,"user2")
     val path=broadCastModule.getBroadCastPath()
     val actorRef=system.actorSelection(path)
     actorRef ! Msg[String](List("testMsg1","testMsg2"))
 
-    expectMsg("testMsg1")
-    expectMsg("testMsg2")
+    dest1.expectMsg("testMsg1")
+    dest1.expectMsg("testMsg2")
+    dest2.expectMsg("testMsg1")
+    dest2.expectMsg("testMsg2")
   }
 
+
+  def registerTo(broadCastModule: BroadCastModule[String],userName: String): TestProbe = {
+    val probe = TestProbe()
+    val receiver = new ActorReciver(probe.ref)
+    broadCastModule.register(userName, receiver) shouldBe OperationSuccss(userName)
+    probe
+  }
 
   override protected def after(fun: => Any): Unit = {
     super.after(fun)
