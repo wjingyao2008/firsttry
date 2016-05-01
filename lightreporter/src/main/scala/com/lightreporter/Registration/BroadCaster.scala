@@ -17,17 +17,17 @@ class BroadCaster[T<:AnyRef](val notifier: Option[UserChangedNotifiable]) extend
 
 
   override def receive = {
+    case msg:Msg[T] => allUser.foreach(_._2 forward msg)
     case regiMsg:Register[T] => register(regiMsg)
     case UnRegister(user) => unRegister(user)
-    case RequestAllUser => replyWithUserInfos
-    case msg:Msg[T] => allUser.foreach(_._2 forward msg)
+    case RequestAllUser => replyWithUserInfos()
   }
 
   override val supervisorStrategy = OneForOneStrategy() {
     case _: Exception => Resume
   }
 
-  def replyWithUserInfos: Unit = {
+  def replyWithUserInfos(): Unit = {
     val list = allUser.keys.toList
     log.info("current users:"+list.mkString(","))
     sender() ! ReplyAllUser(list)
@@ -37,7 +37,7 @@ class BroadCaster[T<:AnyRef](val notifier: Option[UserChangedNotifiable]) extend
     val userName=register.userName
 
     if (allUser.contains(userName)) {
-      sender() ! Status.Failure(OperationFailed(s"attach failed due to $userName already attached"))
+      sender() ! Status.Failure(new IllegalArgumentException(s"attach failed due to $userName already attached"))
     } else {
       try {
         val receiver=register.receiver
@@ -61,7 +61,7 @@ class BroadCaster[T<:AnyRef](val notifier: Option[UserChangedNotifiable]) extend
       notifyUserChanged()
       sender() ! OperationSuccss(userName)
     } else {
-      sender() ! Status.Failure(OperationFailed(s"detach failed due to no $userName attached"))
+      sender() ! Status.Failure(new IllegalArgumentException(s"detach failed due to no $userName attached"))
     }
   }
 

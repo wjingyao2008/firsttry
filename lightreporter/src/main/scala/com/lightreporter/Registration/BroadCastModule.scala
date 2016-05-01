@@ -5,20 +5,24 @@ import akka.pattern.ask
 import akka.util.Timeout
 import com.lightreporter.Registration.UserProtocol._
 
-import scala.concurrent.{Await, ExecutionContext}
+import scala.concurrent.Await
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
 
 /**
   * Created by Administrator on 2016/4/30 0030.
   */
-class BroadCastModule[T <: AnyRef](val system: ActorSystem) {
+class BroadCastModule[T <: AnyRef](system: ActorSystem) {
+
   private var broadCaster: ActorRef = null
   private var notifiable: Option[UserChangedNotifiable] = None
   private var broadCasterName = "BroadCast"
+  @volatile
   private var isInited = false
   private implicit var timeout: Timeout = Timeout(5 seconds)
-  implicit val ec = system.dispatcher
+
+
+
   def init() = {
     mustBeforeInit()
     broadCaster=system.actorOf(Props.create(classOf[BroadCaster[T]], notifiable), broadCasterName)
@@ -43,43 +47,24 @@ class BroadCastModule[T <: AnyRef](val system: ActorSystem) {
   }
 
 
-  //  def addSource(receiver: Source[T])={
-  //
-  //  }
-
   def register(userName: String, receiver: Receiver[T]) = {
-    mustAfterInit()
-
-    try {
-      val futureResult = broadCaster ? Register(userName, receiver)
-      val result = Await.result(futureResult, timeout.duration).asInstanceOf[OperationSuccss]
-      println(result)
-      result
-    } catch {
-      case ex:Exception =>throw ex
-    }
+    val registerMsg=Register(userName, receiver)
+    askBroadCaster[OperationSuccss](registerMsg)
   }
 
-  def unRegister(userName: String, receiver: Receiver[T]) = {
-    mustAfterInit()
-    val futureResult = broadCaster ? UnRegister(userName)
-    futureResult.value.get match {
-      case Success(OperationSuccss(userName)) =>
-      case Success(unknown) =>throw new IllegalArgumentException(s"return value unknown: $unknown")
-      case Failure(e)=> println("sdsfsfdfdff==========");throw e
-
-    }
+  def unRegister(userName: String) = {
+    val unRegisterMsg = UnRegister(userName)
+    askBroadCaster[OperationSuccss](unRegisterMsg)
   }
 
   def requestAllUser():List[String] = {
-    mustAfterInit()
-    val futureResult = broadCaster ? RequestAllUser
-    val value=futureResult.value.get match {
-      case Success(reply:ReplyAllUser) =>reply.users
-      case Success(unknown) =>throw new IllegalArgumentException(s"return value unknown: $unknown")
-      case Failure(e)=> throw e
-    }
-    value
+    askBroadCaster[ReplyAllUser](RequestAllUser).users
+  }
+
+  private def askBroadCaster[U](msgToBroadCaster:AnyRef): U = {
+      mustAfterInit()
+      val futureResult = broadCaster ? msgToBroadCaster
+      Await.result(futureResult, timeout.duration).asInstanceOf[U]
   }
 
 

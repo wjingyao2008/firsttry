@@ -12,9 +12,6 @@ object UserProtocol {
   case class UnRegister(user: String)
   case class OperationSuccss(userName: String)
 
-
-  final case class OperationFailed(msg: String) extends RuntimeException(msg)
-
   case class Msg[T](arrays:List[T])
 
   case object RequestAllUser
