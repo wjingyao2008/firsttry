@@ -3,9 +3,8 @@ package com.lightreporter.Registration
 import akka.actor.ActorSystem
 import akka.testkit.{TestKit, TestProbe}
 import com.lightreporter.Registration.UserProtocol.{Msg, OperationSuccss}
-import org.scalatest.{BeforeAndAfter, FunSuiteLike, Matchers}
 import org.scalatest.concurrent.Eventually._
-import org.scalatest.time.Span
+import org.scalatest.{BeforeAndAfter, FunSuiteLike, Matchers}
 
 /**
   * Created by Administrator on 2016/4/30 0030.
@@ -23,7 +22,7 @@ class BroadCastModuleTest extends TestKit(ActorSystem("TestKitUsageSpec"))
     broadCastModule.register("123", receiver) shouldBe OperationSuccss("123")
   }
 
-  test("test duplicate register") {
+  test("test duplicate register,the second register will fail") {
     val broadCastModule = new BroadCastModule[String](system)
     broadCastModule.setModuleName("broadcastDuplicateReg").init()
     val receiver = new StringReciver
@@ -58,7 +57,7 @@ class BroadCastModuleTest extends TestKit(ActorSystem("TestKitUsageSpec"))
     broadCastModule.requestAllUser() should be (Array[String]())
   }
 
-  test("register 2 recivers,send msg to broadcast,then expecting receive them") {
+  test("register with two receivers,send msg to broadcast,then expecting receive them") {
     val broadCastModule = new BroadCastModule[String](system)
     broadCastModule.setModuleName("broadcastTo2User").init()
     val dest1= registerTo(broadCastModule,"user1")
@@ -72,6 +71,7 @@ class BroadCastModuleTest extends TestKit(ActorSystem("TestKitUsageSpec"))
     dest2.expectMsg("testMsg1")
     dest2.expectMsg("testMsg2")
   }
+
 
 
   def registerTo(broadCastModule: BroadCastModule[String],userName: String): TestProbe = {
