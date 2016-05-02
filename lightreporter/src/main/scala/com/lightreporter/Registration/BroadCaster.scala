@@ -40,10 +40,10 @@ class BroadCaster[T <: AnyRef](notifierActor:Option[ActorRef]) extends Actor wit
     if (allUser.contains(userName))
       sender() ! Status.Failure(new IllegalArgumentException(s"attach failed due to $userName already attached"))
     else
-      regeisteToDataStream(register)
+      regeisteTopic(register)
   }
 
-  def regeisteToDataStream(register: Register[T]): Unit = {
+  def regeisteTopic(register: Register[T]): Unit = {
     try {
       val receiver = register.receiver
       receiver.start()
