@@ -1,9 +1,10 @@
 package home.yang.dataflow
-
 /**
   * Created by Administrator on 2016/5/2 0002.
   */
-trait FilterCreator {
-   def create(repl:String):Filter[_]
+abstract class FilterCreator {
+   def create(key:String,value:String,func:String):Filter[_]
+
+
 }
 

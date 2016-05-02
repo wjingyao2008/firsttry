@@ -30,6 +30,9 @@ object DateTimeData {
 
   def fastParseTime(value: String) = {
     fastDateParser.parse(value)
+  }
 
+  def toString(value:Date):String={
+    fastDateParser.format(value)
   }
 }

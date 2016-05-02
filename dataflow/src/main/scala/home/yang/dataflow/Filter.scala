@@ -5,5 +5,5 @@ package home.yang.dataflow
   */
 abstract class Filter[T](isPass:(T)=>Boolean) extends ValueMapper{
    def keyName:String
-
+ 
 }
