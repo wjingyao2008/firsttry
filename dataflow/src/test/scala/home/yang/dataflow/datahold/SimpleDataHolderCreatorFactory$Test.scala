@@ -1,6 +1,7 @@
 package home.yang.dataflow.datahold
 
 import home.yang.dataflow.SimpleData
+import home.yang.dataflow.dataholdcreator.{IntCreator, StringCreator}
 import home.yang.dataflow.filter.{IntFilter, StringFilter}
 import org.scalatest.{FunSuite, Matchers}
 
@@ -12,27 +13,27 @@ import scala.collection.mutable.ArrayBuffer
 class SimpleDataHolderCreatorFactory$Test extends FunSuite with Matchers{
 
   test("testGetOrWithDefault") {
-    val intCreator=DataHolderCreatorFactory.getOrWithDefault("int")
+    val intCreator=new IntCreator
     val dataHolder=intCreator.create("yangTYPE","35")
     dataHolder.parse
     val intFilter=new IntFilter("yangTYPE",_ > 20)
-    dataHolder.toOuterValue(intFilter) shouldBe true
+    dataHolder.mapTo(intFilter) shouldBe true
   }
   test("test filter of string") {
-    val stringHolderCreator=DataHolderCreatorFactory.getOrWithDefault("string")
+    val stringHolderCreator=new StringCreator
     val dataHolder=stringHolderCreator.create("yangTYPE","35")
     dataHolder.parse
     val stringFilter=new StringFilter("yangTYPE",_ == "34")
-    dataHolder.toOuterValue(stringFilter) shouldBe false
+    dataHolder.mapTo(stringFilter) shouldBe false
 
   }
 
   test("test filter of Data") {
-    val intCreator=DataHolderCreatorFactory.getOrWithDefault("int")
+    val intCreator=new IntCreator
     val dataHolder=intCreator.create("alarmId","35")
     dataHolder.parse
 
-    val stringCreator=DataHolderCreatorFactory.getOrWithDefault("string")
+    val stringCreator=new StringCreator
     val dataHolder2=stringCreator.create("domainName","35")
     dataHolder2.parse
 
