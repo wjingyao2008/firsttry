@@ -1,10 +1,10 @@
-package home.yang.dataflow.datahold
+package home.yang.dataflow
 
 import java.util.Date
 /**
   * Created by y28yang on 4/10/2016.
   */
-abstract class ValueGen {
+abstract class ValueMapper {
 
   def createString(str:String):Any= ???
 
