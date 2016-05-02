@@ -5,13 +5,13 @@ package home.yang.dataflow.filtercreator
   */
 object FilterFunc{
 
-  def passFun[T<%Ordered[T]](fun:String,value:T)={
-    val compare:T=>Boolean= fun match {
-      case "=="=> _==value
-      case ">="=> _>=value
-      case "<="=> _<=value
-      case ">"=> _>value
-      case "<"=> _<value
+  def passFun[T](fun:String,value:T)={
+    val compare:Comparable[T]=>Boolean= fun match {
+      case "=="=> _.compareTo(value)==0
+      case ">="=> _.compareTo(value) >=0
+      case "<="=> _.compareTo(value) <=0
+      case ">"=> _.compareTo(value) >0
+      case "<"=> _.compareTo(value) <0
     }
     compare
   }

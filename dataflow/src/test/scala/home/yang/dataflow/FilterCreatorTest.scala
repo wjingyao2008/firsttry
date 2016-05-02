@@ -11,6 +11,19 @@ import org.scalatest.{FunSuite, Matchers}
   */
 class FilterCreatorTest extends FunSuite with Matchers{
 
+
+  test("testCreate equals") {
+
+    println(f("a","a"))
+
+    println(g("a","a"))
+
+
+  }
+  def f[A <% Ordered[A]](a: A,b:A):Boolean = a==b
+
+  def g[A](a: Comparable[A], b: A): Boolean = a == b
+
   test("testCreate") {
     val simpleFilter="$e=='ff'"
     val filterCreator=new StringFilterCreator
