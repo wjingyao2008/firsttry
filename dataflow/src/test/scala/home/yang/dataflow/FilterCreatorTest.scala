@@ -12,7 +12,6 @@ import org.scalatest.{FunSuite, Matchers}
 class FilterCreatorTest extends FunSuite with Matchers{
 
   test("testCreate") {
-    //is[Boolean](true,false)
     val simpleFilter="$e=='ff'"
     val filterCreator=new StringFilterCreator
     val filter=filterCreator.create("aName","ver1.3","==")
@@ -20,24 +19,40 @@ class FilterCreatorTest extends FunSuite with Matchers{
     filter.createString("ver1.3") shouldBe true
   }
 
-  test("testCreate Data") {
-    //is[Boolean](true,false)
+  test("testCreate Data <=") {
     val filterCreator=new DateFilterCreator
     val date1=new Date
     val strDate=DateTimeData.toString(date1)
     val filter=filterCreator.create("aName",strDate,"<=")
-    val calendar=Calendar.getInstance
-    calendar.add(Calendar.HOUR,1)
-    val hourAfterDate=calendar.getTime
+
+    val hourAfterDate=genDate(1)
     filter.createDate(hourAfterDate) shouldBe false
 
-    val calendar2=Calendar.getInstance
-    calendar.add(Calendar.HOUR,-2)
-    val hourAfterDate2=calendar.getTime
-
-    filter.createDate(hourAfterDate2) shouldBe true
+    val hourBeforeDate2=genDate(-2)
+    filter.createDate(hourBeforeDate2) shouldBe true
   }
 
+
+
+  test("testCreate Data >") {
+    val filterCreator=new DateFilterCreator
+    val date1=new Date
+    val strDate=DateTimeData.toString(date1)
+    val filter=filterCreator.create("aName",strDate,">")
+
+    val hourAfterDate=genDate(1)
+    filter.createDate(hourAfterDate) shouldBe true
+
+    val hourBeforeDate=genDate(-2)
+    filter.createDate(hourBeforeDate) shouldBe false
+  }
+
+
+  def genDate(addHour:Int)={
+    val calendar=Calendar.getInstance
+    calendar.add(Calendar.HOUR,addHour)
+    calendar.getTime
+  }
 
 
 }
