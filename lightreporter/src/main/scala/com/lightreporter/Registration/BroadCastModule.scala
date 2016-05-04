@@ -31,7 +31,7 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
   }
 
 
-  def setTimeOutSecs(tick: Int) = {
+  def setReplyTimeOutSecs(tick: Int) = {
     timeout = Timeout(tick seconds)
     this
   }
@@ -51,9 +51,14 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
     getBroadCastRef.path.toString
   }
 
-  def sendMsg(msg:Msg[T])={
-    broadCaster ! msg
+  def sendMsg(msg:T)={
+    broadCaster ! Msg(msg)
   }
+
+  def sendMsgList(iteratorMsg:Iterable[T])={
+    broadCaster ! MsgList(iteratorMsg)
+  }
+
 
   def setNotifiable(userChangedNotifiable:ActorRef) = {
     mustBeforeInit()
@@ -66,14 +71,20 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
     this
   }
 
-  def register(userName: String, receiver: Receiver[T]) = {
-    val registerMsg=Register(userName, receiver,bufferSize)
-    askBroadCaster[OperationSuccss](registerMsg)
+
+  def register(userName: String, receiver: Receiver[T],optionalFilter:FilterWrapper[T]=new FilterWrapper[T]) = {
+    val registerMsg=Register(userName, receiver,bufferSize,optionalFilter)
+    askBroadCaster[OperationSuccess](registerMsg)
+  }
+
+  def changeFilter(userName: String,filter: Filter[T]) ={
+    val changeFilter=ChangeFilter(userName,filter)
+    askBroadCaster[OperationSuccess](changeFilter)
   }
 
   def unRegister(userName: String) = {
     val unRegisterMsg = UnRegister(userName)
-    askBroadCaster[OperationSuccss](unRegisterMsg)
+    askBroadCaster[OperationSuccess](unRegisterMsg)
   }
 
   def requestAllUser():Iterable[String] = {
