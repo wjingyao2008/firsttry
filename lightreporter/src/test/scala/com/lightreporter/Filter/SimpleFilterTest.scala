@@ -18,7 +18,7 @@ class SimpleFilterTest extends FunSuite with Matchers {
 
   test(" when (a<5 and b <5)or C>5, a=5,b=6,c=6") {
     val (a: SmallThanFilter, b: SmallThanFilter, c: LargerThanFilter) = createComplexAandBorC()
-    val map = Map("a" -> 5, "b" -> 6, "c" -> 6)
+    val map = crt_abc(5,6,6)
     c.isPass(map) shouldBe true
     b.isPass(map) shouldBe false
     a.isPass(map) shouldBe true
@@ -26,19 +26,68 @@ class SimpleFilterTest extends FunSuite with Matchers {
 
   test(" when (a<5 and b <5)or C>5,and a=4,b=2,c=3") {
     val (a, b, c) = createComplexAandBorC()
-    val map = Map("a" -> 4, "b" -> 2, "c" -> 3)
+    val map = crt_abc(4,2,3)
     c.isPass(map) shouldBe false
     a.isPass(map) shouldBe true
 
   }
 
 
-  def createComplexAandBorC(): (Filter[Map[String, Int]],
+
+  test(" when a<5 or b <5 or c>5") {
+    val (a, b, c) = createComplex_A_or_B_or_C()
+
+    a.isPass(crt_abc(4,6,6)) shouldBe true
+    a.isPass(crt_abc(6,4,6)) shouldBe true
+    a.isPass(crt_abc(6,6,7)) shouldBe true
+  }
+
+
+
+  test(" when a<5 and b <5 and c>5") {
+    val (a, b, c) = createComplex_A_and_B_and_C()
+
+    a.isPass(crt_abc(4,4,6)) shouldBe true
+    a.isPass(crt_abc(6,4,6)) shouldBe false
+    a.isPass(crt_abc(4,6,7)) shouldBe false
+    a.isPass(crt_abc(4,4,5)) shouldBe false
+  }
+
+  def crt_abc(a:Int,b:Int,c:Int)=Map("a" -> a, "b" -> b, "c" -> c)
+
+
+  def createComplex_A_and_B_and_C(a:Int=5,b:Int=5,c:Int=5): (Filter[Map[String, Int]],
     Filter[Map[String, Int]],
     Filter[Map[String, Int]]) = {
-    val a = new SmallThanFilter("a", 5)
-    val b = new SmallThanFilter("b", 5)
-    val c = new LargerThanFilter("c", 5)
+    val aF = new SmallThanFilter("a", a)
+    val bF = new SmallThanFilter("b", b)
+    val cF = new LargerThanFilter("c", c)
+    aF.branchOfNext=bF
+    bF.branchOfNext=cF
+    (aF, bF, cF)
+  }
+
+
+
+  def createComplex_A_or_B_or_C(a:Int=5,b:Int=5,c:Int=5): (Filter[Map[String, Int]],
+    Filter[Map[String, Int]],
+    Filter[Map[String, Int]]) = {
+    val aF = new SmallThanFilter("a", a)
+    val bF = new SmallThanFilter("b", b)
+    val cF = new LargerThanFilter("c", c)
+    aF.addToBranch(cF)
+    aF.addToBranch(bF)
+    (aF, bF, cF)
+  }
+
+
+
+  def createComplexAandBorC(aV:Int=5,bV:Int=5,cV:Int=5): (Filter[Map[String, Int]],
+    Filter[Map[String, Int]],
+    Filter[Map[String, Int]]) = {
+    val a = new SmallThanFilter("a", aV)
+    val b = new SmallThanFilter("b", bV)
+    val c = new LargerThanFilter("c", cV)
     a.branchOfNext = b
     a.addToBranch(c)
     (a, b, c)
