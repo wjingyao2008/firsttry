@@ -1,5 +1,7 @@
 package com.lightreporter.Registration
 
+import com.lightreporter.Filter.Filter
+
 /**
   * Created by y28yang on 3/29/2016.
   */

@@ -3,6 +3,7 @@ package com.lightreporter.Registration
 import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
+import com.lightreporter.Filter.Filter
 import com.lightreporter.Registration.UserProtocol._
 
 import scala.concurrent.Await

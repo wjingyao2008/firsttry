@@ -1,4 +1,4 @@
-package com.lightreporter.Registration
+package com.lightreporter.Filter
 
 /**
   * Created by y28yang on 5/4/2016.
@@ -6,5 +6,3 @@ package com.lightreporter.Registration
 trait Filter[T] {
   def isPass(msg:T):Boolean
 }
-
-
