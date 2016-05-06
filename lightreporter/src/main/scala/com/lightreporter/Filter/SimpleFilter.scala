@@ -5,7 +5,7 @@ import scala.collection.mutable.ListBuffer
 /**
   * Created by y28yang on 5/4/2016.
   */
-abstract class SimpleFilter[T](var branchOfNext:Filter[T]=new DefaultFilter[T]) extends Filter[T]{
+abstract class SimpleFilter[T](var branchOfNext:Filter[T]=new DefaultAllPassFilter[T]) extends Filter[T]{
 
   val branchOfOR=new ListBuffer[SimpleFilter[T]]()
 
@@ -28,6 +28,6 @@ abstract class SimpleFilter[T](var branchOfNext:Filter[T]=new DefaultFilter[T]) 
      false
   }
 
-  def selfPass(msg:T):Boolean
+  protected def selfPass(msg:T):Boolean
 }
 

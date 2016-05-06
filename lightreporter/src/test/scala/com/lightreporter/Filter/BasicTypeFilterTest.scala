@@ -33,4 +33,24 @@ class BasicTypeFilterTest extends FunSuite with Matchers{
 
   }
 
+
+  test("testIsPass for string") {
+    var basicFilter:Filter[String]=null
+
+    basicFilter=new BasicTypeFilter[String]("4","==")
+    basicFilter.isPass("4") shouldBe true
+
+    basicFilter=new BasicTypeFilter[String]("4","!=")
+    basicFilter.isPass("3") shouldBe true
+
+    basicFilter=new BasicTypeFilter[String]("b","<=")
+    basicFilter.isPass("a") shouldBe true
+
+    basicFilter=new BasicTypeFilter[String]("b","<=")
+    basicFilter.isPass("b") shouldBe true
+
+    basicFilter=new BasicTypeFilter[String]("b","<=")
+    basicFilter.isPass("c") shouldBe false
+  }
+
 }

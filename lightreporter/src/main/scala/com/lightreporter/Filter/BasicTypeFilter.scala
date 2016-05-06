@@ -18,6 +18,7 @@ class BasicTypeFilter[T](val value:Comparable[T],val repl:String) extends Filter
   def getCompare(repl:String)={
     val isPass:(Comparable[T],T)=>Boolean= repl match {
       case "==" => (t1,t2)=>t1.compareTo(t2)==0
+      case "!=" => (t1,t2)=>t1.compareTo(t2)!=0
       case ">=" => (t1,t2)=>t1.compareTo(t2)<=0
       case "<=" => (t1,t2)=>t1.compareTo(t2)>=0
       case "<" => (t1,t2)=>t1.compareTo(t2)>0
@@ -28,4 +29,3 @@ class BasicTypeFilter[T](val value:Comparable[T],val repl:String) extends Filter
 
 
 }
-
