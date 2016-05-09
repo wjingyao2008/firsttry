@@ -2,6 +2,7 @@ package com.lightreporter.Filter
 
 import java.util.Comparator
 
+import com.lightreporter.Filter.basictype.BasicTypeFilter
 import org.scalatest.{FunSuite, Matchers}
 
 /**
@@ -10,9 +11,7 @@ import org.scalatest.{FunSuite, Matchers}
 class BasicTypeFilterTest extends FunSuite with Matchers{
 
   test("testIsPass") {
-    var basicFilter:Filter[Int]=null
-
-    basicFilter=new BasicTypeFilter[Int](5,"==")
+    var basicFilter=new BasicTypeFilter[Int](5,"==")
     basicFilter.isPass(5) shouldBe true
 
     basicFilter=new BasicTypeFilter[Int](5,"<=")
@@ -35,9 +34,9 @@ class BasicTypeFilterTest extends FunSuite with Matchers{
 
 
   test("testIsPass for string") {
-    var basicFilter:Filter[String]=null
 
-    basicFilter=new BasicTypeFilter[String]("4","==")
+
+    var basicFilter=new BasicTypeFilter[String]("4","==")
     basicFilter.isPass("4") shouldBe true
 
     basicFilter=new BasicTypeFilter[String]("4","!=")
@@ -53,4 +52,20 @@ class BasicTypeFilterTest extends FunSuite with Matchers{
     basicFilter.isPass("c") shouldBe false
   }
 
+  test("testIsPass for string with enum") {
+    var basicFilter=new BasicTypeFilter[String]("4",Operator.==)
+    basicFilter.isPass("4") shouldBe true
+
+    basicFilter=new BasicTypeFilter[String]("4",Operator.!=)
+    basicFilter.isPass("3") shouldBe true
+
+    basicFilter=new BasicTypeFilter[String]("b",Operator.<=)
+    basicFilter.isPass("a") shouldBe true
+
+    basicFilter=new BasicTypeFilter[String]("b",Operator.<=)
+    basicFilter.isPass("b") shouldBe true
+
+    basicFilter=new BasicTypeFilter[String]("b",Operator.<=)
+    basicFilter.isPass("c") shouldBe false
+  }
 }

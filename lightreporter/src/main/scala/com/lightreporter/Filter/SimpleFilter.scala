@@ -5,22 +5,23 @@ import scala.collection.mutable.ListBuffer
 /**
   * Created by y28yang on 5/4/2016.
   */
-abstract class SimpleFilter[T](var branchOfNext:Filter[T]=new DefaultAllPassFilter[T]) extends Filter[T]{
+abstract class SimpleFilter[T](var andFilter:Filter[T]=new DefaultAllPassFilter[T]) extends Filter[T]{
 
-  val branchOfOR=new ListBuffer[SimpleFilter[T]]()
+  private val branchOfOR=new ListBuffer[Filter[T]]()
 
 
-  def addToBranch(filter:SimpleFilter[T])={
+  def addOrFilter(filter:Filter[T])={
     branchOfOR+=filter
   }
+
 
   override def isPass(msg: T): Boolean = {
     currentBranchPass(msg)||branchOfORHasPass(msg)
   }
 
-  def currentBranchPass(msg: T):Boolean= selfPass(msg) && branchOfNext.isPass(msg)
+  private def currentBranchPass(msg: T):Boolean= selfPass(msg) && andFilter.isPass(msg)
 
-  def branchOfORHasPass(msg: T):Boolean={
+  private def branchOfORHasPass(msg: T):Boolean={
      for(filter<-branchOfOR){
        if(filter.isPass(msg))
          return true

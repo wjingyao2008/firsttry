@@ -7,7 +7,7 @@ import org.scalatest.{FunSuite, Matchers}
   */
 class SimpleFilterTest extends FunSuite with Matchers {
 
-  test("testIsPass") {
+  test(" when 5<6,should be true,and when 4>6 should be false") {
     val map = Map("5" -> 5, "4" -> 4)
     var filter: Filter[Map[String, Int]] = new SmallThanFilter("5", 6)
     filter.isPass(map) shouldBe true
@@ -62,8 +62,8 @@ class SimpleFilterTest extends FunSuite with Matchers {
     val aF = new SmallThanFilter("a", a)
     val bF = new SmallThanFilter("b", b)
     val cF = new LargerThanFilter("c", c)
-    aF.branchOfNext=bF
-    bF.branchOfNext=cF
+    aF.andFilter=bF
+    bF.andFilter=cF
     (aF, bF, cF)
   }
 
@@ -75,8 +75,8 @@ class SimpleFilterTest extends FunSuite with Matchers {
     val aF = new SmallThanFilter("a", a)
     val bF = new SmallThanFilter("b", b)
     val cF = new LargerThanFilter("c", c)
-    aF.addToBranch(cF)
-    aF.addToBranch(bF)
+    aF.addOrFilter(cF)
+    aF.addOrFilter(bF)
     (aF, bF, cF)
   }
 
@@ -88,8 +88,8 @@ class SimpleFilterTest extends FunSuite with Matchers {
     val a = new SmallThanFilter("a", aV)
     val b = new SmallThanFilter("b", bV)
     val c = new LargerThanFilter("c", cV)
-    a.branchOfNext = b
-    a.addToBranch(c)
+    a.andFilter = b
+    a.addOrFilter(c)
     (a, b, c)
   }
 
