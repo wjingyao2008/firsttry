@@ -41,6 +41,14 @@ class FilterParserTest extends FunSuite with Matchers {
     filter.isPass(Data(1,"1",4)) shouldBe false
   }
 
+  test(" 3>=c ") {
+    val exp = " 3>=c "
+    val filter=filterParser.read(exp)
+    filter.isPass(Data(1,"1",3)) shouldBe true
+    filter.isPass(Data(1,"1",4)) shouldBe false
+    filter.isPass(Data(1,"1",2)) shouldBe false
+  }
+
 
   test(" 3> $c ") {
     val exp = " 3> $c "
@@ -48,6 +56,7 @@ class FilterParserTest extends FunSuite with Matchers {
     filter.isPass(Data(1,"1",2)) shouldBe true
     filter.isPass(Data(1,"1",4)) shouldBe false
   }
+
 
   test(" +3> $c ") {
     val exp = " +3> $c "
