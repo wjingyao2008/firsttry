@@ -5,7 +5,7 @@ package com.lightreporter.Filter
 /**
   * Created by y28yang on 5/9/2016.
   */
-object Operator extends Enumeration{
+object OperatorEnum extends Enumeration{
 
   type Equator =Value
 
@@ -14,5 +14,7 @@ object Operator extends Enumeration{
   val >= = Value(">=")
   val >  = Value(">")
   val == = Value("==")
+  val ~ = Value("~")
   val != = Value("!=")
+  val in = Value("in")
 }

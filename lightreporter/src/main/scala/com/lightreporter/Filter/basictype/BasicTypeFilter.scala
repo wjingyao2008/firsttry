@@ -1,7 +1,7 @@
 package com.lightreporter.Filter.basictype
 
-import com.lightreporter.Filter.Operator
-import com.lightreporter.Filter.Operator.Equator
+import com.lightreporter.Filter.{Filter, OperatorEnum}
+import com.lightreporter.Filter.OperatorEnum.Equator
 
 /**
   * Created by y28yang on 5/4/2016.
@@ -10,22 +10,23 @@ class BasicTypeFilter[T](val value:Comparable[T],val equator:Equator) extends Ba
 
    val comparator=getCompareFunc(equator)
 
-  def this(value:Comparable[T],repl:String)=this(value,Operator.withName(repl))
+  def this(value:Comparable[T],repl:String)=this(value,OperatorEnum.withName(repl))
 
-  override def isPass(msg: Any): Boolean = {
+  override def isPassBasic(msg: Any): Boolean = {
      val msgTyped=msg.asInstanceOf[T]
      comparator(value,msgTyped)
   }
 
+
   def getCompareFunc(equator:Equator)={
 
     val isPass:(Comparable[T],T)=>Boolean= equator match {
-      case Operator.== => (t1, t2)=>t1.compareTo(t2)==0
-      case Operator.!= => (t1, t2)=>t1.compareTo(t2)!=0
-      case Operator.>= => (t1, t2)=>t1.compareTo(t2)<=0
-      case Operator.<= => (t1, t2)=>t1.compareTo(t2)>=0
-      case Operator.< => (t1, t2)=>t1.compareTo(t2)>0
-      case Operator.> => (t1, t2)=>t1.compareTo(t2)<0
+      case OperatorEnum.== => (t1, t2)=>t1.compareTo(t2)==0
+      case OperatorEnum.!= => (t1, t2)=>t1.compareTo(t2)!=0
+      case OperatorEnum.>= => (t1, t2)=>t1.compareTo(t2)<=0
+      case OperatorEnum.<= => (t1, t2)=>t1.compareTo(t2)>=0
+      case OperatorEnum.< => (t1, t2)=>t1.compareTo(t2)>0
+      case OperatorEnum.> => (t1, t2)=>t1.compareTo(t2)<0
     }
     isPass
   }

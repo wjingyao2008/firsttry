@@ -12,23 +12,23 @@ class BasicTypeFilterTest extends FunSuite with Matchers{
 
   test("testIsPass") {
     var basicFilter=new BasicTypeFilter[Int](5,"==")
-    basicFilter.isPass(5) shouldBe true
+    basicFilter.isPassBasic(5) shouldBe true
 
     basicFilter=new BasicTypeFilter[Int](5,"<=")
-    basicFilter.isPass(3) shouldBe true
+    basicFilter.isPassBasic(3) shouldBe true
 
     basicFilter=new BasicTypeFilter[Int](5,">=")
-    basicFilter.isPass(5) shouldBe true
-    basicFilter.isPass(6) shouldBe true
+    basicFilter.isPassBasic(5) shouldBe true
+    basicFilter.isPassBasic(6) shouldBe true
 
     basicFilter=new BasicTypeFilter[Int](5,"<")
-    basicFilter.isPass(4) shouldBe true
-    basicFilter.isPass(5) shouldBe false
+    basicFilter.isPassBasic(4) shouldBe true
+    basicFilter.isPassBasic(5) shouldBe false
 
 
     basicFilter=new BasicTypeFilter[Int](5,">")
-    basicFilter.isPass(6) shouldBe true
-    basicFilter.isPass(5) shouldBe false
+    basicFilter.isPassBasic(6) shouldBe true
+    basicFilter.isPassBasic(5) shouldBe false
 
   }
 
@@ -37,35 +37,35 @@ class BasicTypeFilterTest extends FunSuite with Matchers{
 
 
     var basicFilter=new BasicTypeFilter[String]("4","==")
-    basicFilter.isPass("4") shouldBe true
+    basicFilter.isPassBasic("4") shouldBe true
 
     basicFilter=new BasicTypeFilter[String]("4","!=")
-    basicFilter.isPass("3") shouldBe true
+    basicFilter.isPassBasic("3") shouldBe true
 
     basicFilter=new BasicTypeFilter[String]("b","<=")
-    basicFilter.isPass("a") shouldBe true
+    basicFilter.isPassBasic("a") shouldBe true
 
     basicFilter=new BasicTypeFilter[String]("b","<=")
-    basicFilter.isPass("b") shouldBe true
+    basicFilter.isPassBasic("b") shouldBe true
 
     basicFilter=new BasicTypeFilter[String]("b","<=")
-    basicFilter.isPass("c") shouldBe false
+    basicFilter.isPassBasic("c") shouldBe false
   }
 
   test("testIsPass for string with enum") {
-    var basicFilter=new BasicTypeFilter[String]("4",Operator.==)
-    basicFilter.isPass("4") shouldBe true
+    var basicFilter=new BasicTypeFilter[String]("4",OperatorEnum.==)
+    basicFilter.isPassBasic("4") shouldBe true
 
-    basicFilter=new BasicTypeFilter[String]("4",Operator.!=)
-    basicFilter.isPass("3") shouldBe true
+    basicFilter=new BasicTypeFilter[String]("4",OperatorEnum.!=)
+    basicFilter.isPassBasic("3") shouldBe true
 
-    basicFilter=new BasicTypeFilter[String]("b",Operator.<=)
-    basicFilter.isPass("a") shouldBe true
+    basicFilter=new BasicTypeFilter[String]("b",OperatorEnum.<=)
+    basicFilter.isPassBasic("a") shouldBe true
 
-    basicFilter=new BasicTypeFilter[String]("b",Operator.<=)
-    basicFilter.isPass("b") shouldBe true
+    basicFilter=new BasicTypeFilter[String]("b",OperatorEnum.<=)
+    basicFilter.isPassBasic("b") shouldBe true
 
-    basicFilter=new BasicTypeFilter[String]("b",Operator.<=)
-    basicFilter.isPass("c") shouldBe false
+    basicFilter=new BasicTypeFilter[String]("b",OperatorEnum.<=)
+    basicFilter.isPassBasic("c") shouldBe false
   }
 }

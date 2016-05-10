@@ -1,6 +1,6 @@
 package com.lightreporter.Filter
 
-import com.lightreporter.Filter.Operator.Equator
+import com.lightreporter.Filter.OperatorEnum.Equator
 
 
 /**

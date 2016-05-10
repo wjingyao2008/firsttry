@@ -1,6 +1,6 @@
 package com.lightreporter.Filter
 
-import com.lightreporter.Filter.Operator.Equator
+import com.lightreporter.Filter.OperatorEnum.Equator
 import com.lightreporter.Filter.basictype.BasicFilter
 
 /**
@@ -10,5 +10,5 @@ trait ValueSelector[T] {
 
   def getVal(name:T):Any
 
-  def getBasicFilter(equator: Equator, value:String):BasicFilter
+  def createBasicTypeFilter(equator: Equator, value:String):BasicFilter
 }
