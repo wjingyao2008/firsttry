@@ -8,6 +8,11 @@ import org.scalatest.{FunSuite, Matchers}
   */
 class FilterModuleTest extends FunSuite with Matchers{
   val valueExtractorMap = getValueExtractorMap
+  val valueExtractorMap2 = getValueExtractorMap2
+
+
+
+
 
   test("(a < 1 and c>2) or d<=3") {
     val filter=createFilterWith("(a < 1 and c>2) or d<=3")
@@ -40,23 +45,28 @@ class FilterModuleTest extends FunSuite with Matchers{
   }
 
 
-  test("$.b== '3'") {
+  test("single dot") {
     val filter= createComplexFilterWith("$.b== '3'")
     filter.isPass(Data(0,"3")) shouldBe true
     filter.isPass(Data(0,"2")) shouldBe false
   }
-  test("$.f.e== '3' ") {
-    val filter= createComplexFilterWith("$.b.c== '3'")
+
+
+
+  test("two dot,f.e=='3'") {
+    val filter= createComplexFilterWith("$.f.e== '3'")
     filter.isPass(Data(f = Data2(e="3"))) shouldBe true
     filter.isPass(Data(f = Data2(e="4"))) shouldBe false
-
   }
 
-//  test("$.f.c== true ") {
-//    val filter= createComplexFilterWith("$.b.c== '3'")
-//    filter.isPass(Data(0,"1",true)) shouldBe true
-//    filter.isPass(Data(0,"2",false)) shouldBe false
+
+//  test("two dot,f.c equals true") {
+//    val filter= createComplexFilterWith("$.b.c== true")
+//    filter.isPass(Data(f = Data2(c=true))) shouldBe true
+//    filter.isPass(Data(f = Data2(c=false))) shouldBe false
 //  }
+
+
 
 
   test("a <= -1") {
@@ -150,7 +160,7 @@ class FilterModuleTest extends FunSuite with Matchers{
   }
 
   def createComplexFilterWith(filter:String): Filter[Data] = {
-    val complexFacotry=new ComplexValueExtractorMap[Data,Data2](valueExtractorMap,getValueExtractorMap2())
+    val complexFacotry=new ComplexValueExtractorMap[Data,Data2](valueExtractorMap,valueExtractorMap2)
     val filterModule = new FilterModule[Data](complexFacotry)
     filterModule.readString(filter)
   }
@@ -184,13 +194,23 @@ class FilterModuleTest extends FunSuite with Matchers{
 
       override def getKey(): String = "a"
     })
+
+    valueExtractorMap.add("f", new ValueGetter[Data] {
+
+      override def createOperator(operatorString: String, value: String): Operator[Data] = ???
+
+      override def getVal(name: Data): Any = name.f
+
+      override def getKey(): String = "f"
+    })
+
     valueExtractorMap
   }
 
 
   def getValueExtractorMap2():ValueOperatorFactory[Data2]  = {
     val valueExtractorMap= new ValueExtractorMap[Data2]
-    valueExtractorMap.add("e", new BoolValueGetter[Data2] {
+    valueExtractorMap.add("e", new StringValueGetter[Data2] {
       override def getVal(name: Data2): Any = name.e
 
       override def getKey(): String = "e"
