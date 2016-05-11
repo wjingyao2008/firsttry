@@ -15,6 +15,9 @@ class OperatorEnum$Test extends FunSuite with Matchers{
     OperatorEnum.withName(">") shouldBe OperatorEnum.>
     OperatorEnum.withName("==") shouldBe OperatorEnum.==
     OperatorEnum.withName("!=") shouldBe OperatorEnum.!=
+
+    OperatorEnum.reverse(OperatorEnum.withName("!=")) shouldBe OperatorEnum.!=
+    OperatorEnum.reverse(OperatorEnum.withName("<=")) shouldBe OperatorEnum.>=
   }
 
 }

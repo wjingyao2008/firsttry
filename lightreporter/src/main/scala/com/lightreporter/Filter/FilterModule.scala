@@ -1,6 +1,7 @@
 package com.lightreporter.Filter
 
-import antlr.collections.AST
+import com.lightreporter.Filter.parser.{AndFilter, FilterParser, FilterTree, OrFilter}
+import org.apache.log4j.Logger
 import org.jacorb.notification.filter.etcl._
 
 /**
@@ -8,94 +9,126 @@ import org.jacorb.notification.filter.etcl._
   */
 class FilterModule[T](val valueExtractorMap:ValueExtractorMap[T]) {
 
-//
-//  def andOperation(node: AndOperator):SimpleFilter[T]= {
-//    val left=processNode(node.left())
-//    val right=processNode(node.right())
-//    val simpleFilter=new SimpleFilter[T]()
-//    simpleFilter.andFilter=left
-//    left.andFilter=right
-//    org.jacorb.notification.filter.AbstractFilter
-//    simpleFilter
-//  }
-//
-//  def orOperation(node: OrOperator):SimpleFilter[T] = {
-//    val left=processNode(node.left())
-//    val right=processNode(node.right())
-//    val simpleFilter=new SimpleFilter[T]()
-//    simpleFilter.addOrFilter(left)
-//    simpleFilter.addOrFilter(right)
-//    simpleFilter
-//  }
-//
-//  def getValue(right: AST): String = {
-//    right.getFirstChild.toString
-//  }
-//
-//  def getName(left: AST) = {
-//    left.toString
-//  }
-//
-//  def getSelector(name: String): ValueSelector[T] = {
-//    valueExtractorMap.get(name)
-//  }
-//
-//  def binOperation(node: BinaryOperator):SimpleFilter[T] = {
-//    val name = node.left().asInstanceOf[IdentValue].getIdentifier
-//    val value = node.right().asInstanceOf[NumberValue].getNumber.toString
-//    val operator = convertOperator(node)
-//    val fieldSelector = getSelector(name)
-//    new FieldSelectorFilter[T](fieldSelector, operator, value)
-//  }
-//
-//
-//  def convertOperator(node: BinaryOperator): Operator.Value = {
-//    node match {
-//      case node: EqOperator => Operator.==
-//      case node: GteOperator => Operator.>=
-//      case node: GtOperator => Operator.>
-//      case node: LteOperator => Operator.<=
-//      case node: LtOperator => Operator.<
-//      case node: NeqOperator => Operator.!=
-//      case _ => {
-//        val name = node.getName
-//        throw new UnsupportedOperationException(name)
-//      }
-//
-//    }
-//  }
-//
-//  def operatorConvert(node: AbstractTCLNode)={
-//
-//  }
-//
-//  def readString(expression: String) = {
-//    val root = TCLParser.parse(expression)
-//    val simpleFilter=new SimpleFilter[T]()
-//    try {
-//      processNode(root)
-//      println("_")
-//    } catch {
-//      case ex: UnsupportedOperationException => {
-//        val exMsg = ex.getMessage
-//        throw new UnsupportedOperationException(s"can't parse $expression on $exMsg")
-//      }
-//    }
-//  }
-//
-//
-//  def processNode(root: AbstractTCLNode): SimpleFilter[T] = {
-//    root match {
-//      case node: BinaryOperator => binOperation(node)
-//      case node: AndOperator => andOperation(node)
-//      case node: OrOperator => orOperation(node)
-//      case _ => throw new UnsupportedOperationException(root.getName)
-//    }
-//  }
-//
-//  def convertToOperator(optStr: String) = {
-//    //    optStr matches {
-//    //      case "AndOperator" => _
-//    //    }
-//  }
+  val log=Logger.getLogger(classOf[FilterParser[T]])
+  val parser=new FilterParser[T](valueExtractorMap)
+
+  def andOperation(node: AndOperator)={
+    val left=processNode(node.left())
+    val right=processNode(node.right())
+    val andFilter=new AndFilter[T](left,right)
+    andFilter
+  }
+
+  def orOperation(node: OrOperator) = {
+    val left=processNode(node.left())
+    val right=processNode(node.right())
+    val orFilter=new OrFilter[T](left,right)
+    orFilter
+  }
+
+  def getNameAndRight(node: BinaryOperator) = {
+    var left = node.left()
+    var right = node.right()
+    var operator = convertOperator(node)
+    if ((isName(left) && isName(right)) || (isValue(left) && isValue(right))) {
+      throw new UnsupportedOperationException("can't decide left and right")
+    } else if (isName(right)) {
+      val temp = left
+      left = right
+      right = temp
+      operator=OperatorEnum.reverse(operator)
+    }
+    (left, right,operator)
+  }
+
+  def makeValue(node: AbstractTCLNode):String = {
+    if(isMinusOrPlus(node)) {
+      val down= node.left()
+      if (down.hasNextSibling) {
+        throw new UnsupportedOperationException(node.toStringTree)
+      }
+      else {
+        var valueStr= down.toString
+        if (node.isInstanceOf[MinusOperator]) {
+          valueStr= "-" + valueStr
+        }
+        return valueStr
+      }
+    } else
+    {
+      return node.toString
+    }
+  }
+
+  def binOperation(node: BinaryOperator):Filter[T] = {
+
+    log.debug(s"received binary tree:${node.toStringTree}" )
+    var nameAndValue= getNameAndRight(node)
+    val name=makeName(nameAndValue._1)
+    val value = makeValue(nameAndValue._2)
+    val operator=nameAndValue._3
+    log.debug(s"extract name:$name,opt:$operator,value:$value")
+    parser.tryToCreatOperator(operator,name,value)
+  }
+
+  def makeName(node:AbstractTCLNode)={
+    var noParenth=node.toStringTree.replace("(","").replace(")","").trim
+    if(noParenth.startsWith(".")){
+      noParenth=noParenth.replaceFirst(".","").trim
+    }
+    noParenth
+  }
+
+
+  def convertOperator(node: BinaryOperator): OperatorEnum.Value = {
+    node match {
+      case node: EqOperator => OperatorEnum.==
+      case node: GteOperator => OperatorEnum.>=
+      case node: GtOperator => OperatorEnum.>
+      case node: LteOperator => OperatorEnum.<=
+      case node: LtOperator => OperatorEnum.<
+      case node: NeqOperator => OperatorEnum.!=
+      case node: SubstrOperator => OperatorEnum.~
+      case node: InOperator => OperatorEnum.in
+      case _ => {
+        val name = node.getName
+        throw new UnsupportedOperationException(name)
+      }
+
+    }
+  }
+
+
+  def readString(expression: String) = {
+    val root = TCLParser.parse(expression)
+    try {
+      processNode(root)
+    } catch {
+      case ex: UnsupportedOperationException => {
+        throw new UnsupportedOperationException(s"can't parse $expression on $expression",ex)
+      }
+    }
+  }
+
+
+  def processNode(root: AbstractTCLNode): Filter[T] = {
+    root match {
+      case node: BinaryOperator => binOperation(node)
+      case node: AndOperator => andOperation(node)
+      case node: OrOperator => orOperation(node)
+      case _ => throw new UnsupportedOperationException(root.getName)
+    }
+  }
+
+  protected def isMinusOrPlus(node: AbstractTCLNode): Boolean = {
+    return node.isInstanceOf[MinusOperator] || node.isInstanceOf[PlusOperator]
+  }
+
+  def isName(node: AbstractTCLNode): Boolean = {
+    return node.isInstanceOf[ETCLComponentName] || node.isInstanceOf[RuntimeVariableNode] || node.isInstanceOf[IdentValue]
+  }
+
+  def isValue(node: AbstractTCLNode): Boolean = {
+    return node.isInstanceOf[DotOperator] || node.isInstanceOf[AssocOperator] || node.isInstanceOf[BoolValue] || node.isInstanceOf[NumberValue] || node.isInstanceOf[StringValue]
+  }
 }

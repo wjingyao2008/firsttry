@@ -53,6 +53,15 @@ abstract class ShortValueGetter[T] extends ValueGetter[T]{
   }
 }
 
+abstract class FloatValueGetter[T] extends ValueGetter[T]{
+
+  override def createOperator(operatorString: String, value: String): Operator[T] = {
+    operatorString match {
+      case _  => new FloatOpt[T](operatorString,value,this)
+    }
+  }
+}
+
 abstract class LongValueGetter[T] extends ValueGetter[T]{
 
   override def createOperator(operatorString: String, value: String): Operator[T] = {
@@ -67,6 +76,15 @@ abstract class ArrayGetter[T] extends ValueGetter[T]{
   override def createOperator(operatorString: String, value: String): Operator[T] = {
     operatorString match {
       case "in"  => new ContainInSeqOpt[T](operatorString,value,this)
+    }
+  }
+}
+
+abstract class CombineValueGetter[Any]() extends ValueGetter[T]{
+  val valueGetter:ValueGetter[Any]
+  override def createOperator(operatorString: String, value: String): Operator[T] = {
+    operatorString match {
+      case _  => new LongOpt[T](operatorString,value,this)
     }
   }
 }

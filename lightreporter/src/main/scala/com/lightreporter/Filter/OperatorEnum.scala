@@ -17,4 +17,15 @@ object OperatorEnum extends Enumeration{
   val ~ = Value("~")
   val != = Value("!=")
   val in = Value("in")
+
+
+  def reverse(operator:OperatorEnum.Value)={
+    operator match {
+      case OperatorEnum.<= => OperatorEnum.>=
+      case OperatorEnum.< => OperatorEnum.>
+      case OperatorEnum.>= => OperatorEnum.<=
+      case OperatorEnum.> => OperatorEnum.<
+      case default  => default
+    }
+  }
 }

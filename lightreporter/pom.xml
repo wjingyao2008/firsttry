@@ -47,6 +47,10 @@
           <artifactId>commons-lang</artifactId>
           <version>${commons-lang-version}</version>
       </dependency>
+      <dependency>
+          <groupId>org.jacorb</groupId>
+          <artifactId>jacorb-services</artifactId>
+      </dependency>
   </dependencies>
 
 </project>
