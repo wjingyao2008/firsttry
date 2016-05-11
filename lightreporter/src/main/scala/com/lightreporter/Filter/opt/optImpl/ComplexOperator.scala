@@ -8,7 +8,7 @@ import com.lightreporter.Filter.opt.{Operator, ValueGetter}
 class ComplexOperator[T](optName:String,value:String,val fieldSelector:FieldExtractor) extends Operator[T](optName,value) {
 
   override def isPass(msg: T): Boolean = {
-    fieldSelector.
+    false
   }
 
 }

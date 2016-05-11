@@ -6,18 +6,14 @@ import org.apache.commons.lang.StringUtils
 import org.apache.log4j.Logger
 
 /**
-  * Created by y28yang on 5/10/2016.
-  */
-class FilterParser[T](val valueExtractorMap: ValueExtractorMap[T]) {
+ * Created by y28yang on 5/10/2016.
+ */
+class FilterParser[T](val operatorFactory: ValueOperatorFactory[T]) {
 
-  val log=Logger.getLogger(classOf[FilterParser[T]])
-
-  def getSelector(name: String): ValueGetter[T] = {
-    valueExtractorMap.get(name)
-  }
+  val log = Logger.getLogger(classOf[FilterParser[T]])
 
 
-  def readOneOperator(expression: String)= {
+  def readOneOperator(expression: String) = {
     val splits = splitOneOperator(expression)
     val name = splits._1(0)
     val value = splits._1(1)
@@ -25,22 +21,20 @@ class FilterParser[T](val valueExtractorMap: ValueExtractorMap[T]) {
   }
 
 
-  def tryToCreatOperator(operatorEnumVal: OperatorEnum.Value, first: String, last: String):Filter[T]= {
+  def tryToCreatOperator(operatorEnumVal: OperatorEnum.Value, first: String, last: String): Filter[T] = {
     log.debug(s"get name:$first,value:$last,with operator:$operatorEnumVal")
     if (isName(first) && (isValue(last))) {
       createOpt(operatorEnumVal, first, last)
     } else if (isName(last) && (isValue(first))) {
-      val reversedEnumVal=OperatorEnum.reverse(operatorEnumVal)
+      val reversedEnumVal = OperatorEnum.reverse(operatorEnumVal)
       createOpt(reversedEnumVal, last, first)
     } else throw new UnsupportedOperationException(s"can't decide the name and value from:$first $last")
   }
 
-  def createOpt(optEnum: OperatorEnum.Value, name: String, value: String)= {
+  def createOpt(optEnum: OperatorEnum.Value, name: String, value: String) = {
     val plainName = name.replace("$", "")
-    val selector = getSelector(plainName)
     val plainValue = getPlainVal(value)
-    val operator = selector.createOperator(optEnum.toString, plainValue)
-    operator
+    operatorFactory.getOperator(plainName, optEnum, plainValue)
   }
 
   def getPlainVal(a: String) = {
@@ -68,7 +62,7 @@ class FilterParser[T](val valueExtractorMap: ValueExtractorMap[T]) {
   }
 
 
-  def isName(a: String) = a.startsWith("$")||(!StringUtils.isNumeric(a))
+  def isName(a: String) = a.startsWith("$") || (!StringUtils.isNumeric(a))
 
   def isValue(a: String) = (a.startsWith("'") && a.endsWith("'")) | StringUtils.isNumeric(a) | isFload(a) | isDouble(a)
 

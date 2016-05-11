@@ -41,15 +41,22 @@ class FilterModuleTest extends FunSuite with Matchers{
 
 
   test("$.b== '3'") {
-    val filter= createFilterWith("$.b== '3'")
+    val filter= createComplexFilterWith("$.b== '3'")
     filter.isPass(Data(0,"3")) shouldBe true
     filter.isPass(Data(0,"2")) shouldBe false
   }
-  test("$.b.c== '3'") {
-    val filter= createFilterWith("$.b.c== '3'")
-    filter.isPass(Data(0,"3")) shouldBe true
-    filter.isPass(Data(0,"2")) shouldBe false
+  test("$.f.e== '3' ") {
+    val filter= createComplexFilterWith("$.b.c== '3'")
+    filter.isPass(Data(f = Data2(e="3"))) shouldBe true
+    filter.isPass(Data(f = Data2(e="4"))) shouldBe false
+
   }
+
+//  test("$.f.c== true ") {
+//    val filter= createComplexFilterWith("$.b.c== '3'")
+//    filter.isPass(Data(0,"1",true)) shouldBe true
+//    filter.isPass(Data(0,"2",false)) shouldBe false
+//  }
 
 
   test("a <= -1") {
@@ -142,8 +149,15 @@ class FilterModuleTest extends FunSuite with Matchers{
     filterModule.readString(filter)
   }
 
-  def getValueExtractorMap = {
-    val valueExtractorMap = new ValueExtractorMap[Data]
+  def createComplexFilterWith(filter:String): Filter[Data] = {
+    val complexFacotry=new ComplexValueExtractorMap[Data,Data2](valueExtractorMap,getValueExtractorMap2())
+    val filterModule = new FilterModule[Data](complexFacotry)
+    filterModule.readString(filter)
+  }
+
+
+  def getValueExtractorMap():ValueOperatorFactory[Data]  = {
+    val valueExtractorMap= new ValueExtractorMap[Data]
     valueExtractorMap.add("c", new ShortValueGetter[Data] {
       override def getVal(name: Data): Any = name.c
 
@@ -173,5 +187,22 @@ class FilterModuleTest extends FunSuite with Matchers{
     valueExtractorMap
   }
 
+
+  def getValueExtractorMap2():ValueOperatorFactory[Data2]  = {
+    val valueExtractorMap= new ValueExtractorMap[Data2]
+    valueExtractorMap.add("e", new BoolValueGetter[Data2] {
+      override def getVal(name: Data2): Any = name.e
+
+      override def getKey(): String = "e"
+    })
+
+    valueExtractorMap.add("c", new BoolValueGetter[Data2] {
+      override def getVal(name: Data2): Any = name.c
+
+      override def getKey(): String = "c"
+    })
+
+    valueExtractorMap
+  }
 
 }

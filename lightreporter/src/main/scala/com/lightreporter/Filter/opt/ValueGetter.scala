@@ -80,12 +80,4 @@ abstract class ArrayGetter[T] extends ValueGetter[T]{
   }
 }
 
-abstract class CombineValueGetter[Any]() extends ValueGetter[T]{
-  val valueGetter:ValueGetter[Any]
-  override def createOperator(operatorString: String, value: String): Operator[T] = {
-    operatorString match {
-      case _  => new LongOpt[T](operatorString,value,this)
-    }
-  }
-}
 

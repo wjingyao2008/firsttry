@@ -1,6 +1,6 @@
 package com.lightreporter.Filter
 
-import com.lightreporter.Filter.opt.ValueGetter
+import com.lightreporter.Filter.opt.{Operator, ValueGetter}
 import org.apache.log4j.Logger
 
 import scala.collection.mutable
@@ -8,7 +8,8 @@ import scala.collection.mutable
 /**
   * Created by y28yang on 5/9/2016.
   */
-class ValueExtractorMap[T] {
+
+class ValueExtractorMap[T] extends ValueOperatorFactory[T]{
   val log=Logger.getLogger(classOf[ValueExtractorMap[T]])
 
   var maps=new mutable.HashMap[String,ValueGetter[T]]()
@@ -17,22 +18,26 @@ class ValueExtractorMap[T] {
     maps+=name->valueSelector
   }
 
+
+  def getSelector(name: String): ValueGetter[T] = {
+    this.get(name)
+  }
+
+  def getOperator(name: String,optEnum: OperatorEnum.Value, value:String)={
+    val selector=getSelector(name)
+    val operator = selector.createOperator(optEnum.toString, value)
+    operator
+  }
+
   def get(name:String)={
     val option=maps.get(name.trim)
     if(option.isEmpty){
-
       throw new UnsupportedOperationException(s"can't find value selector from:{$name}.")
     }
     option.get
   }
 
-  def tryWithDot(name:String)={
-    val dotArray=name.split(".").map(_.trim).filter(_.isEmpty)
-    log.debug(s"try to split the name:$name with dot: ${dotArray.mkString(",")}")
-    if(dotArray.size<2) throw new UnsupportedOperationException(s"can't find combined dot value selector:$name")
-    val valuseSelector=this.get("."+dotArray.head)
-    valuseSelector.
-  }
+
 
 
 }

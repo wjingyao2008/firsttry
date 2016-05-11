@@ -7,7 +7,7 @@ import org.jacorb.notification.filter.etcl._
 /**
   * Created by y28yang on 5/9/2016.
   */
-class FilterModule[T](val valueExtractorMap:ValueExtractorMap[T]) {
+class FilterModule[T](val valueExtractorMap:ValueOperatorFactory[T]) {
 
   val log=Logger.getLogger(classOf[FilterParser[T]])
   val parser=new FilterParser[T](valueExtractorMap)
