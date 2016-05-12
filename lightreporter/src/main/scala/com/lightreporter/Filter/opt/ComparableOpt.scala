@@ -5,7 +5,7 @@ package com.lightreporter.Filter.opt
 /**
   * Created by y28yang on 5/10/2016.
   */
-abstract class ComparableOpt[T,U](optName:String,value:String,val valueSelector: ValueGetter[T])  extends Operator[T](optName,value){
+abstract class ComparableOpt[T,U](optName:String,value:String,val valueSelector: ValueExtractor[T])  extends Operator[T](optName,value){
 
   val comparator=getCompareFunc(optName)
 

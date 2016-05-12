@@ -1,11 +1,11 @@
 package com.lightreporter.Filter.opt.optImpl
 
-import com.lightreporter.Filter.opt.{ComparableOpt, Operator, ValueGetter}
+import com.lightreporter.Filter.opt.{ComparableOpt, Operator, ValueExtractor}
 
 /**
   * Created by y28yang on 5/10/2016.
   */
-class LongOpt[T](optName:String, value:String, valueSelector: ValueGetter[T]) extends ComparableOpt[T,Long](optName,value,valueSelector){
+class LongOpt[T](optName:String, value:String, valueSelector: ValueExtractor[T]) extends ComparableOpt[T,Long](optName,value,valueSelector){
 
   val longVal=value.toDouble.toLong
 

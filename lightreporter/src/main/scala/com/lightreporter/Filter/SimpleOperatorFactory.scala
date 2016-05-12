@@ -1,6 +1,6 @@
 package com.lightreporter.Filter
 
-import com.lightreporter.Filter.opt.{Operator, ValueGetter}
+import com.lightreporter.Filter.opt.{Operator, ValueExtractor}
 import org.apache.log4j.Logger
 
 import scala.collection.mutable
@@ -9,22 +9,22 @@ import scala.collection.mutable
   * Created by y28yang on 5/9/2016.
   */
 
-class ValueExtractorMap[T] extends ValueOperatorFactory[T]{
-  val log=Logger.getLogger(classOf[ValueExtractorMap[T]])
+class SimpleOperatorFactory[T] extends OperatorFactory[T]{
+  val log=Logger.getLogger(classOf[SimpleOperatorFactory[T]])
 
-  var maps=new mutable.HashMap[String,ValueGetter[T]]()
+  var maps=new mutable.HashMap[String,ValueExtractor[T]]()
 
-  def add(name:String,valueSelector: ValueGetter[T])={
+  def add(name:String,valueSelector: ValueExtractor[T])={
     maps+=name->valueSelector
   }
 
 
-  def getSelector(name: String): ValueGetter[T] = {
+  def getExtractor(name: String): ValueExtractor[T] = {
     this.get(name)
   }
 
   def getOperator(name: String,optEnum: OperatorEnum.Value, value:String)={
-    val selector=getSelector(name)
+    val selector=getExtractor(name)
     val operator = selector.createOperator(optEnum.toString, value)
     operator
   }

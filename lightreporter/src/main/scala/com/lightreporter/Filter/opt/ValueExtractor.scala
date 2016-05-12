@@ -7,7 +7,7 @@ import com.lightreporter.Filter.opt.optImpl._
 /**
   * Created by y28yang on 5/9/2016.
   */
-trait ValueGetter[T] {
+trait ValueExtractor[T] {
 
   def getKey():String
 
@@ -16,7 +16,7 @@ trait ValueGetter[T] {
   def createOperator(operatorString:String, value:String):Operator[T]
 }
 
-abstract class StringValueGetter[T] extends ValueGetter[T]{
+abstract class StringValueExtractor[T] extends ValueExtractor[T]{
 
   override def createOperator(operatorString: String, value: String): Operator[T] = {
     operatorString match {
@@ -25,7 +25,7 @@ abstract class StringValueGetter[T] extends ValueGetter[T]{
     }
   }
 }
-abstract class BoolValueGetter[T] extends ValueGetter[T]{
+abstract class BoolValueExtractor[T] extends ValueExtractor[T]{
 
   override def createOperator(operatorString: String, value: String): Operator[T] = {
     operatorString match {
@@ -35,7 +35,7 @@ abstract class BoolValueGetter[T] extends ValueGetter[T]{
   }
 }
 
-abstract class IntValueGetter[T] extends ValueGetter[T]{
+abstract class IntValueExtractor[T] extends ValueExtractor[T]{
 
   override def createOperator(operatorString: String, value: String): Operator[T] = {
     operatorString match {
@@ -44,7 +44,7 @@ abstract class IntValueGetter[T] extends ValueGetter[T]{
   }
 }
 
-abstract class ShortValueGetter[T] extends ValueGetter[T]{
+abstract class ShortValueExtractor[T] extends ValueExtractor[T]{
 
   override def createOperator(operatorString: String, value: String): Operator[T] = {
     operatorString match {
@@ -53,7 +53,7 @@ abstract class ShortValueGetter[T] extends ValueGetter[T]{
   }
 }
 
-abstract class FloatValueGetter[T] extends ValueGetter[T]{
+abstract class FloatValueExtractor[T] extends ValueExtractor[T]{
 
   override def createOperator(operatorString: String, value: String): Operator[T] = {
     operatorString match {
@@ -62,7 +62,7 @@ abstract class FloatValueGetter[T] extends ValueGetter[T]{
   }
 }
 
-abstract class LongValueGetter[T] extends ValueGetter[T]{
+abstract class LongValueExtractor[T] extends ValueExtractor[T]{
 
   override def createOperator(operatorString: String, value: String): Operator[T] = {
     operatorString match {
@@ -71,7 +71,7 @@ abstract class LongValueGetter[T] extends ValueGetter[T]{
   }
 }
 
-abstract class ArrayGetter[T] extends ValueGetter[T]{
+abstract class ArrayExtractor[T] extends ValueExtractor[T]{
 
   override def createOperator(operatorString: String, value: String): Operator[T] = {
     operatorString match {

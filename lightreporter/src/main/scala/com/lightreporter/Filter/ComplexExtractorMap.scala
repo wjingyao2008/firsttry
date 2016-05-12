@@ -1,25 +1,25 @@
 package com.lightreporter.Filter
 
-import com.lightreporter.Filter.opt.{ComparableOpt, Operator, ValueGetter}
+import com.lightreporter.Filter.opt.{ComparableOpt, Operator, ValueExtractor}
 import org.apache.log4j.Logger
 
 /**
  * Created by y28yang on 5/11/2016.
  */
-class ComplexValueExtractorMap[T1, T2](val valueExtractorMap1: ValueOperatorFactory[T1],
-                                       val valueExtractorMap2: ValueOperatorFactory[T2]) extends ValueOperatorFactory[T1] {
+class ComplexExtractorMap[T1, T2](val valueExtractorMap1: OperatorFactory[T1],
+                                  val valueExtractorMap2: OperatorFactory[T2]) extends OperatorFactory[T1] {
 
-  val log = Logger.getLogger(classOf[ComplexValueExtractorMap[T1, T2]])
+  val log = Logger.getLogger(classOf[ComplexExtractorMap[T1, T2]])
 
 
-  override def getSelector(name: String): ValueGetter[T1] = valueExtractorMap1.getSelector(name)
+  override def getExtractor(name: String): ValueExtractor[T1] = valueExtractorMap1.getExtractor(name)
 
   def getComplexOperator(nameArray: Seq[String], optEnum: OperatorEnum.Value, value: String) = {
-    val valueGetter1 = valueExtractorMap1.getSelector(nameArray(0))
+    val valueGetter1 = valueExtractorMap1.getExtractor(nameArray(0))
     if (nameArray.size == 1) {
       valueGetter1.createOperator(optEnum.toString, value)
     } else if(nameArray.size == 2) {
-      val valueGetter2 = valueExtractorMap2.getSelector(nameArray(1))
+      val valueGetter2 = valueExtractorMap2.getExtractor(nameArray(1))
       new FieldOpt[T1, T2](optEnum.toString, value, valueGetter1, valueGetter2.createOperator(optEnum.toString, value))
     } else {
       val outValue=nameArray.mkString(",")
@@ -43,7 +43,7 @@ class ComplexValueExtractorMap[T1, T2](val valueExtractorMap1: ValueOperatorFact
 }
 
 
-class FieldOpt[T, Field](optName: String, value: String, fieldGetter: ValueGetter[T],
+class FieldOpt[T, Field](optName: String, value: String, fieldGetter: ValueExtractor[T],
                          operator: Operator[Field]) extends Operator[T](optName, value) {
 
   override def isPass(msg: T): Boolean = {

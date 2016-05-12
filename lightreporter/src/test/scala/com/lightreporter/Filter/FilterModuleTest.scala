@@ -160,42 +160,42 @@ class FilterModuleTest extends FunSuite with Matchers{
   }
 
   def createComplexFilterWith(filter:String): Filter[Data] = {
-    val complexFacotry=new ComplexValueExtractorMap[Data,Data2](valueExtractorMap,valueExtractorMap2)
+    val complexFacotry=new ComplexExtractorMap[Data,Data2](valueExtractorMap,valueExtractorMap2)
     val filterModule = new FilterModule[Data](complexFacotry)
     filterModule.readString(filter)
   }
 
 
-  def getValueExtractorMap():ValueOperatorFactory[Data]  = {
-    val valueExtractorMap= new ValueExtractorMap[Data]
-    valueExtractorMap.add("c", new ShortValueGetter[Data] {
+  def getValueExtractorMap():OperatorFactory[Data]  = {
+    val valueExtractorMap= new SimpleOperatorFactory[Data]
+    valueExtractorMap.add("c", new ShortValueExtractor[Data] {
       override def getVal(name: Data): Any = name.c
 
       override def getKey(): String = "c"
     })
-    valueExtractorMap.add("d", new FloatValueGetter[Data] {
+    valueExtractorMap.add("d", new FloatValueExtractor[Data] {
       override def getVal(name: Data): Any = name.d
 
       override def getKey(): String = "d"
     })
-    valueExtractorMap.add("b", new StringValueGetter[Data] {
+    valueExtractorMap.add("b", new StringValueExtractor[Data] {
       override def getVal(name: Data): Any = name.b
 
       override def getKey(): String = "b"
     })
 
-    valueExtractorMap.add("e", new ArrayGetter[Data] {
+    valueExtractorMap.add("e", new ArrayExtractor[Data] {
       override def getVal(name: Data): Any = name.e
 
       override def getKey(): String = "e"
     })
-    valueExtractorMap.add("a", new IntValueGetter[Data] {
+    valueExtractorMap.add("a", new IntValueExtractor[Data] {
       override def getVal(name: Data): Any = name.a
 
       override def getKey(): String = "a"
     })
 
-    valueExtractorMap.add("f", new ValueGetter[Data] {
+    valueExtractorMap.add("f", new ValueExtractor[Data] {
 
       override def createOperator(operatorString: String, value: String): Operator[Data] = ???
 
@@ -208,15 +208,15 @@ class FilterModuleTest extends FunSuite with Matchers{
   }
 
 
-  def getValueExtractorMap2():ValueOperatorFactory[Data2]  = {
-    val valueExtractorMap= new ValueExtractorMap[Data2]
-    valueExtractorMap.add("e", new StringValueGetter[Data2] {
+  def getValueExtractorMap2():OperatorFactory[Data2]  = {
+    val valueExtractorMap= new SimpleOperatorFactory[Data2]
+    valueExtractorMap.add("e", new StringValueExtractor[Data2] {
       override def getVal(name: Data2): Any = name.e
 
       override def getKey(): String = "e"
     })
 
-    valueExtractorMap.add("c", new BoolValueGetter[Data2] {
+    valueExtractorMap.add("c", new BoolValueExtractor[Data2] {
       override def getVal(name: Data2): Any = name.c
 
       override def getKey(): String = "c"

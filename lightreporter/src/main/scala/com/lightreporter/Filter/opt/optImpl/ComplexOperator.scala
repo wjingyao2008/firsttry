@@ -1,6 +1,6 @@
 package com.lightreporter.Filter.opt.optImpl
 
-import com.lightreporter.Filter.opt.{Operator, ValueGetter}
+import com.lightreporter.Filter.opt.{Operator, ValueExtractor}
 
 /**
   * Created by y28yang on 5/11/2016.

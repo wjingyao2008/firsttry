@@ -1,13 +1,13 @@
 package com.lightreporter.Filter
 
-import com.lightreporter.Filter.opt.{Operator, ValueGetter}
+import com.lightreporter.Filter.opt.{Operator, ValueExtractor}
 
 /**
   * Created by y28yang on 5/12/2016.
   */
-trait ValueOperatorFactory[T] {
+trait OperatorFactory[T] {
 
-  def getSelector(name: String):ValueGetter[T]
+  def getExtractor(name: String):ValueExtractor[T]
 
 
   def getOperator(name: String, optEnum:OperatorEnum.Value,value:String):Operator[T]

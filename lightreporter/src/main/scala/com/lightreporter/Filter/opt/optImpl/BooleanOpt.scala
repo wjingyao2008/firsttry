@@ -1,12 +1,12 @@
 package com.lightreporter.Filter.opt.optImpl
 
 
-import com.lightreporter.Filter.opt.{ComparableOpt, ValueGetter}
+import com.lightreporter.Filter.opt.{ComparableOpt, ValueExtractor}
 
 /**
   * Created by y28yang on 5/10/2016.
   */
-class BooleanOpt[T](optName:String, value:String, valueSelector: ValueGetter[T]) extends ComparableOpt[T,Boolean](optName,value,valueSelector){
+class BooleanOpt[T](optName:String, value:String, valueSelector: ValueExtractor[T]) extends ComparableOpt[T,Boolean](optName,value,valueSelector){
 
   val booleanVal=value.toBoolean
 

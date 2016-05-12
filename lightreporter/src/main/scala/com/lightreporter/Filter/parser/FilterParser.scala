@@ -1,14 +1,14 @@
 package com.lightreporter.Filter.parser
 
 import com.lightreporter.Filter._
-import com.lightreporter.Filter.opt.ValueGetter
+import com.lightreporter.Filter.opt.ValueExtractor
 import org.apache.commons.lang.StringUtils
 import org.apache.log4j.Logger
 
 /**
  * Created by y28yang on 5/10/2016.
  */
-class FilterParser[T](val operatorFactory: ValueOperatorFactory[T]) {
+class FilterParser[T](val operatorFactory: OperatorFactory[T]) {
 
   val log = Logger.getLogger(classOf[FilterParser[T]])
 
