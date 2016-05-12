@@ -1,4 +1,4 @@
-package com.lightreporter.Registration
+package com.lightreporter.registration
 
 import java.util.Date
 import java.util.concurrent.TimeUnit
@@ -9,7 +9,7 @@ import akka.actor.ActorRef
 /**
   * Created by y28yang on 5/4/2016.
   */
-class SlowReceiver(testRef: ActorRef,val lock:Lock=new ReentrantLock) extends StringReciver{
+class SlowReceiver(testRef: ActorRef,val lock:Lock=new ReentrantLock) extends StringReceiver{
 
   override def receive(msg: String): Unit = {
     Thread.sleep(100)

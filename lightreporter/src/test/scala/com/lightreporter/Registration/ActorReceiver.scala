@@ -1,4 +1,4 @@
-package com.lightreporter.Registration
+package com.lightreporter.registration
 
 import akka.actor.ActorRef
 
@@ -6,7 +6,7 @@ import akka.actor.ActorRef
 /**
   * Created by Administrator on 2016/5/1 0001.
   */
-class ActorReciver(testRef: ActorRef) extends StringReciver{
+class ActorReceiver(testRef: ActorRef) extends StringReceiver{
 
 
   override def receive(msg: String): Unit = {

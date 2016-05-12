@@ -18,7 +18,10 @@ class SimpleOperatorFactory[T] extends OperatorFactory[T]{
   def add(name:String,valueSelector: ValueExtractor[T])={
     maps+=name->valueSelector
   }
-
+  def add(valueSelector: ValueExtractor[T])={
+    val name=valueSelector.getKey()
+    maps+=name->valueSelector
+  }
 
   def getExtractor(name: String): ValueExtractor[T] = {
     this.get(name)

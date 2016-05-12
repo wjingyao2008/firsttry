@@ -6,7 +6,7 @@ import com.lightreporter.filterfunc.{OperatorFactory, ValueExtractor}
 import org.apache.log4j.Logger
 
 class ComplexOperatorFactory[T1, T2](val valueExtractorMap1: OperatorFactory[T1],
-                                     val valueExtractorMap2: OperatorFactory[T2]) extends OperatorFactory[T1] {
+                                     val valueExtractorMap2: OperatorFactory[T2] = null) extends OperatorFactory[T1] {
 
   val log = Logger.getLogger(classOf[ComplexOperatorFactory[T1, T2]])
 
@@ -17,11 +17,11 @@ class ComplexOperatorFactory[T1, T2](val valueExtractorMap1: OperatorFactory[T1]
     val valueGetter1 = valueExtractorMap1.getExtractor(nameArray(0))
     if (nameArray.size == 1) {
       valueGetter1.createOperator(optEnum.toString, value)
-    } else if(nameArray.size == 2) {
+    } else if (nameArray.size == 2) {
       val valueGetter2 = valueExtractorMap2.getExtractor(nameArray(1))
       new FieldOpt[T1, T2](optEnum.toString, value, valueGetter1, valueGetter2.createOperator(optEnum.toString, value))
     } else {
-      val outValue=nameArray.mkString(",")
+      val outValue = nameArray.mkString(",")
       throw new UnsupportedOperationException(s"can't find combined dot value selector array: $outValue")
     }
   }

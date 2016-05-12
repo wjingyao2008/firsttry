@@ -1,10 +1,10 @@
-package com.lightreporter.Registration
+package com.lightreporter.registration
 
 import akka.actor.SupervisorStrategy.Resume
 import akka.actor._
 import akka.stream.scaladsl._
 import akka.stream.{ActorMaterializer, OverflowStrategy}
-import com.lightreporter.Registration.UserProtocol._
+import com.lightreporter.registration.UserProtocol._
 
 /**
   * Created by y28yang on 3/29/2016.
@@ -12,7 +12,6 @@ import com.lightreporter.Registration.UserProtocol._
 class BroadCaster[T](notifierActor: Option[ActorRef]) extends Actor with ActorLogging {
 
 
-  case class RegisterInfo[T](register: Register[T], source:ActorRef)
 
   private var allUser = Map[String, RegisterInfo[T]]()
   private implicit val mat = ActorMaterializer()
@@ -24,9 +23,9 @@ class BroadCaster[T](notifierActor: Option[ActorRef]) extends Actor with ActorLo
   override def receive = {
     case msg: Msg[T] => allUser.foreach(_._2.source ! msg.msg)
     case msgs: MsgList[T]=> allUser.foreach(seq=>{msgs.msgIterable.foreach(seq._2.source ! _)})
-    case regiMsg: Register[T] => register(regiMsg)
+    case registerMsg: Register[T] => register(registerMsg)
     case UnRegister(user) => unRegister(user)
-    case RequestAllUser => replyWithUserInfos()
+    case RequestAllUser => replyWithUserInfo()
     case changeFilter:ChangeFilter[T]=> changeUserFilter(changeFilter)
   }
 
@@ -45,7 +44,7 @@ class BroadCaster[T](notifierActor: Option[ActorRef]) extends Actor with ActorLo
     }
   }
 
-  def replyWithUserInfos(): Unit = {
+  def replyWithUserInfo(): Unit = {
     val list = allUser.keys.toList
     log.info("current users:" + list.mkString(","))
     sender() ! ReplyAllUser(list)
@@ -66,7 +65,7 @@ class BroadCaster[T](notifierActor: Option[ActorRef]) extends Actor with ActorLo
       val userName = register.userName
       val source = Source.actorRef[T](register.bufferSize, OverflowStrategy.dropHead)
       val filterWrapper=register.filterWarpper
-      val flowOps=source.filter(it=>{filterWrapper.filter.isPass(it)}).map(receiver.receive(_))
+      val flowOps=source.filter(it=>{filterWrapper.filter.isPass(it)}).map(receiver.receive)
 
       val completeEnd = Sink.onComplete { case _ => receiver.stop() }
       var sourceRef = flowOps.to(completeEnd).run()
@@ -96,3 +95,6 @@ class BroadCaster[T](notifierActor: Option[ActorRef]) extends Actor with ActorLo
     notifierActor.foreach(_ ! UserChanged(allUser.keys))
   }
 }
+
+
+case class RegisterInfo[T](register: Register[T], source:ActorRef)

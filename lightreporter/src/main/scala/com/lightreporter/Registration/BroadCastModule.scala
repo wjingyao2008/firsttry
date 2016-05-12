@@ -3,7 +3,7 @@ package com.lightreporter.registration
 import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
-import com.lightreporter.filterfunc.Filter
+import com.lightreporter.filterfunc.{DefaultAllPassFilter, Filter}
 import com.lightreporter.registration.UserProtocol._
 
 import scala.concurrent.Await
@@ -24,11 +24,16 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
   private implicit var timeout: Timeout = Timeout(5 seconds)
 
 
+  def this(moduleName:String="BroadCast")={
+    this(ActorSystem(moduleName))
+    this.setModuleName(moduleName)
+  }
 
   def init() = {
     mustBeforeInit()
     broadCaster=system.actorOf(Props.create(classOf[BroadCaster[T]], notifiable), broadCasterName)
     isInited = true
+    this
   }
 
 
@@ -73,8 +78,8 @@ class BroadCastModule[T <: AnyRef](system: ActorSystem) {
   }
 
 
-  def register(userName: String, receiver: Receiver[T],optionalFilter:FilterWrapper[T]=new FilterWrapper[T]) = {
-    val registerMsg=Register(userName, receiver,bufferSize,optionalFilter)
+  def register(userName: String, receiver: Receiver[T],filter:Filter[T]=new DefaultAllPassFilter[T]) = {
+    val registerMsg=Register(userName, receiver,bufferSize,new FilterWrapper[T](filter))
     askBroadCaster[OperationSuccess](registerMsg)
   }
 

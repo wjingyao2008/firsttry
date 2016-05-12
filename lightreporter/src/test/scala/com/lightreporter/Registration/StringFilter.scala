@@ -1,6 +1,6 @@
-package com.lightreporter.Registration
+package com.lightreporter.registration
 
-import com.lightreporter.Filter.Filter
+import com.lightreporter.filterfunc.Filter
 
 /**
   * Created by y28yang on 5/4/2016.

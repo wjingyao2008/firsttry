@@ -18,6 +18,11 @@
            <artifactId>jacorb</artifactId>
        </dependency>
        <dependency>
+           <groupId>yang.myscalamaven</groupId>
+           <artifactId>lightreporter</artifactId>
+           <version>DYNAMIC-SNAPSHOT</version>
+       </dependency>
+       <dependency>
            <groupId>org.jacorb</groupId>
            <artifactId>jacorb-services</artifactId>
        </dependency>

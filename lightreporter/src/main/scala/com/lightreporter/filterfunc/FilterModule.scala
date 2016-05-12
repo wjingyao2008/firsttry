@@ -10,24 +10,35 @@ import org.jacorb.notification.filter.etcl._
   */
 class FilterModule[T](val valueExtractorMap:OperatorFactory[T]) {
 
-  val log=Logger.getLogger(classOf[FilterParser[T]])
-  val parser=new FilterParser[T](valueExtractorMap)
+  private val log=Logger.getLogger(classOf[FilterParser[T]])
+  private val parser=new FilterParser[T](valueExtractorMap)
 
-  def andOperation(node: AndOperator)={
+
+  def readString(expression: String) = {
+    val root = TCLParser.parse(expression)
+    try {
+      processNode(root)
+    } catch {
+      case ex: UnsupportedOperationException =>throw new UnsupportedOperationException(s"can't parse $expression on $expression",ex)
+    }
+  }
+
+
+  private def andOperation(node: AndOperator)={
     val left=processNode(node.left())
     val right=processNode(node.right())
     val andFilter=new AndFilter[T](left,right)
     andFilter
   }
 
-  def orOperation(node: OrOperator) = {
+  private def orOperation(node: OrOperator) = {
     val left=processNode(node.left())
     val right=processNode(node.right())
     val orFilter=new OrFilter[T](left,right)
     orFilter
   }
 
-  def getNameAndRight(node: BinaryOperator) = {
+  private def getNameAndRight(node: BinaryOperator) = {
     var left = node.left()
     var right = node.right()
     var operator = convertOperator(node)
@@ -42,7 +53,7 @@ class FilterModule[T](val valueExtractorMap:OperatorFactory[T]) {
     (left, right,operator)
   }
 
-  def makeValue(node: AbstractTCLNode):String = {
+  private def makeValue(node: AbstractTCLNode):String = {
     if(isMinusOrPlus(node)) {
       val down= node.left()
       if (down.hasNextSibling) {
@@ -61,10 +72,10 @@ class FilterModule[T](val valueExtractorMap:OperatorFactory[T]) {
     }
   }
 
-  def binOperation(node: BinaryOperator):Filter[T] = {
+  private def binOperation(node: BinaryOperator):Filter[T] = {
 
     log.debug(s"received binary tree:${node.toStringTree}" )
-    var nameAndValue= getNameAndRight(node)
+    val nameAndValue= getNameAndRight(node)
     val name=makeName(nameAndValue._1)
     val value = makeValue(nameAndValue._2)
     val operator=nameAndValue._3
@@ -72,7 +83,7 @@ class FilterModule[T](val valueExtractorMap:OperatorFactory[T]) {
     parser.tryToCreateOperator(operator,name,value)
   }
 
-  def makeName(node:AbstractTCLNode)={
+  private def makeName(node:AbstractTCLNode)={
     var noParenth=node.toStringTree.replace("(","").replace(")","").trim
     if(noParenth.startsWith(".")){
       noParenth=noParenth.replaceFirst(".","").trim
@@ -81,7 +92,7 @@ class FilterModule[T](val valueExtractorMap:OperatorFactory[T]) {
   }
 
 
-  def convertOperator(node: BinaryOperator): OperatorEnum.Value = {
+  private def convertOperator(node: BinaryOperator): OperatorEnum.Value = {
     node match {
       case node: EqOperator => OperatorEnum.==
       case node: GteOperator => OperatorEnum.>=
@@ -97,17 +108,10 @@ class FilterModule[T](val valueExtractorMap:OperatorFactory[T]) {
   }
 
 
-  def readString(expression: String) = {
-    val root = TCLParser.parse(expression)
-    try {
-      processNode(root)
-    } catch {
-      case ex: UnsupportedOperationException =>throw new UnsupportedOperationException(s"can't parse $expression on $expression",ex)
-    }
-  }
 
 
-  def processNode(root: AbstractTCLNode): Filter[T] = {
+
+  private def processNode(root: AbstractTCLNode): Filter[T] = {
     root match {
       case node: BinaryOperator => binOperation(node)
       case node: AndOperator => andOperation(node)
@@ -116,15 +120,15 @@ class FilterModule[T](val valueExtractorMap:OperatorFactory[T]) {
     }
   }
 
-  protected def isMinusOrPlus(node: AbstractTCLNode): Boolean = {
+  private def isMinusOrPlus(node: AbstractTCLNode): Boolean = {
     node.isInstanceOf[MinusOperator] || node.isInstanceOf[PlusOperator]
   }
 
-  def isName(node: AbstractTCLNode): Boolean = {
+  private def isName(node: AbstractTCLNode): Boolean = {
     node.isInstanceOf[ETCLComponentName] || node.isInstanceOf[RuntimeVariableNode] || node.isInstanceOf[IdentValue]
   }
 
-  def isValue(node: AbstractTCLNode): Boolean = {
+  private def isValue(node: AbstractTCLNode): Boolean = {
     node.isInstanceOf[DotOperator] || node.isInstanceOf[AssocOperator] || node.isInstanceOf[BoolValue] || node.isInstanceOf[NumberValue] || node.isInstanceOf[StringValue]
   }
 }
