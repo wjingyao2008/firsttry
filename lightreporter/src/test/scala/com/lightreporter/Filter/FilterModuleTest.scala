@@ -1,5 +1,7 @@
 package com.lightreporter.Filter
 
+import com.lightreporter.Filter.extractor._
+import com.lightreporter.Filter.operatorfactory.{ComplexExtractorMap, SimpleOperatorFactory}
 import com.lightreporter.Filter.opt._
 import org.scalatest.{FunSuite, Matchers}
 

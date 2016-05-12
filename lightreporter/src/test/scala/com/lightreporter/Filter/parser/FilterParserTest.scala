@@ -1,7 +1,9 @@
 package com.lightreporter.Filter.parser
 
+import com.lightreporter.Filter.extractor.{ArrayExtractor, FloatValueExtractor, ShortValueExtractor, StringValueExtractor}
 import com.lightreporter.Filter.opt._
-import com.lightreporter.Filter.{Data, SimpleOperatorFactory}
+import com.lightreporter.Filter.Data
+import com.lightreporter.Filter.operatorfactory.SimpleOperatorFactory
 import org.scalatest.{FunSuite, Matchers}
 
 /**

@@ -1,5 +1,6 @@
 package com.lightreporter.Filter.opt
 
+import com.lightreporter.Filter.extractor._
 import com.lightreporter.Filter.{Data, Data2}
 import org.scalatest.{FunSuite, Matchers}
 

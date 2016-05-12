@@ -1,6 +1,7 @@
-package com.lightreporter.Filter
+package com.lightreporter.Filter.operatorfactory
 
-import com.lightreporter.Filter.opt.{ComparableOpt, Operator, ValueExtractor}
+import com.lightreporter.Filter.opt.{Operator, ValueExtractor}
+import com.lightreporter.Filter.{OperatorEnum, OperatorFactory}
 import org.apache.log4j.Logger
 
 /**

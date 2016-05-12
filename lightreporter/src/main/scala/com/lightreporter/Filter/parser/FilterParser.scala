@@ -1,7 +1,6 @@
 package com.lightreporter.Filter.parser
 
 import com.lightreporter.Filter._
-import com.lightreporter.Filter.opt.ValueExtractor
 import org.apache.commons.lang.StringUtils
 import org.apache.log4j.Logger
 
@@ -56,10 +55,6 @@ class FilterParser[T](val operatorFactory: OperatorFactory[T]) {
     readOneOperator(expression)
   }
 
-  def process(expression: String): Filter[T] = {
-    val basicFilter = readOneOperator(expression)
-    new SimpleFilter[T]()
-  }
 
 
   def isName(a: String) = a.startsWith("$") || (!StringUtils.isNumeric(a))
