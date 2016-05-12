@@ -177,19 +177,6 @@ class FilterParserTest extends FunSuite with Matchers {
 
 
 
-
-
-  test(" a==1 or b== '3' ") {
-    val exp = " a==1 or b== '3'  "
-    val filter = filterParser.read(exp)
-    filter.isPass(Data(1, "3")) shouldBe true
-    filter.isPass(Data(1, "2")) shouldBe true
-    filter.isPass(Data(2, "3")) shouldBe true
-    filter.isPass(Data(1, "'1'")) shouldBe false
-  }
-
-
-
   def getValueExtractorMap = {
     val valueExtractorMap = new ValueExtractorMap[Data]
     valueExtractorMap.add("c", new ShortValueGetter[Data] {

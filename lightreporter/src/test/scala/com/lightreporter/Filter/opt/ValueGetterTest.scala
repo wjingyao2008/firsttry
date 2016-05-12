@@ -64,7 +64,7 @@ class ValueGetterTest extends FunSuite with Matchers{
     val data=Data(3,"43",1)
     val stringSelector=new StringGetterImpl
     stringSelector.createOperator("==","43").isPass(data) shouldBe true
-    stringSelector.createOperator(">","45").isPass(data) shouldBe true
+    stringSelector.createOperator(">","42").isPass(data) shouldBe true
     stringSelector.createOperator("==","41").isPass(data) shouldBe false
     stringSelector.createOperator("!=","42").isPass(data) shouldBe true
     stringSelector.createOperator("!=","43").isPass(data) shouldBe false
