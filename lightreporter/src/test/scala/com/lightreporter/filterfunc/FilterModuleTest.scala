@@ -1,7 +1,6 @@
 package com.lightreporter.filterfunc
 
 import com.lightreporter.filterfunc.operatorfactory.{ComplexExtractorLocator, SimpleExtractorLocator}
-import com.lightreporter.filterfunc.opt._
 import org.scalatest.{FunSuite, Matchers}
 
 /**
@@ -54,11 +53,11 @@ class FilterModuleTest extends FunSuite with Matchers{
 
 
 
-  test("two dot,f.e=='3'") {
-    val filter= createComplexFilterWith("$.f.e== '3'")
-    filter.isPass(Data(f = Data2(e="3"))) shouldBe true
-    filter.isPass(Data(f = Data2(e="4"))) shouldBe false
-  }
+//  test("two dot,f.e=='3'") {
+//    val filter= createComplexFilterWith("$.f.e== '3'")
+//    filter.isPass(Data(f = Data2(e="3"))) shouldBe true
+//    filter.isPass(Data(f = Data2(e="4"))) shouldBe false
+//  }
 
 
 //  test("two dot,f.c equals true") {

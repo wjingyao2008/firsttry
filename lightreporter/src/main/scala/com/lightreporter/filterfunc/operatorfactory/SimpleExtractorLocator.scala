@@ -24,7 +24,8 @@ class SimpleExtractorLocator[T](val ifGetNoneExtractorHandler:IfGetNoneExtractor
   }
 
   def getExtractor(name: String): ValueExtractor[T] = {
-    this.get(name)
+    val lastName=parseWihDot(name)
+    this.get(lastName)
   }
 
 
@@ -37,5 +38,13 @@ class SimpleExtractorLocator[T](val ifGetNoneExtractorHandler:IfGetNoneExtractor
   }
 
 
+
+  def parseWihDot(name: String) = {
+    log.debug(s"input:$name")
+    val dotArray = name.split('.').map(_.trim).filter(_.nonEmpty)
+    val lastName = dotArray.last
+    log.debug(s"try to split the name:$name with dot: $lastName")
+    lastName
+  }
 
 }
