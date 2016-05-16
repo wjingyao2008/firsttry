@@ -1,7 +1,7 @@
 package com.lightreporter.filterfunc.operatorfactory
 
 import com.lightreporter.filterfunc.opt.OperatorEnum
-import com.lightreporter.filterfunc.{ExtractorLocator, ValueExtractor}
+import com.lightreporter.filterfunc.{DefaultRuntimeExtractor, ExtractorLocator, ValueExtractor}
 import org.apache.log4j.Logger
 
 import scala.collection.mutable
@@ -10,7 +10,7 @@ import scala.collection.mutable
   * Created by y28yang on 5/9/2016.
   */
 
-class SimpleExtractorLocator[T] extends ExtractorLocator[T]{
+class SimpleExtractorLocator[T](val ifGetNoneExtractorHandler:IfGetNoneExtractorHandler[T]=new DefaultNoneExtractor[T]) extends ExtractorLocator[T]{
   val log=Logger.getLogger(classOf[SimpleExtractorLocator[T]])
 
   var maps=new mutable.HashMap[String,ValueExtractor[T]]()
@@ -28,14 +28,13 @@ class SimpleExtractorLocator[T] extends ExtractorLocator[T]{
   }
 
 
+
   def get(name:String)={
     val option=maps.get(name.trim)
     if(option.isEmpty){
-      throw new UnsupportedOperationException(s"can't find value selector from:{$name}.")
-    }
-    option.get
+      ifGetNoneExtractorHandler.getNone(name)
+    } else option.get
   }
-
 
 
 
