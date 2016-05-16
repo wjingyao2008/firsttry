@@ -1,10 +1,8 @@
 package Corba
 
 import java.util.Properties
-
-import com.lightreporter.filterfunc.extractor.StringValueExtractor
-import com.lightreporter.filterfunc.operatorfactory.SimpleOperatorFactory
-import com.lightreporter.filterfunc.{Filter, FilterModule, OperatorFactory, ValueExtractor}
+import com.lightreporter.filterfunc.operatorfactory.SimpleExtractorLocator
+import com.lightreporter.filterfunc.{Filter, FilterModule, ExtractorLocator, ValueExtractor}
 import com.lightreporter.registration.{BroadCastModule, FilterWrapper}
 import org.omg.CORBA.{ORB, TCKind}
 import org.omg.CosNotification._
@@ -43,7 +41,7 @@ class CorbaIntegrationTest extends FunSuite with Matchers{
     any.`type`().kind().value() shouldBe TCKind._tk_boolean
     any= orb.create_any
     any.insert_longlong(54L)
-    any.`type`().kind().value() shouldBe TCKind._tk_longlong
+    any.`type`().kind().value() shouldBe TCKind.
   }
 
   def createBroadCast() = {
@@ -63,7 +61,7 @@ class CorbaIntegrationTest extends FunSuite with Matchers{
 
 
   def initFilterModule():FilterModule[StructuredEvent]={
-    val operatorFactory = new SimpleOperatorFactory[StructuredEvent]
+    val operatorFactory = new SimpleExtractorLocator[StructuredEvent]
     operatorFactory.add(new StringValueExtractor[StructuredEvent]{
       override def getKey(): String = "type_name"
 

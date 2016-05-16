@@ -9,9 +9,8 @@ trait ValueExtractor[T] {
 
   def getKey():String
 
-  def getVal(name:T):Any
+  def getVal(msg:T):Any
 
-  def createOperator(operatorString:String, value:String):Operator[T]
 }
 
 

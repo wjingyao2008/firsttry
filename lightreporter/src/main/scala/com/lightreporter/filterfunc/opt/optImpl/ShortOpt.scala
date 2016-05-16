@@ -6,7 +6,8 @@ import com.lightreporter.filterfunc.opt.Operator
 /**
   * Created by y28yang on 5/10/2016.
   */
-class ShortOpt[T](optName: String, value: String, valueSelector: ValueExtractor[T]) extends ComparableOpt[T, Short](optName, value, valueSelector) {
+class ShortOpt[T](optName: String, value: String, valueSelector: ValueExtractor[T])
+  extends ComparableOpt[T, Short](optName, value) {
 
   val shortVal = value.toDouble.toShort
 

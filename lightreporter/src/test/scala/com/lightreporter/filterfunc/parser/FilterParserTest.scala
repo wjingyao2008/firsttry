@@ -1,9 +1,9 @@
 package com.lightreporter.filterfunc.parser
 
-import com.lightreporter.filterfunc.extractor.{ArrayExtractor, FloatValueExtractor, ShortValueExtractor, StringValueExtractor}
+
 import com.lightreporter.filterfunc.opt._
-import com.lightreporter.filterfunc.Data
-import com.lightreporter.filterfunc.operatorfactory.SimpleOperatorFactory
+import com.lightreporter.filterfunc.{Data, ValueExtractor}
+import com.lightreporter.filterfunc.operatorfactory.SimpleExtractorLocator
 import org.scalatest.{FunSuite, Matchers}
 
 /**
@@ -180,24 +180,26 @@ class FilterParserTest extends FunSuite with Matchers {
 
 
   def getValueExtractorMap = {
-    val valueExtractorMap = new SimpleOperatorFactory[Data]
-    valueExtractorMap.add("c", new ShortValueExtractor[Data] {
-      override def getVal(name: Data): Any = name.c
+    val valueExtractorMap = new SimpleExtractorLocator[Data]
+    valueExtractorMap.add("c", new ValueExtractor[Data] {
+      override def getVal(name: Data): Any = {
+        name.c
+      }
 
       override def getKey(): String = "c"
     })
-    valueExtractorMap.add("d", new FloatValueExtractor[Data] {
+    valueExtractorMap.add("d", new ValueExtractor[Data] {
       override def getVal(name: Data): Any = name.d
 
       override def getKey(): String = "d"
     })
-    valueExtractorMap.add("b", new StringValueExtractor[Data] {
+    valueExtractorMap.add("b", new ValueExtractor[Data] {
       override def getVal(name: Data): Any = name.b
 
       override def getKey(): String = "b"
     })
 
-    valueExtractorMap.add("e", new ArrayExtractor[Data] {
+    valueExtractorMap.add("e", new ValueExtractor[Data] {
       override def getVal(name: Data): Any = name.e
 
       override def getKey(): String = "e"

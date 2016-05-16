@@ -6,7 +6,7 @@ import com.lightreporter.filterfunc.ValueExtractor
 /**
   * Created by y28yang on 5/10/2016.
   */
-class BooleanOpt[T](optName:String, value:String, valueSelector: ValueExtractor[T]) extends ComparableOpt[T,Boolean](optName,value,valueSelector){
+class BooleanOpt[T](optName:String, value:String,valueSelector: ValueExtractor[T]) extends ComparableOpt[T,Boolean](optName,value){
 
   val booleanVal=value.toBoolean
 

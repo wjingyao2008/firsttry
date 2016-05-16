@@ -1,7 +1,7 @@
 package com.lightreporter.filterfunc
 
 import com.lightreporter.filterfunc.extractor._
-import com.lightreporter.filterfunc.operatorfactory.{ComplexOperatorFactory, SimpleOperatorFactory}
+import com.lightreporter.filterfunc.operatorfactory.{ComplexExtractorLocator, SimpleExtractorLocator}
 import com.lightreporter.filterfunc.opt._
 import org.scalatest.{FunSuite, Matchers}
 
@@ -71,7 +71,7 @@ class FilterModuleTest extends FunSuite with Matchers{
 
 
 
-  test("a <= -1") {
+  test("a <= -1.4") {
     val filter = createFilterWith("a <= -1")
     filter.isPass(Data(-1, "3")) shouldBe true
     filter.isPass(Data(3, "2")) shouldBe false
@@ -162,46 +162,42 @@ class FilterModuleTest extends FunSuite with Matchers{
   }
 
   def createComplexFilterWith(filter:String): Filter[Data] = {
-    val complexFactory=new ComplexOperatorFactory[Data,Data2](valueExtractorMap,valueExtractorMap2)
+    val complexFactory=new ComplexExtractorLocator[Data,Data2](valueExtractorMap,valueExtractorMap2)
     val filterModule = new FilterModule[Data](complexFactory)
     filterModule.readString(filter)
   }
 
 
-  def getValueExtractorMap():OperatorFactory[Data]  = {
-    val valueExtractorMap= new SimpleOperatorFactory[Data]
-    valueExtractorMap.add("c", new ShortValueExtractor[Data] {
+  def getValueExtractorMap():ExtractorLocator[Data]  = {
+    val valueExtractorMap= new SimpleExtractorLocator[Data]
+    valueExtractorMap.add("c", new ValueExtractor[Data] {
       override def getVal(name: Data): Any = name.c
 
       override def getKey(): String = "c"
     })
-    valueExtractorMap.add("d", new FloatValueExtractor[Data] {
+    valueExtractorMap.add("d", new ValueExtractor[Data] {
       override def getVal(name: Data): Any = name.d
 
       override def getKey(): String = "d"
     })
-    valueExtractorMap.add("b", new StringValueExtractor[Data] {
+    valueExtractorMap.add("b", new ValueExtractor[Data] {
       override def getVal(name: Data): Any = name.b
 
       override def getKey(): String = "b"
     })
 
-    valueExtractorMap.add("e", new ArrayExtractor[Data] {
+    valueExtractorMap.add("e", new ValueExtractor[Data] {
       override def getVal(name: Data): Any = name.e
 
       override def getKey(): String = "e"
     })
-    valueExtractorMap.add("a", new IntValueExtractor[Data] {
+    valueExtractorMap.add("a", new ValueExtractor[Data] {
       override def getVal(name: Data): Any = name.a
 
       override def getKey(): String = "a"
     })
 
     valueExtractorMap.add("f", new ValueExtractor[Data] {
-
-      override def createOperator(operatorString: String, value: String): Operator[Data] = {
-        throw new NotImplementedError()
-      }
 
       override def getVal(name: Data): Any = name.f
 
@@ -212,15 +208,15 @@ class FilterModuleTest extends FunSuite with Matchers{
   }
 
 
-  def getValueExtractorMap2():OperatorFactory[Data2]  = {
-    val valueExtractorMap= new SimpleOperatorFactory[Data2]
-    valueExtractorMap.add("e", new StringValueExtractor[Data2] {
+  def getValueExtractorMap2():ExtractorLocator[Data2]  = {
+    val valueExtractorMap= new SimpleExtractorLocator[Data2]
+    valueExtractorMap.add("e", new ValueExtractor[Data2] {
       override def getVal(name: Data2): Any = name.e
 
       override def getKey(): String = "e"
     })
 
-    valueExtractorMap.add("c", new BoolValueExtractor[Data2] {
+    valueExtractorMap.add("c", new ValueExtractor[Data2] {
       override def getVal(name: Data2): Any = name.c
 
       override def getKey(): String = "c"

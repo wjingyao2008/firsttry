@@ -8,7 +8,7 @@ import org.jacorb.notification.filter.etcl._
 /**
   * Created by y28yang on 5/9/2016.
   */
-class FilterModule[T](val valueExtractorMap:OperatorFactory[T]) {
+class FilterModule[T](val valueExtractorMap:ExtractorLocator[T]) {
 
   private val log=Logger.getLogger(classOf[FilterParser[T]])
   private val parser=new FilterParser[T](valueExtractorMap)
@@ -41,6 +41,7 @@ class FilterModule[T](val valueExtractorMap:OperatorFactory[T]) {
   private def getNameAndRight(node: BinaryOperator) = {
     var left = node.left()
     var right = node.right()
+
     var operator = convertOperator(node)
     if ((isName(left) && isName(right)) || (isValue(left) && isValue(right))) {
       throw new UnsupportedOperationException("can't decide left and right")

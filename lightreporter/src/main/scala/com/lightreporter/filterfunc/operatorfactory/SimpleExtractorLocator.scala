@@ -1,7 +1,7 @@
 package com.lightreporter.filterfunc.operatorfactory
 
 import com.lightreporter.filterfunc.opt.OperatorEnum
-import com.lightreporter.filterfunc.{OperatorFactory, ValueExtractor}
+import com.lightreporter.filterfunc.{ExtractorLocator, ValueExtractor}
 import org.apache.log4j.Logger
 
 import scala.collection.mutable
@@ -10,8 +10,8 @@ import scala.collection.mutable
   * Created by y28yang on 5/9/2016.
   */
 
-class SimpleOperatorFactory[T] extends OperatorFactory[T]{
-  val log=Logger.getLogger(classOf[SimpleOperatorFactory[T]])
+class SimpleExtractorLocator[T] extends ExtractorLocator[T]{
+  val log=Logger.getLogger(classOf[SimpleExtractorLocator[T]])
 
   var maps=new mutable.HashMap[String,ValueExtractor[T]]()
 
@@ -27,11 +27,6 @@ class SimpleOperatorFactory[T] extends OperatorFactory[T]{
     this.get(name)
   }
 
-  def getOperator(name: String,optEnum: OperatorEnum.Value, value:String)={
-    val selector=getExtractor(name)
-    val operator = selector.createOperator(optEnum.toString, value)
-    operator
-  }
 
   def get(name:String)={
     val option=maps.get(name.trim)
